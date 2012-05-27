@@ -1,4 +1,3 @@
-# Create your views here.
 from django.shortcuts import render
 from cms.models import Page
 
