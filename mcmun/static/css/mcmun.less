@@ -112,13 +112,13 @@ body {
 		height: 240px;
 		background: #CCC;
 		&.registration {
-			background-image: url('../img/registration.png');
+			background-image: url('../img/registration.jpg');
 		}
 		&.welcome {
-			background-image: url('../img/welcome.png');
+			background-image: url('../img/welcome.jpg');
 		}
 		&.committees {
-			background-image: url('../img/committees.png');
+			background-image: url('../img/committees.jpg');
 		}
 	}
 	#carousel-blocks {
@@ -141,5 +141,33 @@ body {
 				cursor: pointer;
 			}
 		}
+	}
+}
+
+.link-block {
+	display: inline-block;
+	background: #000;
+	height: 200px;
+	position: relative;
+	a {
+		position: absolute;
+		bottom: 0px;
+		text-align: center;
+		height: 50px;
+		width: 283px;
+		display: block;
+		line-height: 50px;
+		color: #FFF;
+		background: rgba(0, 0, 0, 0.9);
+		text-decoration: none;
+		font-size: 1.3em;
+		#raleway;
+		font-weight: bold;
+		&:hover {
+		background: rgba(70, 70, 70, 0.7);
+		}
+	}
+	& + .link-block {
+		margin-left: 22px;
 	}
 }
