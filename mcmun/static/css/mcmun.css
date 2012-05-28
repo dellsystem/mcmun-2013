@@ -183,6 +183,29 @@ body {
   font-size: 2.1em;
   font-weight: bold;
 }
+#masthead .social-media {
+  position: absolute;
+  right: 0px;
+  bottom: -10px;
+}
+#masthead .social-media a {
+  text-decoration: none;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+#masthead .social-media a:hover {
+  background-position: 0px 32px;
+}
+#masthead .social-media .twitter {
+  background-image: url('../img/twitter.png');
+}
+#masthead .social-media .facebook {
+  background-image: url('../img/facebook.png');
+}
+#masthead .social-media .email {
+  background-image: url('../img/email.png');
+}
 #content {
   width: 900px;
   margin: 0 auto;
