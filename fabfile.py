@@ -3,7 +3,7 @@ from fabric.api import local, run, env, settings
 env.hosts = ['dellsystem@mcmun.org']
 
 def less():
-	local("lessc mcmun/static/css/mcmun.less -X > mcmun/static/css/mcmun.css")
+	local("lessc mcmun/static/css/mcmun.less -x > mcmun/static/css/mcmun.css")
 
 def deploy():
 	less()
