@@ -13,3 +13,6 @@ def deploy():
 	local('git push')
 	run('cd mcmun.org && git pull')
 	run('echo "yes" | python mcmun.org/manage.py collectstatic')
+
+def up():
+    local("python manage.py runserver")
