@@ -13,9 +13,10 @@ def deploy():
 	local('git push')
 	run('cd mcmun.org && git pull')
 	run('echo "yes" | python mcmun.org/manage.py collectstatic')
+	run('python mcmun.org/manage.py syncdb')
 
 def up():
-    local("python manage.py runserver")
+	local("python manage.py runserver")
 
 def dump():
-    local("python manage.py dumpdata cms --indent=4 > cms/fixtures/initial_data.json")
+	local("python manage.py dumpdata cms --indent=4 > cms/fixtures/initial_data.json")
