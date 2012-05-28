@@ -3,7 +3,7 @@
         "pk": 1,
         "model": "cms.page",
         "fields": {
-            "content": "<div id=\"carousel\">\r\n\t<div id=\"carousel-image\" class=\"registration\">\r\n\t</div>\r\n\t<div id=\"carousel-blocks\">\r\n\t\t<div data-image=\"registration\">Registration</div>\r\n\t\t<div data-image=\"welcome\">Welcome</div>\r\n\t\t<div data-image=\"committees\">Committees</div>\r\n\t</div>\r\n</div>\r\n\r\n<p>More stuff here blah blah</p>",
+            "content": "<div id=\"carousel\">\r\n\t<div id=\"carousel-image\" class=\"registration\">\r\n\t</div>\r\n\t<div id=\"carousel-blocks\">\r\n\t\t<div data-image=\"registration\">Registration</div>\r\n\t\t<div data-image=\"welcome\">Welcome</div>\r\n\t\t<div data-image=\"committees\">Committees</div>\r\n\t</div>\r\n</div>\r\n\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/tour.jpg\" alt=\"\" />\r\n\t<a href=\"/tour-de-montreal\">Tour de Montreal</a>\r\n</div>\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/brochure.jpg\" alt=\"\" />\r\n\t<a href=\"/about-mcmun#brochure\">McMUN brochure</a>\r\n</div>\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/staralliance.jpg\" alt=\"\" />\r\n\t<a href=\"/travel#star-alliance\">Star Alliance</a>\r\n</div>",
             "long_name": "Home",
             "short_name": "home",
             "show_nav": false
@@ -34,7 +34,7 @@
         "model": "cms.page",
         "fields": {
             "content": "",
-            "long_name": "Attending McMUN",
+            "long_name": "Attending",
             "short_name": "attending",
             "show_nav": true
         }
@@ -103,9 +103,9 @@
         "pk": 11,
         "model": "cms.page",
         "fields": {
-            "content": "",
+            "content": "<a name=\"brochure\"></a>\r\n\r\nThe brochure will be on this page.",
             "long_name": "About McMUN",
-            "short_name": "mcmun",
+            "short_name": "about-mcmun",
             "show_nav": true
         }
     },
@@ -216,6 +216,16 @@
             "content": "",
             "long_name": "Position papers",
             "short_name": "position-papers",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 23,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Tour de Montreal",
+            "short_name": "tour-de-montreal",
             "show_nav": true
         }
     },
@@ -387,6 +397,14 @@
         "fields": {
             "position": 6,
             "parent": 2
+        }
+    },
+    {
+        "pk": 23,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 6,
+            "parent": 4
         }
     }
 ]

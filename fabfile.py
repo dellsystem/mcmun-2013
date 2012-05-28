@@ -16,3 +16,6 @@ def deploy():
 
 def up():
     local("python manage.py runserver")
+
+def dump():
+    local("python manage.py dumpdata cms --indent=4 > cms/fixtures/initial_data.json")
