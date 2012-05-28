@@ -1,4 +1,4 @@
-from fabric.api import local, run, env
+from fabric.api import local, run, env, settings
 
 env.hosts = ['dellsystem@mcmun.org']
 
@@ -7,6 +7,9 @@ def less():
 
 def deploy():
 	less()
+	with settings(warn_only=True):
+		local("git add mcmun/static/css/mcmun.css")
+		local("git commit -m 'Update compiled CSS'")
 	local('git push')
 	run('cd mcmun.org && git pull')
-	run('echo "yes" | python manage.py collectstatic')
+	run('echo "yes" | python mcmun.org/manage.py collectstatic')
