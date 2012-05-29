@@ -3,7 +3,7 @@
         "pk": 1,
         "model": "cms.page",
         "fields": {
-            "content": "<div id=\"carousel\">\r\n\t<div id=\"carousel-image\" class=\"registration\">\r\n\t</div>\r\n\t<div id=\"carousel-blocks\">\r\n\t\t<div data-image=\"registration\">Registration</div>\r\n\t\t<div data-image=\"welcome\">Welcome</div>\r\n\t\t<div data-image=\"committees\">Committees</div>\r\n\t</div>\r\n</div>\r\n\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/tour.jpg\" alt=\"\" />\r\n\t<a href=\"/tour-de-montreal\">Tour de Montreal</a>\r\n</div>\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/brochure.png\" alt=\"\" />\r\n\t<a href=\"/about-mcmun#brochure\">McMUN brochure</a>\r\n</div>\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/staralliance.jpg\" alt=\"\" />\r\n\t<a href=\"/travel#star-alliance\">Star Alliance</a>\r\n</div>",
+            "content": "<div id=\"carousel\">\r\n\t<div id=\"carousel-image\" class=\"registration\">\r\n\t</div>\r\n\t<div id=\"carousel-blocks\">\r\n\t\t<div data-image=\"registration\">Registration</div>\r\n\t\t<div data-image=\"welcome\">Welcome</div>\r\n\t\t<div data-image=\"committees\">Committees</div>\r\n\t</div>\r\n</div>\r\n\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/tour.jpg\" alt=\"\" />\r\n\t<a href=\"/tour-de-montreal\">Tour de Montreal</a>\r\n</div>\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/brochure.png\" alt=\"\" />\r\n\t<a href=\"/about-mcmun#brochure\">McMUN brochure</a>\r\n</div>\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/staralliance.png\" alt=\"\" />\r\n\t<a href=\"/travel#star-alliance\">Star Alliance</a>\r\n</div>",
             "long_name": "Home",
             "short_name": "home",
             "show_nav": false
