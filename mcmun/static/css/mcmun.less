@@ -1,7 +1,7 @@
 @import "fonts.less";
 @import "variables.less";
-@import "menu.less";
 @import "mixins.less";
+@import "menu.less";
 
 * {
 	margin: 0;
@@ -9,10 +9,10 @@
 }
 
 body {
-	background-color: #000;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: @bodyBg;
+	#sans-serif;
 	font-size: 12px;
-	color: #222;
+	color: @bodyText;
 	width: 100%;
 	background-image: url('../img/montreal.jpg');
 	background-size: 100%;
@@ -24,11 +24,10 @@ body {
 
 .container {
 	margin: 0 auto;
-	width: 900px;
+	width: @containerWidth;
 }
 
 #header {
-	z-index: 2;
 	.container;
 	background-image: url('../img/dove.png');
 	background-repeat: no-repeat;
@@ -42,22 +41,26 @@ body {
 	padding-left: 50px;
 	.title {
 		position: absolute;
-		top: 40px;
+		top: 35px;
 		right: 180px;
 		color: #FFF;
 		#raleway;
 		font-weight: normal;
-		text-shadow: #000 0 2px 0;
+		text-shadow: @headerTextShadow 0 2px 0;
 		text-align: right;
 		.top {
 			font-size: 2.1em;
+			// Needed for proper sizing in Windows
+			line-height: 1.2em;
 		}
 		.middle {
 			font-size: 5.7em;
+			line-height: 1.0em;
 		}
 		.bottom {
 			font-size: 2.1em;
 			font-weight: bold;
+			line-height: 1.2em;
 		}
 	}
 	.social-media {
@@ -66,7 +69,7 @@ body {
 		bottom: -10px;
 		a {
 			text-decoration: none;
-			display: inline-block;
+			.inline-block;
 			width: 32px;
 			height: 32px;
 			&:hover {
@@ -95,7 +98,7 @@ body {
 		font-size: 3.5em;
 	}
 	overflow: auto;
-	background: #FFF;
+	background: @contentBg;
 	margin-bottom: 30px;
 }
 
@@ -110,7 +113,6 @@ body {
 		float: left;
 		width: 600px;
 		height: 240px;
-		background: #CCC;
 		&.registration {
 			background-image: url('../img/registration.jpg');
 		}
@@ -133,11 +135,11 @@ body {
 			text-transform: uppercase;
 			line-height: 80px;
 			text-align: right;
-			background: #333;
-			color: #FFF;
+			background: @carouselBg;
+			color: @carouselText;
 			padding-right: 30px;
 			&:hover {
-				background: #444;
+				background: @carouselHoverBg;
 				cursor: pointer;
 			}
 		}
@@ -145,12 +147,13 @@ body {
 }
 
 .link-block {
-	display: inline-block;
-	background: #000;
+	.inline-block;
 	height: 200px;
 	position: relative;
 	a {
+		z-index: 2;
 		position: absolute;
+		left: 0px;
 		bottom: 0px;
 		text-align: center;
 		height: 50px;
@@ -158,13 +161,13 @@ body {
 		display: block;
 		line-height: 50px;
 		color: #FFF;
-		background: rgba(0, 0, 0, 0.9);
+		.grey-bg(@linkBlockBgRgb, @linkBlockBgAlpha);
 		text-decoration: none;
 		font-size: 1.3em;
 		#raleway;
 		font-weight: bold;
 		&:hover {
-		background: rgba(70, 70, 70, 0.7);
+			.grey-bg(@linkBlockBgHoverRgb, @linkBlockBgHoverAlpha);
 		}
 	}
 	& + .link-block {

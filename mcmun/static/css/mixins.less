@@ -11,3 +11,19 @@
     background-image: linear-gradient(top, @startColor, @endColor); // The standard
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down
 }
+
+.inline-block {
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+}
+
+.alpha-bg(@r, @g, @b, @alpha:1) {
+	// First one for older versions of IE
+	background: rgb(@r, @g, @b);
+	background: rgba(@r, @g, @b, @alpha);
+}
+
+.grey-bg(@rgb, @alpha:1) {
+	.alpha-bg(@rgb, @rgb, @rgb, @alpha);
+}
