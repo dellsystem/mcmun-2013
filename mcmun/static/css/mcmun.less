@@ -103,6 +103,7 @@ body {
 }
 
 #carousel {
+	position: relative;
 	width: 840px;
 	height: 240px;
 	padding: 30px;
@@ -141,6 +142,32 @@ body {
 			&:hover {
 				background: @carouselHoverBg;
 				cursor: pointer;
+			}
+			&.active {
+				background: @carouselActiveBg;
+				a {
+					display: block;
+				}
+			}
+			a {
+				padding-left: 10px;
+				text-transform: none;
+				text-decoration: none;
+				font-size: 0.9em;
+				color: @white;
+				text-align: left;
+				.hidden;
+				z-index: 5;
+				position: absolute;
+				bottom: 30px;
+				left: 30px;
+				right: 270px;
+				height: 40px;
+				line-height: 40px;
+				.grey-bg(10, 0.8);
+				&:after {
+					content: "\00a0\00BB";
+				}
 			}
 		}
 	}
