@@ -4,7 +4,7 @@
 	top: 260px;
 	width: 100%;
 	height: 35px;
-	.alpha-bg(@menuBgR, @menuBgG, @menuBgB, 0.4);
+	.alpha-bg(@menuBgR, @menuBgG, @menuBgB, @menuBgAlpha);
 	text-align: center;
 	color: @menuText;
 	ul {
@@ -24,7 +24,7 @@
 			text-decoration: none;
 			color: #FFF;
 			&:hover {
-				.alpha-bg(@menuHoverBgR, @menuHoverBgG, @menuHoverBgB, 0.4);
+				.alpha-bg(@menuHoverBgR, @menuHoverBgG, @menuHoverBgB, @menuHoverBgAlpha);
 			}
 		}
 		ul {
