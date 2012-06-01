@@ -3,8 +3,9 @@
         "pk": 1,
         "model": "cms.page",
         "fields": {
-            "content": "<div id=\"carousel\">\r\n\t<div id=\"carousel-image\" class=\"registration\">\r\n\t</div>\r\n\t<div id=\"carousel-blocks\">\r\n\t\t<div data-image=\"registration\" class=\"active\"><span>Registration</span><a href=\"/registration\">Opens August 1</a></div>\r\n\t\t<div data-image=\"welcome\"><span>Welcome</span><a href=\"/welcome\">Welcome to the 24th annual McMUN</a></div>\r\n\t\t<div data-image=\"committees\"><span>Committees</span><a href=\"/committees\">26 innovative committees</a></div>\r\n\t</div>\r\n</div>\r\n\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/tour.jpg\" alt=\"\" />\r\n\t<a href=\"/tour-de-montreal\">Tour de Montreal</a>\r\n</div>\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/brochure.png\" alt=\"\" />\r\n\t<a href=\"/about-mcmun#brochure\">McMUN brochure</a>\r\n</div>\r\n<div class=\"link-block\">\r\n\t<img src=\"/static/img/staralliance.png\" alt=\"\" />\r\n\t<a href=\"/travel#star-alliance\">Star Alliance</a>\r\n</div>",
+            "content": "",
             "long_name": "Home",
+            "custom_template": true,
             "short_name": "home",
             "show_nav": false
         }
@@ -15,6 +16,7 @@
         "fields": {
             "content": "",
             "long_name": "About",
+            "custom_template": false,
             "short_name": "about",
             "show_nav": true
         }
@@ -25,6 +27,7 @@
         "fields": {
             "content": "",
             "long_name": "Registration",
+            "custom_template": false,
             "short_name": "registration",
             "show_nav": true
         }
@@ -35,6 +38,7 @@
         "fields": {
             "content": "",
             "long_name": "Attending",
+            "custom_template": false,
             "short_name": "attending",
             "show_nav": true
         }
@@ -45,6 +49,7 @@
         "fields": {
             "content": "",
             "long_name": "Sponsors",
+            "custom_template": false,
             "short_name": "sponsors",
             "show_nav": true
         }
@@ -55,6 +60,7 @@
         "fields": {
             "content": "",
             "long_name": "Meet the secretariat",
+            "custom_template": false,
             "short_name": "secretariat",
             "show_nav": true
         }
@@ -65,6 +71,7 @@
         "fields": {
             "content": "",
             "long_name": "About McGill",
+            "custom_template": false,
             "short_name": "mcgill",
             "show_nav": true
         }
@@ -75,6 +82,7 @@
         "fields": {
             "content": "",
             "long_name": "Payment policy",
+            "custom_template": false,
             "short_name": "payment",
             "show_nav": true
         }
@@ -85,6 +93,7 @@
         "fields": {
             "content": "",
             "long_name": "Welcome letter",
+            "custom_template": false,
             "short_name": "welcome",
             "show_nav": true
         }
@@ -95,6 +104,7 @@
         "fields": {
             "content": "",
             "long_name": "About montreal",
+            "custom_template": false,
             "short_name": "montreal",
             "show_nav": true
         }
@@ -105,6 +115,7 @@
         "fields": {
             "content": "<a name=\"brochure\"></a>\r\n\r\nThe brochure will be on this page.",
             "long_name": "About McMUN",
+            "custom_template": false,
             "short_name": "about-mcmun",
             "show_nav": true
         }
@@ -115,6 +126,7 @@
         "fields": {
             "content": "",
             "long_name": "Committees",
+            "custom_template": false,
             "short_name": "committees",
             "show_nav": true
         }
@@ -125,6 +137,7 @@
         "fields": {
             "content": "",
             "long_name": "Venue",
+            "custom_template": false,
             "short_name": "venue",
             "show_nav": true
         }
@@ -135,6 +148,7 @@
         "fields": {
             "content": "",
             "long_name": "Schedule",
+            "custom_template": false,
             "short_name": "schedule",
             "show_nav": true
         }
@@ -145,6 +159,7 @@
         "fields": {
             "content": "",
             "long_name": "Social events",
+            "custom_template": false,
             "short_name": "social-events",
             "show_nav": true
         }
@@ -155,6 +170,7 @@
         "fields": {
             "content": "",
             "long_name": "Checklist",
+            "custom_template": false,
             "short_name": "checklist",
             "show_nav": true
         }
@@ -165,6 +181,7 @@
         "fields": {
             "content": "",
             "long_name": "Scholarships",
+            "custom_template": false,
             "short_name": "scholarships",
             "show_nav": true
         }
@@ -175,6 +192,7 @@
         "fields": {
             "content": "",
             "long_name": "Travel",
+            "custom_template": false,
             "short_name": "travel",
             "show_nav": true
         }
@@ -185,6 +203,7 @@
         "fields": {
             "content": "",
             "long_name": "Food",
+            "custom_template": false,
             "short_name": "food",
             "show_nav": true
         }
@@ -195,6 +214,7 @@
         "fields": {
             "content": "",
             "long_name": "List of committees",
+            "custom_template": true,
             "short_name": "committees-list",
             "show_nav": true
         }
@@ -205,6 +225,7 @@
         "fields": {
             "content": "",
             "long_name": "Rules of procedure",
+            "custom_template": false,
             "short_name": "rops",
             "show_nav": true
         }
@@ -215,6 +236,7 @@
         "fields": {
             "content": "",
             "long_name": "Position papers",
+            "custom_template": false,
             "short_name": "position-papers",
             "show_nav": true
         }
@@ -225,6 +247,7 @@
         "fields": {
             "content": "",
             "long_name": "Tour de Montreal",
+            "custom_template": false,
             "short_name": "tour-de-montreal",
             "show_nav": true
         }

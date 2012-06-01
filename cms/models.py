@@ -9,8 +9,10 @@ class Page(models.Model):
 	long_name = models.CharField(max_length=50)
 	# Will show the <h1> with the title AND the mini breadcrumbs navbar shit
 	show_nav = models.BooleanField(default=True)
-	# Will populate the {{ content }} variable in the template (custom or default)
+	# Will populate the {{ page.content }} variable in the template (custom or default)
 	content = models.TextField(blank=True, null=True)
+	# Set to true if you want to use a custom template (pages/[short_name].html)
+	custom_template = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return self.long_name

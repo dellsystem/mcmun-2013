@@ -4,10 +4,15 @@
 	{% if page.show_nav %}
 		<h1>{{ page.long_name }}</h1>
 	{% endif %}
-	{% if page.content %}
-		{% load markup %}
-		{{ page.content|markdown }}
+	{% if page.custom_template %}
+		{% with "pages/"|add:page.short_name|add:".html" as template_file %}
+			{% include template_file %}
+		{% endwith %}
 	{% else %}
-		{% include "under-construction.html" %}
+		{% if page.content %}
+			{{ page.content }}
+		{% else %}
+			{% include "under-construction.html" %}
+		{% endif %}
 	{% endif %}
 {% endblock %}
