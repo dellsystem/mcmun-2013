@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var rotateTimeout = 3000;
+	var rotateTimeout = 3500;
 	var firstDiv = $('#carousel-blocks div')[0];
 	var timeout;
 
