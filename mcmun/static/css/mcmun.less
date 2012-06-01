@@ -94,8 +94,8 @@ body {
 	padding: 30px;
 	font-size: 13px;
 	h1, h2, h3, h4, h5, h6 {
-		padding-top: 0.5em;
-		padding-bottom: 0.5em;
+		padding-top: 10px;
+		padding-bottom: 0.3em;
 	}
 	h1 {
 		padding-top: 0;
@@ -111,6 +111,22 @@ body {
 	margin-bottom: 30px;
 	ul, ol {
 		margin-left: 20px;
+	}
+	dl {
+		dt {
+			font-weight: bold;
+		}
+		dd {
+			margin-left: 20px;
+		}
+	}
+	a {
+		color: @lightBlue;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+			color: @darkBlue;
+		}
 	}
 }
 
@@ -210,6 +226,6 @@ body {
 		}
 	}
 	& + .link-block {
-		margin-left: 22px;
+		margin-left: 21px;
 	}
 }
