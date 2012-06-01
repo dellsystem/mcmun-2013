@@ -10,7 +10,8 @@
 		{% endwith %}
 	{% else %}
 		{% if page.content %}
-			{{ page.content }}
+			{% load markup %}
+			{{ page.content|markdown }}
 		{% else %}
 			{% include "under-construction.html" %}
 		{% endif %}
