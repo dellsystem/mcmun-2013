@@ -11,7 +11,7 @@
 	{% else %}
 		{% if page.content %}
 			{% load markup %}
-			{{ page.content|markdown }}
+			{{ page.content|markdown:"def_list" }}
 		{% else %}
 			{% include "under-construction.html" %}
 		{% endif %}
