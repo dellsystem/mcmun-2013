@@ -82,7 +82,7 @@
         "fields": {
             "content": "",
             "long_name": "Payment policy",
-            "custom_template": false,
+            "custom_template": true,
             "short_name": "payment",
             "show_nav": true
         }

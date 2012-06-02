@@ -94,8 +94,8 @@ body {
 	padding: 30px;
 	font-size: 13px;
 	h1, h2, h3, h4, h5, h6 {
-		padding-top: 10px;
-		padding-bottom: 0.3em;
+		padding-top: 25px;
+		padding-bottom: 10px;
 	}
 	h1 {
 		padding-top: 0;
@@ -110,7 +110,7 @@ body {
 	background: @contentBg;
 	margin-bottom: 30px;
 	ul, ol {
-		margin-left: 20px;
+		margin: 10px 0 10px 20px;
 	}
 	dl {
 		dt {
@@ -127,6 +127,25 @@ body {
 			text-decoration: underline;
 			color: @darkBlue;
 		}
+	}
+	table {
+		width: 100%;
+		border: 1px solid @lighterGrey;
+		border-left: 0;
+		border-spacing: 0;
+		th, td {
+		    padding: 8px;
+		    line-height: 18px;
+		    text-align: left;
+		    border-left: 1px solid @lighterGrey;
+		}
+		th {
+		    border-bottom: 1px solid @lighterGrey;
+		}
+		margin: 15px 0;
+	}
+	p + p {
+		margin-top: 10px;
 	}
 }
 
