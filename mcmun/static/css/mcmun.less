@@ -89,6 +89,7 @@ body {
 }
 
 #content {
+	position: relative;
 	width: 900px;
 	margin: 0 auto;
 	padding: 30px;
@@ -243,9 +244,39 @@ body {
 		font-weight: bold;
 		&:hover {
 			.grey-bg(@linkBlockBgHoverRgb, @linkBlockBgHoverAlpha);
+			text-decoration: none !important;
 		}
 	}
 	& + .link-block {
 		margin-left: 21px;
+	}
+}
+
+#sec-bios {
+	width: 600px;
+	.bio {
+		position: absolute;
+		width: 300px;
+		height: 500px;
+		top: 60px;
+		right: 30px;
+		.hidden;
+		h3 {
+			padding-top: 0px;
+			color: @mediumGrey;
+		}
+	}
+	.photo {
+		.inline-block;
+		cursor: pointer;
+		img {
+			border: 5px solid @white;
+		}
+		&.active img {
+			border-color: @black;
+		}
+		&:hover img {
+			border-color: @red;
+		}
 	}
 }

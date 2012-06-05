@@ -17,4 +17,10 @@ $(document).ready(function() {
 	};
 
 	timeout = setTimeout(rotateCarousel, rotateTimeout);
+
+	$('#sec-bios').delegate('.photo', 'click', function (event) {
+		$('.active').removeClass('active');
+		$('.bio').hide();
+		$(this).addClass('active').next().show();
+	});
 });
