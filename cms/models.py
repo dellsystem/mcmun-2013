@@ -4,7 +4,7 @@ import os
 
 class Page(models.Model):
 	# Used in the URL and on the filesystem (no spaces)
-	short_name = models.CharField(max_length=20, unique=True)
+	short_name = models.CharField(max_length=50, unique=True)
 	# Used for the menu (lowercase), and as the page title
 	long_name = models.CharField(max_length=50)
 	# Will show the <h1> with the title AND the mini breadcrumbs navbar shit
