@@ -14,7 +14,7 @@
         "pk": 2,
         "model": "cms.page",
         "fields": {
-            "content": "",
+            "content": "Put the brochure here.",
             "long_name": "About",
             "custom_template": false,
             "short_name": "about",
@@ -25,7 +25,7 @@
         "pk": 3,
         "model": "cms.page",
         "fields": {
-            "content": "",
+            "content": "Registration will open August 1st. You can find out more about our fee structure on our [payment policy page](/payment).",
             "long_name": "Registration",
             "custom_template": false,
             "short_name": "registration",
@@ -36,8 +36,8 @@
         "pk": 4,
         "model": "cms.page",
         "fields": {
-            "content": "",
-            "long_name": "Attending",
+            "content": "Dear Model United Nations enthusiasts, \r\n\r\nIt is my pleasure to invite you to join us at the 24th annual McGill Model United Nations Assembly, held this January 24th to 27th in the vibrant city center of Montreal, Canada. \r\n\r\nYou may know McMUN as Canada\u2019s largest and most prestigious Model UN conference, the 3rd largest in North American and one of the most competitive and reputable conferences on the globe. However, McMUN is truly recognized for its success in balancing the traditional academic merits of MUN whilst staying true to the changing realities of the international system. McMUN has and will continue to be at the forefront of committee-based innovation with previous successes including the entirely online and personality based World Economic Forum, dynamic Triple Joint crisis, an ever-changing Ad-Hoc tackling WII and the Pixar Board of Directors. McMUN 2013\u2019s twenty-six committees have been carefully chosen to tackle a range of topics, sure to challenge even the most experienced delegates in unexpected ways and certain not to disappoint. \r\n\r\nEvents like the Leadership Luncheon and the Head-Delegate Cocktail, our budding network of global MUN conferences and the Delegation Scholarship program demonstrate McMUN\u2019s commitment to fostering a global Model UN community. However, we need your help in making this dream a reality. The more international relations clubs, the more schools and the more countries that attend, the larger this global community, the ideal embodiment of the UN spirit, can grow.   \r\n\r\nDespite the snow, we want to make sure our guests have a warm welcome in Montreal. This year\u2019s Friday night Pub Crawl will be a night not to be forgotten, an experience that can only be followed by our famed McParte, a chance for our 1400 delegates and 500 dedicated staff members to celebrate their weekend\u2019s accomplishments. \r\n\r\nCome experience the next chapter in McMUN\u2019s legacy as we expand the horizons of the traditional Model UN mindset and build a global Model UN community. We hope to see you this January! \r\n\r\nBest wishes, \r\n\r\nMickaela Nixon \r\nSecretary-General, McMUN 2013 ",
+            "long_name": "Attending McMUN",
             "custom_template": false,
             "short_name": "attending",
             "show_nav": true
@@ -48,9 +48,9 @@
         "model": "cms.page",
         "fields": {
             "content": "",
-            "long_name": "Sponsors",
+            "long_name": "Public relations",
             "custom_template": false,
-            "short_name": "sponsors",
+            "short_name": "pr",
             "show_nav": true
         }
     },
@@ -58,9 +58,9 @@
         "pk": 6,
         "model": "cms.page",
         "fields": {
-            "content": "",
+            "content": "<br />\r\n\r\nSome short little blurb goes here",
             "long_name": "Meet the secretariat",
-            "custom_template": false,
+            "custom_template": true,
             "short_name": "secretariat",
             "show_nav": true
         }
@@ -88,17 +88,6 @@
         }
     },
     {
-        "pk": 9,
-        "model": "cms.page",
-        "fields": {
-            "content": "",
-            "long_name": "Welcome letter",
-            "custom_template": false,
-            "short_name": "welcome",
-            "show_nav": true
-        }
-    },
-    {
         "pk": 10,
         "model": "cms.page",
         "fields": {
@@ -110,21 +99,10 @@
         }
     },
     {
-        "pk": 11,
-        "model": "cms.page",
-        "fields": {
-            "content": "<a name=\"brochure\"></a>\r\n\r\nThe brochure will be on this page.",
-            "long_name": "About McMUN",
-            "custom_template": false,
-            "short_name": "about-mcmun",
-            "show_nav": true
-        }
-    },
-    {
         "pk": 12,
         "model": "cms.page",
         "fields": {
-            "content": "",
+            "content": "Needs some sort of introductory letter thing about committees. A short one, maybe mentioning the theme and highlighting some cool committees etc",
             "long_name": "Committees",
             "custom_template": false,
             "short_name": "committees",
@@ -148,7 +126,7 @@
         "fields": {
             "content": "",
             "long_name": "Schedule",
-            "custom_template": false,
+            "custom_template": true,
             "short_name": "schedule",
             "show_nav": true
         }
@@ -168,7 +146,7 @@
         "pk": 16,
         "model": "cms.page",
         "fields": {
-            "content": "",
+            "content": "* Register online\r\n* Make your deposit; via paypal or cheque\r\n* Register online for Pub-Crawl to guarantee your delegation\u2019s spot\r\n* Send the remainder of your registration fee by December 1st \r\n* Receive your country assignments\r\n* Submit your delegate badge list online\r\n* Write and submit your position paper\r\n* Have a blast at McMUN 2013!\r\n\r\nFor some important dates, see the [deadlines page](/deadlines).",
             "long_name": "Checklist",
             "custom_template": false,
             "short_name": "checklist",
@@ -190,10 +168,10 @@
         "pk": 18,
         "model": "cms.page",
         "fields": {
-            "content": "",
-            "long_name": "Travel",
+            "content": "List of sponsors\r\n\r\n## Travel\r\n\r\n[![Star alliance ad](/static/img/travelad.gif)](http://www.staralliance.com/en/business-solutions/conventions-plus/delegates/)\r\n\r\n[Star alliance]() is the official airline network for McMUN 2013. You can also book up to McMUN 2015, etc. What else should go here? Need the convention code, and a prominent link to the booking page on their site. Maybe their logo as well. Also more information about booking (discounts, terms and conditions, etc).\r\n\r\n## Food\r\n\r\nWhat should go here?",
+            "long_name": "Our sponsors",
             "custom_template": false,
-            "short_name": "travel",
+            "short_name": "sponsors",
             "show_nav": true
         }
     },
@@ -201,10 +179,10 @@
         "pk": 19,
         "model": "cms.page",
         "fields": {
-            "content": "",
-            "long_name": "Food",
+            "content": "![](/static/img/sec/sabrina.jpg)![](/static/img/sec/natasha.jpg)![](/static/img/sec/esther.jpg)![](/static/img/sec/chloe.jpg)\r\n\r\n_Sabrina Ostrowski, Natasha Racco, Esther Lee and Chloe Reis._\r\n\r\n## Conference-wide sponsorships, official partners, and press\r\n\r\nContact Sabrina Ostrowski at pr@mcmun.org.\r\n\r\n## Academic sponsorships and endorsements\r\n\r\nContact Natasha Racco at ?@mcmun.org.\r\n\r\n## Corporate accounts\r\n\r\nContact Esther Lee at ?@mcmun.org.\r\n\r\n## Media and food sponsors\r\n\r\nContact Chloe Reis at ?@mcmun.org.\r\n\r\n## Other inquiries\r\n\r\nIf you have questions related to registration or the conference as a whole, contact Daniel Stysis at charge@mcmun.org.\r\n\r\nFor issues with the website, contact Wendy Liu at it@mcmun.org.",
+            "long_name": "Contact us",
             "custom_template": false,
-            "short_name": "food",
+            "short_name": "contact-us",
             "show_nav": true
         }
     },
@@ -223,7 +201,7 @@
         "pk": 21,
         "model": "cms.page",
         "fields": {
-            "content": "",
+            "content": "Where can i find this",
             "long_name": "Rules of procedure",
             "custom_template": false,
             "short_name": "rops",
@@ -234,7 +212,7 @@
         "pk": 22,
         "model": "cms.page",
         "fields": {
-            "content": "",
+            "content": "where can i find this???",
             "long_name": "Position papers",
             "custom_template": false,
             "short_name": "position-papers",
@@ -249,6 +227,28 @@
             "long_name": "Tour de Montreal",
             "custom_template": false,
             "short_name": "tour-de-montreal",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 24,
+        "model": "cms.page",
+        "fields": {
+            "content": "August 1st\r\n:\tInternational Delegation Registration opens\r\n:\tTour de Montreal registration opens (pre-conference tour)\r\n:\tDelegation Scholarship application opens online\r\n\r\nSeptember 1st:\r\n:\tPriority North American Registration opens (till Sept 30)\r\n:\tPub-Crawl Registration opens (guaranteed spot) \r\n:\tMerchandise sales open\r\n\t\t\t\r\nOctober 1st\r\n:\tRegular North American Registration opens (till Nov 18)\r\n\r\nNovember 1st\r\n:\tApplication-based Committees deadline (online)\r\n:\tDelegation Scholarship application deadline (online) \r\n\r\nNovember 18th \r\n:\tRegular registration closes, waitlist opens\r\n:\tTour de Montreal registration deadline\r\n:\tRegistration for guaranteed spot at Pub-Crawl closes\r\n\r\nDecember 1st\r\n:\tRemainder payment deadline \r\n\r\nDecember 10th\r\n:\tCountry assignments released (subject to payment status)\r\n\r\nDecember 21st\r\n:\tHotel booking deadline \r\n\r\nJanuary 1st\r\n:\tStar Alliance discount deadline \r\n:\tRefund request deadline\r\n\r\nJanuary 12th\r\n:\tSubmission of delegate badge list deadline (online)\r\n\r\nJanuary 18th\r\n:\tPosition paper submission deadline\r\n\r\nJanuary 24-27\r\n:\tMcMUN 2013",
+            "long_name": "Important deadlines",
+            "custom_template": false,
+            "short_name": "deadlines",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 25,
+        "model": "cms.page",
+        "fields": {
+            "content": "Link to brochure (is it final yet?). What else?",
+            "long_name": "Sponsoring McMUN",
+            "custom_template": false,
+            "short_name": "sponsoring-mcmun",
             "show_nav": true
         }
     },
@@ -295,10 +295,26 @@
         }
     },
     {
-        "pk": 9,
+        "pk": 6,
         "model": "cms.subpage",
         "fields": {
-            "position": 1,
+            "position": 3,
+            "parent": 2
+        }
+    },
+    {
+        "pk": 10,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 4,
+            "parent": 2
+        }
+    },
+    {
+        "pk": 7,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 6,
             "parent": 2
         }
     },
@@ -319,51 +335,11 @@
         }
     },
     {
-        "pk": 18,
-        "model": "cms.subpage",
-        "fields": {
-            "position": 1,
-            "parent": 5
-        }
-    },
-    {
-        "pk": 20,
-        "model": "cms.subpage",
-        "fields": {
-            "position": 1,
-            "parent": 12
-        }
-    },
-    {
         "pk": 14,
         "model": "cms.subpage",
         "fields": {
             "position": 2,
             "parent": 4
-        }
-    },
-    {
-        "pk": 19,
-        "model": "cms.subpage",
-        "fields": {
-            "position": 2,
-            "parent": 5
-        }
-    },
-    {
-        "pk": 21,
-        "model": "cms.subpage",
-        "fields": {
-            "position": 2,
-            "parent": 12
-        }
-    },
-    {
-        "pk": 6,
-        "model": "cms.subpage",
-        "fields": {
-            "position": 3,
-            "parent": 2
         }
     },
     {
@@ -375,22 +351,6 @@
         }
     },
     {
-        "pk": 22,
-        "model": "cms.subpage",
-        "fields": {
-            "position": 3,
-            "parent": 12
-        }
-    },
-    {
-        "pk": 10,
-        "model": "cms.subpage",
-        "fields": {
-            "position": 4,
-            "parent": 2
-        }
-    },
-    {
         "pk": 16,
         "model": "cms.subpage",
         "fields": {
@@ -399,35 +359,75 @@
         }
     },
     {
-        "pk": 11,
+        "pk": 24,
         "model": "cms.subpage",
         "fields": {
             "position": 5,
-            "parent": 2
+            "parent": 4
         }
     },
     {
         "pk": 17,
         "model": "cms.subpage",
         "fields": {
-            "position": 5,
-            "parent": 4
-        }
-    },
-    {
-        "pk": 7,
-        "model": "cms.subpage",
-        "fields": {
             "position": 6,
-            "parent": 2
+            "parent": 4
         }
     },
     {
         "pk": 23,
         "model": "cms.subpage",
         "fields": {
-            "position": 6,
+            "position": 7,
             "parent": 4
+        }
+    },
+    {
+        "pk": 20,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 1,
+            "parent": 12
+        }
+    },
+    {
+        "pk": 21,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 2,
+            "parent": 12
+        }
+    },
+    {
+        "pk": 22,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 3,
+            "parent": 12
+        }
+    },
+    {
+        "pk": 18,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 1,
+            "parent": 5
+        }
+    },
+    {
+        "pk": 25,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 2,
+            "parent": 5
+        }
+    },
+    {
+        "pk": 19,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 3,
+            "parent": 5
         }
     }
 ]
