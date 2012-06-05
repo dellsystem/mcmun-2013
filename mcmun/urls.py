@@ -8,5 +8,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'cms.views.main'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^committees/', include('committees.urls')),
     url(r'^', include('cms.urls')),
 )

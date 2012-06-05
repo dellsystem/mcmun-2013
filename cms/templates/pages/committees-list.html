@@ -1,42 +1,8 @@
-<h2>GENERAL ASSEMBLIES</h2>
-
-<ul>
-	<li>World Health Summit (WHS)</li>
-	<li>Fourth Emergency Session: Congo Crisis 1960</li>
-	<li>The Third Committee: Social Cultural and Humanitarian (SOCHUM)</li>
-</ul>
-
-<h2>ECOSOCS</h2>
-
-<ul>
-	<li>World Intellectual Property Organization (WIPO)</li>
-	<li>Organization of Islamic Cooperation (OIC)</li>
-	<li>Annual Bank Conference on Development Economics (ABCDE)</li>
-	<li>UN Refugee Agency (UNHCR)</li>
-	<li>The International Organization of Oil and Gas Producers (OGP)</li>
-</ul>
-
-
-<h2>Specialized Agencies</h2>
-
-<ul>
-	<li>Social Media Summit</li>
-	<li>DC Comics</li>
-	<li>First Ministers’ Conference on Canadian Foreign Policy</li>
-	<li>BRICS Summit</li>
-	<li>Chinese Cultural Revolution</li>
-	<li>Plan Nord (bilingual)</li>
-	<li>International Criminal Court (ICC)</li>
-	<li>Wall Street 2008</li>
-	<li>German Olympics (1936/1972)</li>
-</ul>
-
-<h2>Crisis Committees</h2>
-
-<ul>
-	<li>Joint: American War on Organized Crime 1960</li>
-	<li>KGB</li>
-	<li>Joint: Frost/Nixon</li>
-	<li>Triple Joint: Rwanda 1993</li>
-	<li>Ad-Hoc Committee of the Secretary-General</li>
-</ul>
+{% for category in categories %}
+    <h2>{{ category.name }}</h2>
+    <ul>
+        {% for committee in category.committee_set.all %}
+            <li><a href="{% url committees.views.view committee.slug %}">{{ committee.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endfor %}

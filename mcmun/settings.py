@@ -121,8 +121,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.markup',
-    'mcmun',
+    'committees',
     'cms',
+    'mcmun',
     'django.contrib.admin',
 )
 
@@ -162,4 +163,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
     "cms.context_processors.menu",
+    "committees.context_processors.committees",
 )
