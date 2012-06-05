@@ -12,7 +12,7 @@ def deploy():
 		local("git commit -m 'Update compiled CSS'")
 	local('git push')
 	run('cd mcmun.org && git pull')
-	run('echo "yes" | python mcmun.org/manage.py collectstatic')
+	run('python mcmun.org/manage.py collectstatic --noinput')
 	run('python mcmun.org/manage.py syncdb')
 
 def up():
