@@ -26,7 +26,7 @@ class ParentPage(Page):
 
 class SubPage(Page):
 	class Meta:
-		ordering = ['position']
+		ordering = ['parent', 'position']
 		unique_together = ('position', 'parent')
 
 	parent = models.ForeignKey(ParentPage, related_name="subpages")
