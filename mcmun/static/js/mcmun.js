@@ -4,16 +4,18 @@ $(document).ready(function() {
 	var timeout;
 
 	$('#carousel-blocks div').click(function () {
+		clearTimeout(timeout);
 		$('.active').removeClass();
 		$(this).addClass('active');
 		$('#carousel-image').removeClass().addClass($(this).attr('data-image'));
+		timeout = setTimeout(rotateCarousel, rotateTimeout);
 	});
 
 
 	var rotateCarousel = function () {
 		var nextDiv = $('#carousel-blocks .active').next()[0] || firstDiv;
-		$(nextDiv).click();
 		timeout = setTimeout(rotateCarousel, rotateTimeout);
+		$(nextDiv).click();
 	};
 
 	timeout = setTimeout(rotateCarousel, rotateTimeout);
