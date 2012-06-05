@@ -97,11 +97,15 @@ body {
 	h1, h2, h3, h4, h5, h6 {
 		padding-top: 25px;
 		padding-bottom: 10px;
+		clear: both;
 	}
 	h1 {
 		padding-top: 0;
 		font-size: 3.5em;
 		#raleway;
+	}
+	h1 + h2 {
+		padding-top: 10px;
 	}
 	h2 {
 		font-size: 2.0em;
@@ -119,6 +123,16 @@ body {
 		}
 		dd {
 			margin-left: 20px;
+		}
+		margin-bottom: 10px;
+		&.schedule {
+			dd, dt {
+				float: left;
+			}
+			dt {
+				width: 200px;
+				clear: left;
+			}
 		}
 	}
 	a {
@@ -146,6 +160,9 @@ body {
 		margin: 15px 0;
 	}
 	p + p {
+		margin-top: 10px;
+	}
+	.footnote {
 		margin-top: 10px;
 	}
 }
@@ -216,6 +233,9 @@ body {
 				&:after {
 					// A space and a &raquo;
 					content: "\00a0\00BB";
+				}
+				&:hover {
+					.grey-bg(30, 0.6);
 				}
 			}
 		}
