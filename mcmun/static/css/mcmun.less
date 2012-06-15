@@ -290,6 +290,7 @@ body {
 	.photo {
 		.inline-block;
 		cursor: pointer;
+		position: relative;
 		img {
 			border: 5px solid @white;
 		}
@@ -298,6 +299,16 @@ body {
 		}
 		&:hover img {
 			border-color: @red;
+		}
+		.title-hover {
+			position: absolute;
+			bottom: 7px;
+			left: 5px;
+			right: 5px;
+			.grey-bg(20, 0.7);
+			color: @white;
+			padding: 5px;
+			display: none;
 		}
 	}
 }
