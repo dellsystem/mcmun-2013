@@ -14,7 +14,7 @@
         "pk": 2,
         "model": "cms.page",
         "fields": {
-            "content": "Put the brochure here.",
+            "content": "Find out more about McMUN from our brochure:\r\n\r\n[Download the brochure (PDF)](/static/files/mcmun-brochure.pdf)",
             "long_name": "About",
             "custom_template": false,
             "short_name": "about",
