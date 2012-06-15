@@ -245,7 +245,7 @@
         "pk": 25,
         "model": "cms.page",
         "fields": {
-            "content": "Our Public Relations team is working hard on making McMUN 2013 the best experience for its delegates in its twenty-three years of existence. If you wish to find out how to support their efforts and encourage university students from both Montreal and all over the world, please check out the PR package, fresh off the press (click the image to download the PDF):\r\n\r\n<br />\r\n\r\n<div class=\"center-align\"><a href=\"/static/files/mcmun-pr-package.pdf\"><img src=\"/static/img/mcmun-pr-package.png\" alt=\"McMUN brochure cover\" /></a></div>",
+            "content": "\r\nThe Public Relations Team has worked long and hard to provide you with the 2013 Public Relations Sponsorship Package. Inside you will find information regarding the basics of McMUN, including committee line-ups and schedule, along with the different ways you can support McMUN 2013 and its participating students.\r\n\r\nPlease note that all Sponsorship Packages listed can be discussed, as well as customized.\r\n\r\nFor questions or suggestions, we invite you to contact Sabrina Ostrowski, Director of Public Relations: [pr@mcmun.org](mailto:pr@mcmun.org).\r\n\r\nClick on the image below to download the PDF.\r\n\r\n<br />\r\n\r\n<div class=\"center-align\"><a href=\"/static/files/mcmun-pr-package.pdf\"><img src=\"/static/img/mcmun-pr-package.png\" alt=\"McMUN brochure cover\" /></a></div>",
             "long_name": "Sponsoring McMUN",
             "custom_template": false,
             "short_name": "sponsoring-mcmun",
