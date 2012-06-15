@@ -118,22 +118,23 @@ body {
 		margin: 10px 0 10px 20px;
 	}
 	dl {
-		dt {
-			font-weight: bold;
-		}
-		dd {
-			margin-left: 20px;
-		}
-		margin-bottom: 10px;
-		&.schedule {
-			dd, dt {
-				float: left;
-			}
-			dt {
-				width: 200px;
-				clear: left;
-			}
-		}
+        margin-bottom: 10px;
+        dd, dt {
+            float: left;
+        }
+        dt + dd {
+            padding-top: 10px;
+        }
+        dd + dd {
+            clear: left;
+            margin-left: 200px;
+        }
+        dt {
+            padding-top: 10px;
+            width: 200px;
+            clear: left;
+            font-weight: bold;
+        }
 	}
 	a {
 		color: @lightBlue;
