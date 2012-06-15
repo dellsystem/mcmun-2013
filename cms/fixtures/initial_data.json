@@ -168,7 +168,7 @@
         "pk": 18,
         "model": "cms.page",
         "fields": {
-            "content": "List of sponsors\r\n\r\n## Travel\r\n\r\n[![Star alliance ad](/static/img/travelad.gif)](http://www.staralliance.com/en/business-solutions/conventions-plus/delegates/)\r\n\r\n[Star alliance]() is the official airline network for McMUN 2013. You can also book up to McMUN 2015, etc. What else should go here? Need the convention code, and a prominent link to the booking page on their site. Maybe their logo as well. Also more information about booking (discounts, terms and conditions, etc).\r\n\r\n## Food\r\n\r\nWhat should go here?",
+            "content": "> The twenty-three year old legacy McMUN has built would not have been possible without the support of its sponsors.\r\n\r\n## Current sponsors\r\n\r\n[![Tourisme Montreal](/static/img/tourismemontreal.jpg)](http://tourisme-montreal.org)\r\n\r\n[![Star Alliance](/static/img/staralliance.jpg)](http://staralliance.com)\r\n\r\n## Previous sponsors\r\n\r\nWhere is this list?\r\n",
             "long_name": "Our sponsors",
             "custom_template": false,
             "short_name": "sponsors",
