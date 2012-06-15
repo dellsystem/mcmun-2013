@@ -253,6 +253,17 @@
         }
     },
     {
+        "pk": 26,
+        "model": "cms.page",
+        "fields": {
+            "content": "McMUN is proud to announce Star Alliance as its Official Airline Network. MAKE THIS BIGGER.\r\n\r\n## What this means\r\n\r\n1. This means delegates can fly to Montreal from all over the world at discounted fares\r\n2. It also means delegates can already book their flights up to McMUN 2015!\r\n\r\n## How to book\r\n\r\n[![Star alliance ad](/static/img/travelad.gif)](http://www.staralliance.com/en/business-solutions/conventions-plus/delegates/)\r\n\r\n1. [Star Alliance button with like a \u2018click here\u2019 thing, like the one u put in PR]\r\n2. McMUN 2013\u2019s convention code: HAVEN\u2019T GOTTEN IT YET, TOMORROW\r\n3. Link will be to www.staralliance.com/conventionsplus",
+            "long_name": "Discounted flights",
+            "custom_template": false,
+            "short_name": "flights",
+            "show_nav": true
+        }
+    },
+    {
         "pk": 1,
         "model": "cms.parentpage",
         "fields": {
@@ -379,6 +390,14 @@
         "model": "cms.subpage",
         "fields": {
             "position": 7,
+            "parent": 4
+        }
+    },
+    {
+        "pk": 26,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 8,
             "parent": 4
         }
     },
