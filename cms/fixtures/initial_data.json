@@ -223,7 +223,7 @@
         "pk": 23,
         "model": "cms.page",
         "fields": {
-            "content": "",
+            "content": "[![Tourisme Montr\u00e9al](/static/img/tourismemontreal.jpg)](http://www.tourisme-montreal.org)\r\n\r\n_McMUN is proudly supported by [Tourisme Montr\u00e9al](http://www.tourisme-montreal.org/)_\r\n\r\nThe international delegate package will be available soon.",
             "long_name": "Tour de Montreal",
             "custom_template": false,
             "short_name": "tour-de-montreal",
