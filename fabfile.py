@@ -22,6 +22,7 @@ def up():
 
 def dump():
 	local("python manage.py dumpdata cms --indent=4 > cms/fixtures/initial_data.json")
+	local("python manage.py dumpdata committees --indent=4 > committees/fixtures/initial_data.json")
 
 def reset():
     local("rm db.sqlite")

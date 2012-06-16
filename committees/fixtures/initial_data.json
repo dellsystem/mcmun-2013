@@ -1,0 +1,250 @@
+[
+    {
+        "pk": 1,
+        "model": "committees.category",
+        "fields": {
+            "name": "General assemblies"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "committees.category",
+        "fields": {
+            "name": "ECOSOCs"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "committees.category",
+        "fields": {
+            "name": "Specialised agencies"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "committees.category",
+        "fields": {
+            "name": "Crisis committees"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "committees.committee",
+        "fields": {
+            "category": 1,
+            "description": "Over 1400 participants in the field of health and medicine are brought together every year as part of the World Health Summit. Addressing pressing public health issues, the summit hopes to create a forum where the many different points of view surround important problems the world\u2019s populations face. At McMUN 2013, this committee will feature over 100 delegates representing diverse areas such as politics, media and academics in the hope of finding solutions to affairs of equality, sustainability and equity in the distribution of medical technology, knowledge and power. Revolving around a central theme, delegates will be asked to discuss the cultural barriers to the dissemination of health and health knowledge, and the impact of medical tourism on local centers of research and medicine. We are also proud to announce that in the interest of planetary responsibility, the WHS will be run as a paperless committee, integrating traditional styles of debate with technology in a seamless union of the old and new. \r\n\r\n### Character breakdown\r\n\r\nThe breakdown of characters will loosely follow the following pie graph:\r\n\r\n![Character breakdown](http://www.worldhealthsummit.org/typo3temp/GB/71f76b28a0.png)\r\n\r\nAccordingly, out of ~130 delegates:\r\n\r\n* 36 from the fields of medical and researh academia (M8 Alliance)\r\n* 20 NGO representatives/International Organizations \r\n* 15 Industry reps (including medical technology sectors and major university patrons)\r\n* 50 Country/Political representatives\r\n* 9 Media representatives",
+            "name": "World Health Summit (WHS)",
+            "slug": "whs"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "committees.committee",
+        "fields": {
+            "category": 1,
+            "description": "The Fourth Emergency Special Session of the General Assembly of the United Nations took place from September 17-19, 1690 as per the United Nations Security Council Resolution 157. Emergency Special Sessions convene \u201cif the Security Council, because of lack of unanimity of the permanent members, fails to exercise its primary responsibility for the maintenance of international peace and security,\u201d as mandated under UN resolution 377A(V) titled \u201cUniting for peace.\u201d This session called to question the ongoing crisis in the Republic of the Congo that began less than three months prior in June 1960 and lasted more than seven years until November 1966. The Republic of the Congo, also known as Congo-L\u00e9opoldville after its capital as to not be confused with the French colony of Congo-Brazzaville, achieved independence from Belgium on June 30, 1960, a feat that marked the beginning of the crisis. Political power was transferred to the local population upon the first legal parliamentary elections in June 1960, after Patrice Lumumba of the victorious Mouvement National Congolais became Prime Minister and Joseph Kasa-Vubu was elected President by the newly established Parliament. Soon after, the provinces of Katanga and South Kasai experienced secessionist conflict and tensions grew between Lumumba and Kasa-Vubu, culminating in the President dismissing the Prime Minister from office on September 5, 1960. Joseph Mobutu, who was appointed Chief of Staff of the Congolese army by Lumumba, took advantage of this political division and successfully seized power from Kasa-Vubu on November 25, 1965 with the help of the American CIA. Mobutu would remain in power as the leader of his authoritarian regime until shortly before his death in 1997.\r\n\r\nNotable events during the Congo Crisis include Belgian military intervention, United Nations peacekeeping operations, military support for Lumumba from communist Soviet Union, United States support for Kasa-Vubu and Mobutu, extensive division of Congolese territory between four different regimes, the assassination of Lumumba by Mobutu loyalists, the death of United Nations Secretary-General Dag Hammarskj\u00f6ld, and the passing of Security Council Resolution 169 that authorized \u201cvigorous action, including the use of requisite measures of force, if necessary\u201d against the opposition.\r\n\r\nAt McMUN 2013, this committee will simulate the Fourth Emergency Special Session that took place in September 1960 at the United Nations Headquarters. As such, delegates are encouraged to consider the timeline of events of the crisis when preparing statements and writing draft resolutions during committee session. Resolution 1474 (ES-IV) that was adopted by the General Assembly on September 20, 1960 is an excellent starting point for conducting research; however discussion and debate during committee session may also address additional substantive issues that concerned the international community at the time.",
+            "name": "Fourth Emergency Session: Congo Crisis 1960",
+            "slug": "congo"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "committees.committee",
+        "fields": {
+            "category": 1,
+            "description": "For its traditional general assembly, McMUN 2013 will be simulating the Social, Humanitarian, Cultural Affairs Committee (SOCHUM), which is more commonly referred to as the \u201cThird Committee.\u201d Delegates will debate on topics that cover the different aspects associated with SOCHUM. Our humanitarian topic will be human trafficking, where delegates will converge to discuss ideas and prepare resolutions towards the goal of eliminating and reducing trafficking of people. The social topic is that of women in politics, specifically in developing nations and the challenges they face. Our third and final topic relates to the cultural aspect of the committee with media freedom, and the ramifications of free press and social media on modern-day society. Being one of the most diverse committees at McMUN 2013, we hope to provide delegates with a challenging yet educational experience. ",
+            "name": "The Third Committee: Social Cultural and Humanitarian (SOCHUM)",
+            "slug": "sochum"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "committees.committee",
+        "fields": {
+            "category": 2,
+            "description": "The World Intellectual Property Organization, WIPO, was established as an agency in the United Nations in 1967 in an effort to \u2018promote innovation and creativity for the economic, social and cultural development of all countries, through a balanced and effective international intellectual property system[^1]. This organization improves the understanding and respect among member states for intellectual property worldwide. Intellectual property is defined broadly as \u2018the legal rights which result from intellectual activity in the industrial, scientific, literary and artistic fields[^2]. It refers to inventions, designs, symbols created as a result of the human mind, formally known as copyrights, trademarks, patents, etc.\r\n\r\nSome may ask, \u2018What is the importance of Intellectual Property?\u2019 Being one of the specialized agencies of the United Nations, this body provides protection and rights to the creators in their creations, and allows credit to go where it is deserved. Without intellectual property, people lose the incentive to be inventive, as anything created will have no security. Intellectual property promotes innovation by safeguarding creators and giving them control rights to it. \r\n\r\nThe global financial crisis continues to create havoc in the economic world, causing stocks to fall, unemployment to rise and markets to be bearish. Through intellectual property, we can address the urgent need to incentivize innovation to stimulate economic growth, competitiveness and generate new jobs. Intellectual property expands to all sectors of the economy from medicines, new technology and consumer goods to songs, articles and books. For this reason, McMUN 2013 will be simulating WIPO in an effort to strengthen intellectual property worldwide. This committee will cover three topics that vary thematically and hopes to address the major issues facing WIPO currently.\r\n\r\n## Topics\r\n\r\n<ol>\r\n<li>Software piracy\r\n<ol>\r\n<li>Manufacturers vs. inventors</li>\r\n<li>Changing coding</li>\r\n</ol></li>\r\n<li>Indigenous and traditional knowledge<ol>\r\n<li>Misuse of cultural elements</li>\r\n<li>Policies biased to MNCs</li>\r\n</ol></li>\r\n<li>Industrial design<ol>\r\n<li>Lack of universality</li>\r\n<li>Copyright infringement</li>\r\n</ol></li>\r\n</ol>\r\n\r\n[^1]: \"What Is WIPO?\" About WIPO. 2012. Web. 13 May 2012. <http://www.wipo.int/about-wipo/en/>.\r\n[^2]: WIPO. Concept of Intellectual Property. WIPO Publication, 2004. PDF.",
+            "name": "World Intellectual Property Organization (WIPO)",
+            "slug": "wipo"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "committees.committee",
+        "fields": {
+            "category": 2,
+            "description": "Formerly known as the Organisation of Islamic Conference, the Organisation of Islamic Cooperation (OIC) changed its name on June 28 2011 to reflect a new vision.[^1] The primary catalyst for the formation of the OIC was the desecration of al-Aqsa Mosque, which is located in Jerusalem and considered to be one of the holiest sites in Islam. In response to the fire set in al-Aqsa Mosque in 1969, the first Islamic Summit was hosted by Saudi Arabia\u2019s late king Faisal I in Rabbat, Morocco.[^2] A year later, in 1970, the first Islamic Conference of Foreign Ministers was held in Jeddah, Saudi Arabia, which resulted in the formation of the OIC in 1972.[^3] Today, the OIC is one of the largest intergovernmental organizations, second only to the United Nations. Its membership is composed of 57 member states spanning over four continents.[^4]\r\n\r\nThe OIC strives to be the collective voice of the Muslim world (Ummah) composed of 1.5 billion people. The organization advocates the elimination of discrimination against Muslims and has taken various steps in the past to remove misconceptions about Islam.[^5] As the Muslim world continues to face political, economic, social, cultural, and scientific challenges, the role of the OIC has become increasingly important in maintaining unity, peace, security, and development.[^6] In 2005, the third extraordinary session of the Islamic Summit was held in Makkah. This Summit has aid down the Ten-Year Plan of Action which calls for Member States to work together to tackle a myriad of issues.\r\n\r\nAt McMUN 2013, delegates of OIC are faced with the challenge of tackling pressing issues that the Muslim world faces today, including crisis management, right to health, and promotion of human rights. They are encouraged to review past actions and implement new strategies to combat these problems, while keeping in mind the values and ideals of Islam, as they are representing the Muslim Ummah.\r\n\r\n[^1]: OIC rightly changes its name. Pakistan Observer. 2011. <http://pakobserver.net/detailnews.asp?id=100388>\r\n\r\n[^2]: \u0002Esposito (1998) 164.\r\n\r\n[^3]: Ibid.\r\n\r\n[^4]: About OIC. Organisation of Islamic Cooperation. N.d. <http://www.oic-oci.org/page_detail.asp?p_id=52>\r\n\r\n[^5]: Ibid.\r\n\r\n[^6]: Ten-Year Programme of Action. Organisation of Islamic Cooperation. N.d. <http://www.oic-oci.org/page_detail.asp?p_id=228>",
+            "name": "Organization of Islamic Cooperation (OIC)",
+            "slug": "oic"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "committees.committee",
+        "fields": {
+            "category": 2,
+            "description": "Founded in 1988 in Washington DC, the Annual Bank Conference on Development Economics (ABCDE) provides one of the world\u2019s best-known frameworks for development economics. The yearly conference, organized jointly by a host country and the World Bank, regroups academics, policymakers and students coming together to present and discuss a specific theme, such as \u201cBroadening Opportunities for Development\u201d at the Paris ABCDE in 2011.\r\n\r\nUnfortunately for being fairly discursive, the conference's scope for implementation and action has been fairly limited. However, at McMUN 2013, the committee will reside in its contentious nature where the world\u2019s most renowned intellectuals will debate controversial issues in development economics. The 24th annual ABCDE promises to deliver challenging perspectives in three main areas, focusing on issues including brain drain, the efficiency of microfinance, the debate on the different economic models, deforestation and the limitation of the role of multinationals in developing economies to name a few.",
+            "name": "Annual Bank Conference on Development Economics (ABCDE)",
+            "slug": "abcde"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "committees.committee",
+        "fields": {
+            "category": 2,
+            "description": "Established on December 14, 1950, the United Nations High Commission on Refugees (UNHCR) was created directly after World War II to aid displaced Europeans. After winning the Nobel Peace Prize for its work in addressing the European migration crisis and again in 1981, the UNHCR has since tackled many refugee emergencies, including the Hungarian Revolution, the decolonization of Africa and, most recently, the refugee crisis in Somalia. This agency is a subsidiary of the General Assembly and its official mandate is to support refugees in their quest to settle in their own country or a new country and to assist in local integration.  In addition to combating refugee issues, UNHCR has increased its breadth, also reaching out to \u2018persons of concern\u2019 who need protection, such as internally displaced peoples.  These individuals are all in need of humanitarian assistance and it is the role of the UNHCR to take international action to solve global refugee issues and ensure their human rights are upheld.\r\n\r\nAt McMUN 2013, the committee will address three topics, two of which have arisen recently from political and civil conflict in specific regions. Due to the recent uprising in North Africa, the Post- Arab Spring refugees has become a new area of concern since 2011 and this topic will be highly relevant for committee session. Secondly, the committee moves its focus to the issue of Burmese refugees, who have been forced to flee their country due to ongoing political turmoil in Burma. Last but not least, the UNHCR will tackle the greater issue of Refugee Camp Security, a matter that although not pertinent to any specific region, holds a great deal of importance due to the need for attention- social or medical given to these displaced individuals. ",
+            "name": "UN Refugee Agency (UNHCR)",
+            "slug": "unchr"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "committees.committee",
+        "fields": {
+            "category": 2,
+            "description": "Founded in 1974 as the Oil Industry International Exploration and Production Forum (E&P\r\nForum), the International Association of Oil and Gas Producers (OGP) represents the interests of the world\u2019s upstream oil and gas industry to international bodies including the International Maritime Organization (IMO) and the Commission for Sustainable Development (UNCSD). With its diverse membership of publicly-traded, private, and state-owned oil and gas companies, service providers, and advocacy groups, the structure of the OGP reflects the globally integrated nature of the oil and gas sector.\r\n\r\nAt McMUN 2013, the OGP will place a special emphasis on prevention and mitigation of environmental damage. In particular, discussions will center on determining appropriate standards in relation to spills in sensitive ecosystems, extraction technologies for unconventional gas, and updates on carbon capture and sequestration research and plans going forward.",
+            "name": "The International Organization of Oil and Gas Producers (OGP)",
+            "slug": "ogp"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "committees.committee",
+        "fields": {
+            "category": 3,
+            "description": "Social media has gained tremendous popularity and profitability over the past few years. An attractive medium, it has allowed people to communicate, share ideas and meet with one another in spite of the physical distance that may exist between them. As the number of social media users increase, even more people are drawn to it, and they inadvertently discover the medium\u2019s boundaries, limitations and concerns. Many of these problems deal with third parties\u2019 use of online information, with each individual\u2019s security as well as copyright infringements. Consequently, debate this year will focus on three main topics: privacy issues and concerns, government regulation of social media and cyber-bullying.\r\n\r\nAlways making news headlines, privacy issues have been one of society\u2019s major concerns regarding the use and abuse of social media. With Facebook changing its privacy policy without alerting its users, people are wary of exposing themselves to identity theft. There is always a fear of being monitored by companies that use online information and browsing history for their own purposes. What can social media sites do to make people feel more secure?\r\n\r\nUser-generated content makes up a large portion of what is available on the web. Many of this content recycles in part or in full the work of another artist (singer, songwriter or director). Should the government regulate user-generated content?\r\n\r\nAlso making several news headlines, cyber-bullying is a new concern because of its uncontrollable and harsh nature. Not only does cyber-bullying affect children and adolescents, it also affects adults who are often abused online. The ability to emotionally harm someone through social media has proliferated due to its seemingly consequence-free and anonymous nature. Such actions have led to serious consequences like suicide. Is there a responsibility for social media to find a method to put an end to cyber-bullying?",
+            "name": "Social Media Summit",
+            "slug": "social-media"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "committees.committee",
+        "fields": {
+            "category": 3,
+            "description": "The world of the graphic novel has traditionally been split into two separate universes. With Marvel on the one hand and DC Comics on the other, these universes have been in continuous competition to outperform one another in their pursuit of readers.\r\n\r\nDC Comics, regarded as the grittier of the two publishers, has delighted the world of graphic novel enthusiasts with characters that have been widely embraced in popular imagination, such as Superman, Batman and V from the dystopian universe of V for Vendetta. However, it has become clear to the chief executives of DC Comics that times are dire; the number of graphic novel readers is on the decline, and it is losing the battle with Marvel to successfully bring their characters to the silver screen.\r\n\r\nThis creative committee represents a hypothetical meeting of the DC Comics executives, and the opportunity to revamp DC\u2019s commercial efforts. In order to compete with Marvel\u2019s increasingly aggressive marketing campaign, delegates will be tasked with creating a new character or idea for a graphic novel designed to deal with many of the criticisms that have been hurled at comics in general and DC in particular. In particular, DC\u2019s executives feel it is time to change the nature of the graphic novel by addressing topics which have long been controversial within their universe, namely the discrimination against women and the underrepresentation of minorities. By addressing these and other issues, this last-ditch effort could be the start of a new era of graphic novel proliferation or the end of DC as a comics powerhouse. Ultimately, it is up to you to successfully negotiate and manage this meeting.",
+            "name": "DC Comics",
+            "slug": "dc-comics"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "committees.committee",
+        "fields": {
+            "category": 3,
+            "description": "A First Ministers\u2019 Conference consists of an assembly of provincial premiers in consultation with the federal prime minister, with the premiers seeking to safeguard their interests on both provincial and national level. In contrast to the other machinery of the Canadian government, the vast majority of the activities and negotiations at these conferences take place behind closed doors with public statements being issued afterwards. Though this conference was first officially convened in 1906, meetings between the federal and provincial governments occurred prior to this - for instance, in the 1860s, meetings were held in Charlottetown, Prince Edward Island, in order to discuss the possible entry of maritime colonies into the Province of Canada. \u00a0It is thus no exaggeration to say that the First Ministers\u2019 Conference is a Canadian institution that forms a significant part of our political heritage. \r\n\r\nOver the years, topics discussed at First Ministers Conferences have included such varied subjects as financial subsidies to provinces, deliberations on the constitution, unemployment, the economy, energy, tax structure systems and healthcare policies. In addition, a number of these conferences have strongly influenced the history of Canada: for example, the 1990 conference on the constitution organized by Prime Minister Brian Mulroney, also known as the Meech Lake Accord, generated greater political tension at a national level concerning Canada\u2019s unity. More recently, in 2008 during the global recession, Prime Minister Stephen Harper and the first ministers discussed the current situation of the Canadian economy and possible fiscal manoeuvres to reduce the impact of the recession. \r\n\r\nFinally, according to political observers, these meetings between the federal and provincial provide a forum for discussion and regulation, which reduces the ambiguity in jurisdiction between the federal and provincial powers as described in the Canadian Constitution. As Canada further evolves and becomes an even more complex industrial economy, these changes generate a greater need for consultation between federal and provincial levels. Topics for this committee will include equalization payments, healthcare and immigration, with a view to enhancing the both the federal-provincial relationship and the provincial-provincial relationship.",
+            "name": "First Ministers\u2019 Conference on Canadian Foreign Policy",
+            "slug": "cfp"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "committees.committee",
+        "fields": {
+            "category": 3,
+            "description": "**Fifteen delegates. One summit. One motive: to rise above the rest.**\r\n\r\nThe BRICS Summit - a meeting of five of the world\u2019s emerging superpowers (who together representing a mighty 43% of the world\u2019s population) - is a platform for dialogue, discussion and cooperation over the numerous issues pertaining to these five nations in their varying global economic and political climates. \r\n\r\nThe five countries of the BRICS and their respective delegations convene on an annual basis to work towards \u201cpromoting peace, security and development in a multi-polar, inter-dependent and increasingly complex, globalizing world\u201d. As peaceful and cooperative as the summit seems on the surface level, what takes place beneath that facade is a completely different story. Therefore, at the BRICS Summit 2013, fifteen delegates will come to Montreal with only one motive - to allow their nation to ascend to a position above the rest via a combination of cooperation, rivalry and disagreement. \r\n\r\nEach country has its own agenda and vision of greater economic growth, political stability and power. With common challenges and a burgeoning pool of opportunities, these countries have to come together to make decisions that could change their present and future for the better. Debating and exploring topics such as the global \u2018resource war\u2019, social and environmental responsibility, economic cooperation and the prospects of a BRICS Development Bank (in parallel to the World Bank and the IMF), delegates will partake in what will surely manifest as a fiery, intense, intelligently crafted weekend of debate and diplomacy. ",
+            "name": "BRICS Summit",
+            "slug": "brics"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "committees.committee",
+        "fields": {
+            "category": 3,
+            "description": "The Great Proletarian Cultural Revolution (or, simply, the Cultural Revolution), was a period of complex political and social upheaval in China that lasted from 1966 to 1976. At a critical turning point in Chinese history, the movement was led by Mao Zedong with the goal of mobilizing a new generation to institute socialism throughout the country. However, this call for \u201ccontinuous revolution\u201d caused major civil unrest, forced millions into manual labour, and destroyed and recreated Chinese culture as the world knew it, leaving permanent scars upon Chinese society that are still in evidence today. Throughout the conference, this committee will examine the different factions within Chinese politics during the Cultural Revolution as well as the broader cultural, economic, and social issues underpinning the movement.\r\n\r\nBy simulating the major events of the decade, delegates will obtain the chance to explore the deeper issues of China during the Cultural Revolution, including the creation of a \u201clost\u201d generation, purges of \u201cenemies\u201d of the party, and mass mobilization through propaganda campaigns, all of which helped lead the country on its ideological path. Participation in this committee will entail delegates taking on the role of notable political figures during the period with the goal of manipulating various factors to balance individual, factional and party interests. Furthermore, each committee session will have its own specific objective and emotional feel as delegates move through three distinct time periods during the three days of the conference: 1967-1969, 1969-1972, 1972-1976.",
+            "name": "Chinese Cultural Revolution",
+            "slug": "cultural-revolution"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "committees.committee",
+        "fields": {
+            "category": 3,
+            "description": "_Plan Nord_ is a project that has been recently undertaken by the Quebec government to ensure sustainable development in the North of the province. This project, proposed as being carried out over a period of 25 years, involves the expansion of multiple industries located north of the 49th parallel, including such fields as mining, forestry, and tourism. It also includes plans to protect, preserve and develop wildlife and the environment in affected regions. With (and perhaps in spite of) these ambitious goals, the Plan Nord project has raised many questions and controversies. Although the Quebec government praises the Plan\u2019s goals and ideas, many economists, environmentalists and human rights advocates are concerned with the impact of widespread and rapid development, and it is these concerns that will be discussed and debated in committee session. \r\n\r\nAs such, this committee will address three main aspects of the Plan: environmental, political and social. The environmental aspect will include discussion on the amount of territory to be deemed as \u201cprotected\u201d, the best way to ensure development is sustainable, and the effects of exploiting the various resources found in the area. The political aspect will focus on the conditions of international investment, the method of separation of the territory, and the best way for the Quebec government to collect the funds necessary to gett this project under way. Last but not least, the social topic will include discussion on the consequences for aboriginal peoples, the effects of immigration on filling jobs created with the Plan, and the costs or benefits the Plan will exert on local communities. In the end, this committee seeks to come to an effective solution that will compromise between the interests of those who seek rapid development and those who ask for the exercise of prudence and caution.",
+            "name": "Plan Nord (bilingual)",
+            "slug": "plan-nord"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "committees.committee",
+        "fields": {
+            "category": 3,
+            "description": "WTF i have no description",
+            "name": "International Criminal Court (ICC)",
+            "slug": "icc"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "committees.committee",
+        "fields": {
+            "category": 3,
+            "description": "> \u201cFinancial markets endured another tumultuous few days, starting with a run on Bear Stearns, a venerable Wall Street bank, amid rumours of its imminent collapse. The Federal Reserve led a rescue by assuring $30 billion of the bank's assets and engineering its takeover by JPMorgan Chase. At the same time it said it would accept investment banks' collateral. The action was praised for halting Bear Stearns's complete meltdown. The deal values the investment bank at just $2 a share: in January 2007 its shares traded for over $170.\u201d\r\n--The Economist, March 18th 2012\r\n\r\nThe date is March 22 2008. The US economy is in free-fall and hopes that decoupling the BRIC economies from the west could help avoid a global recession are rapidly undone, with each economic report worse than the next. The problems, at first limited to the financial industry and the housing market, are already affecting the other sectors of the US economy as carmakers teeter on the verge of collapse.\r\nAt the same time, unemployment continues to increase and prices for food and oil reach historical highs despite fiscal and monetary intervention to try and offset the downturn. It is evident that the only way to avoid economic Armageddon is a concerted effort to restore confidence and get financial markets - the lifeblood of the economy - back to work.\r\n\tOver the weekend, delegates representing Systemically Important Financial Institutions, Central Bankers, Heads of state and Sovereign Wealth Funds will meet in a last ditch attempt to save the world economy from total collapse. While working on a concerted effort to get the financial system back to work, they will also need to ensure that their own bank survives the onslaught. For some, it is already too little, too late.",
+            "name": "Wall Street 2008",
+            "slug": "wall-street"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "committees.committee",
+        "fields": {
+            "category": 3,
+            "description": "Rarely have the world of politics and sport collided with such intensity as they did in 1936 and 1972, when Germany hosted the Olympic Games in Berlin and Munich, respectively.  These events were of monumental importance at both the domestic and international levels, and their aftershocks are still being felt today.  In 1936, Nazi Germany was given its first opportunity to showcase the \u201cnew Germany\u201d to the world, and its actions were doubly influenced by the desire for international acceptance and adherence to Nazi doctrine.  Following the horrors committed by the regime, it comes as no surprise that when the Federal Republic of Germany hosted the Games in 1972, every effort was made to distance them from their 1936 iteration, going so far as to brand them the \u201cHappy Games.\u201d\r\n\t\r\nDelegates on this committee will be faced with two extremely distinct scenarios, focusing first on the use of propaganda during the 1936 Olympics, and then on security in 1972.  The theme of redemption links these two components as much as geography and delegates will learn that no matter the context, the Olympic Games are always political.\r\n\r\nWhile these are only two topics designated to this committee, delegates should be prepared for an experience that is as much Crisis as it is Specialized Agency, with the delegates\u2019 ability to react to changing circumstances being paramount.  The ramifications of decisions taken will matter, especially in the transition from 1936 to 1972.",
+            "name": "German Olympics (1936/1972)",
+            "slug": "german-olympics"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "committees.committee",
+        "fields": {
+            "category": 4,
+            "description": "It is late 1960 and President-Elect John F. Kennedy is meeting with his future advisors and other important figures to plan for his term as President. The Cold-War is reaching its peak and fear of communism and Soviet Agents are high. The Recent revolution in Cuba is at the forefront of peoples\u2019 minds. On top of this, organized crime is widespread on the domestic front and despite some major arrests in 1957 the American Mafia is stronger than ever. Attorney General Bobby Kennedy is just beginning his crusade against organized crime; however, his view of the mafia as the great threat to America is not shared by many of those he must work with, most notably FBI director J. Edgar Hoover who feels that the FBI\u2019s focus should be on searching for the agents of communism on American soil (in fact Hoover had only 4 agents assigned to the mafia at this point). Additionally, certain members of the CIA have been working closely with the mafia in an attempt to assassinate Fidel Castro (the mafia having lost important hotel and casino revenues when they were expelled from Cuba in 1959 following the revolution).\r\n\r\nMeanwhile, the Commission of La Cosa Nostra (a council of the most influential mafia families and their allies, originally formed to prevent all-out war between the various factions) is stinging from the recent arrests as well as loss of their Cuban business. Despite these setbacks however, the mafia is as strong as ever and growing all the time. The commission, originally made up of the seven most important factions, has just allowed two more families to join their ranks as a result of this expansion of organized crime across the states. Additionally, corrupt labour unions, such as Jimmy Hoffa\u2019s \u2018Teamsters\u2019, have become closely aligned with the mafia and essentially control the construction and trucking industries, allowing for money laundering, use of their large treasuries to bribe officials and the transport of illegal goods such as drugs and guns. In fact, it was his previous crusade against Hoffa and his corruption that launched Bobby Kennedy\u2019s political career. However, not all is well within the mafia. While the commission may appear to have full control over the families, secret alliances of various factions and ambitious under-bosses always threaten the balance of power, especially with the recent arrest of many bosses resulting in a re-organization of the leadership structure and the recent addition of two new families to the table, events that have left many Mafiosi jealous and bitter.\r\n\r\nThe Joint Crisis will consist of two separate committees: The Commission of La Cosa Nostra, a group of the heads of various Mafia families and their underbosses; and an unofficial group of President-Elect JFK\u2019s close advisors and policy makers as well as their operatives. Formed in 1931 in order to prevent violent gang wars by establishing a rule of consensus among the crime families, the Commission has since been the governing institution of the American Mafia. The Commission is made up of the Bosses of the crime families in the USA and serves as a sort of Board of Directors for the American Mafia. The Five Families of New York as well as the Chicago Outfit are the most important of the crime families and have traditionally held the most sway, though many other smaller families exist, often under the protection of the larger families.\r\n\r\nAfter JFK's 1960 election victory he began to assemble people he would soon be working with as President to serve as his staff; his brother Robert Kennedy was to be appointed Attorney General. During RFK\u2019s term in the position, convictions against organized-crime figures rose by 800 percent. He worked with various famous historical figures throughout this crusade on organized crime including J. Edgar Hoover, with whom he often disagreed concerning strategy. The Special Task Force Against Organized Crime is the name given to a fictitious top-secret committee imagined for the purposes of the crisis, however, it will consist of a realistic group of influential figures from various government agencies who were known to, or likely would have, worked together historically. A few notable members aside from the previously mentioned RFK and Hoover: JFK, Robert McNamara, LBJ, Head of the CIA and others.\r\n\r\nIn this committee delegates will get the chance to represent and interact with many important figures of the era. Expect the likes of Jimmy Hoffa, Police officers, rival mobsters as well as a number of government operatives and politicians to interact with members of each of the committees regularly.",
+            "name": "Joint: American War on Organised Crime 1960",
+            "slug": "awoc"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "committees.committee",
+        "fields": {
+            "category": 4,
+            "description": "With the Cold War still pushing on, the USA is making sure to stop any Asian states from taking on the communist system. \r\n\r\nGiven how beneficial having allies in Asia is, this meeting of the KGB directorate is to focus on finding the central factors of American influence in Asia, and how such influences can be removed and contrasted in a way that leaves the ignorant capitalist system in its inherently wrong and greedy light.\r\n\r\nAll topics and dialogue of this meeting of the KGB directorate are to remain classified; in the case that any invitee of this meeting is found to disclose any information, their position is automatically terminated, and procedure A-01984 will go into effect. ",
+            "name": "Komitet Gosudarstvennoy Bezopasnosti (KGB)",
+            "slug": "kgb"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "committees.committee",
+        "fields": {
+            "category": 4,
+            "description": "In 1997, John Birt, Director-General of the BBC, organized to film a twelve-day long interview with former President of the USA Richard Nixon.\r\n\r\nWith a feeling that interviewer David Frost would be the man for this interview, uncertainty begins to set in as the date approaches. With Frost not present much of the time and with little experience interviewing political figures, Frost\u2019s research team is working double-time as they need to find a way into Nixon\u2019s head.\r\n\r\nAt the same time, Nixon is similarly familiar with uncertainty, unsure of whether or not Frost is going to be the intellectual foe to provoke a reaction. Nixon is calling his advisors in for another run to anticipate the questions that Frost may pull out of his possible hat, and develop a strategy that would move Nixon through the interview with grace, and potentially end Frost\u2019s career.\r\n\r\nWith crises for each side and each character, unless Frost can manoeuvre around Nixon, the public will lose interest in the program \u2013 and so will the networks, resulting in the cancellation of the program and a significant loss for both sides.\r\n\r\nSessions will consist of research sessions and interview sessions (with a modified ROP that lets each delegate have a chance at interviewing). All delegates will be wired in on mic and able to see from their committee rooms, coaching the delegate in the interview room through it \u2013 it sounds easy, but this is a crisis; juggling the research, the interview, and crises is reserved for those that can handle it, not for those who think they can.",
+            "name": "Joint: Frost/Nixon",
+            "slug": "frost-nixon"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "committees.committee",
+        "fields": {
+            "category": 4,
+            "description": "Nearly two decades ago, the small African nation of Rwanda convulsed in 100 days of violence, leaving an estimated 800 000 people dead.  This bloodshed was organised ethnic cleansing; targeted, systematic, and virtually ignored by the UN and international community. A history of difference between the majority Hutu and minority Tutsi was affirmed and magnified during Belgian colonial rule, where the Tutsi were given power and privilege over the repressed Hutu. The rift between the two groups grew after the Belgians departed, and violence was common. As Tutsi power was overthrown, many feared Hutu retribution and fled the nation, reorganizing as refugees in Burundi. In 1990 civil war erupted as Tutsi rebels attempted to renter and regain control of the nation \u2013 exasperating ethnic tensions and forming the backdrop for the United Nations Assistance Mission for Rwanda. After a peace accord was brokered in 1993, tensions remained high as media from both sides provoked propagations of hatred and difference.\r\n\r\nWe have decided to run this committee despite the taboo surrounding it because it is quite simply too terrible an event to be ignored. Understanding why it happened and how it was allowed to proceed is crucial in ensuring it will not be forgotten. This topic will thus be simulated with the total seriousness that it deserves.\r\n\r\nIn this simulation there will be three separate committees: The Rwandan Armed Forces (FAR) & Interahamwe Militia, the Rwandan Patriotic Front (FPR) and United Nations Assistance Mission in Rwanda (UNAMIR).\r\n\r\nBeginning in February 1994, delegates will have the opportunity to thwart the looming violence or those that seek to impede it, work deviously around opposing forces, and finally to seek a resolution to the conflict \u2013 one way or another. This is not a committee for the faint of heart, yet we will work tirelessly to ensure it will be an incredible and educational experience for all those involved.  ",
+            "name": "Triple Joint: Rwanda 1993",
+            "slug": "rwanda"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "committees.committee",
+        "fields": {
+            "category": 4,
+            "description": "Lol no description",
+            "name": "Ad-Hoc Committee of the Secretary-General",
+            "slug": "ad-hoc"
+        }
+    }
+]
