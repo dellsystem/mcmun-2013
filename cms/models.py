@@ -17,6 +17,10 @@ class Page(models.Model):
 	def __unicode__(self):
 		return self.long_name
 
+	@models.permalink
+	def get_absolute_url(self):
+		return ('cms.views.main', [self.short_name])
+
 class ParentPage(Page):
 	class Meta:
 		ordering = ['position']
