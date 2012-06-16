@@ -122,6 +122,12 @@ body {
 	margin-bottom: 30px;
 	ul, ol {
 		margin: 10px 0 10px 20px;
+		&.horizontal {
+			margin-left: 0;
+			li {
+				.inline-block;
+			}
+		}
 	}
 	dl {
         margin-bottom: 10px;
@@ -331,4 +337,9 @@ body {
 			display: none;
 		}
 	}
+}
+
+#fee-information {
+	.hidden;
+	padding-top: 10px;
 }
