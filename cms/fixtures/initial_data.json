@@ -58,7 +58,7 @@
         "pk": 6,
         "model": "cms.page",
         "fields": {
-            "content": "<br />\r\n\r\nSome short little blurb goes here",
+            "content": "<br />\r\n\r\nWhat do two engineers, a zoo keeper, a Latin-American enthusiast, three scientists, a Russian-Israeli-Canadian, a few world travelers, a budding sommelier, and a handful of giants all have in common?\r\n\r\nA passion for Model UN.\r\n\r\nThe 14 individuals profiled here are passionate, driven, enthusiastic McGill undergraduate students who have come together to form the McMUN 2013 Secretariat.\r\n\r\nTogether, they will strive to push the boundaries of Model United Nations to make sure you have an unforgettable time come January.\r\n\r\nClick on a picture to learn more about the members of the McMUN 2013 Secretariat. ",
             "long_name": "Meet the secretariat",
             "custom_template": true,
             "short_name": "secretariat",
