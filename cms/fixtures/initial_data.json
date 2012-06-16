@@ -146,7 +146,7 @@
         "pk": 16,
         "model": "cms.page",
         "fields": {
-            "content": "* Register online\r\n* Make your deposit; via paypal or cheque\r\n* Register online for Pub-Crawl to guarantee your delegation\u2019s spot\r\n* Send the remainder of your registration fee by December 1st \r\n* Receive your country assignments\r\n* Submit your delegate badge list online\r\n* Write and submit your position paper\r\n* Have a blast at McMUN 2013!\r\n\r\nFor some important dates, see the [deadlines page](/deadlines).",
+            "content": "There are 7 simple steps to attending McMUN:\r\n\r\n1. Register online\r\n2. Make your deposit; via paypal or cheque\r\n3. Register online for Pub-Crawl to guarantee your delegation\u2019s spot\r\n4. Send the remainder of your registration fee by December 1st \r\n5. Submit your delegate badge list online after receiving your country assignments\r\n6. Write and submit your position paper\r\n7. Have a blast at McMUN 2013!\r\n\r\nFor some important dates, see the [deadlines page](/deadlines).",
             "long_name": "Checklist",
             "custom_template": false,
             "short_name": "checklist",
