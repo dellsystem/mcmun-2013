@@ -14,6 +14,8 @@ def deploy():
 	run('cd mcmun.org && git pull')
 	run('python mcmun.org/manage.py collectstatic --noinput')
 	run('python mcmun.org/manage.py syncdb')
+	# Kill the process and start it again
+	run('touch ~/test.mcmun.org/tmp/restart.txt && pkill python')
 
 def up():
 	local("python manage.py runserver")
