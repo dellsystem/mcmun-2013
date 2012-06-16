@@ -10,6 +10,7 @@
 #menu>ul li:hover>ul,#menu>ul li>ul:hover{display:block;position:absolute;top:35px;}
 #menu>ul li>ul li{display:block;background:#1e1e1e;text-align:left;font-size:9px;}
 *{margin:0;padding:0;}
+img{border:0;}
 body{background-color:#000000;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;color:#1e1e1e;width:100%;background-image:url('../img/montreal.jpg');background-size:100%;background-repeat:no-repeat;background-attachment:fixed;background-position:top left;overflow-y:scroll;}
 .container{margin:0 auto;width:900px;}
 #header{margin:0 auto;width:900px;background-image:url('../img/dove.png');background-repeat:no-repeat;background-position:0 20px;height:320px;}
@@ -26,11 +27,11 @@ body{background-color:#000000;font-family:"Helvetica Neue",Helvetica,Arial,sans-
 #content h2+h3,#content h3+h3{padding-top:0px;}
 #content h2+h3{padding-bottom:0px;}
 #content h2{font-size:2.0em;color:#1e1e1e;}
-#content ul,#content ol{margin:10px 0 10px 20px;}
+#content ul,#content ol{margin:10px 0 10px 20px;}#content ul.horizontal,#content ol.horizontal{margin-left:0;}#content ul.horizontal li,#content ol.horizontal li{display:inline-block;zoom:1;*display:inline;}
 #content dl{margin-bottom:10px;}#content dl dd,#content dl dt{float:left;}
-#content dl dt+dd{padding-top:10px;}
+#content dl dt+dd{padding-top:20px;}
 #content dl dd+dd{clear:left;margin-left:200px;}
-#content dl dt{padding-top:10px;width:200px;clear:left;font-weight:bold;}
+#content dl dt{padding-top:20px;width:200px;clear:left;font-weight:bold;}
 #content dl+*{clear:both;padding-top:20px;}
 #content a{color:#1598c7;text-decoration:none;}#content a:hover{text-decoration:underline;color:#0e6382;}
 #content table{width:100%;border:1px solid #cccccc;border-left:0;border-spacing:0;margin:15px 0;}#content table th,#content table td{padding:8px;line-height:18px;text-align:left;border-left:1px solid #cccccc;}
@@ -53,3 +54,4 @@ body{background-color:#000000;font-family:"Helvetica Neue",Helvetica,Arial,sans-
 #sec-bios .photo.active img{border-color:#000000;}
 #sec-bios .photo:hover img{border-color:#aa0000;}
 #sec-bios .photo .title-hover{position:absolute;bottom:7px;left:5px;right:5px;background:#141414;background:rgba(20, 20, 20, 0.7);color:#ffffff;padding:5px;display:none;}
+#fee-information{display:none;padding-top:10px;}
