@@ -168,7 +168,7 @@
         "pk": 18,
         "model": "cms.page",
         "fields": {
-            "content": "> The twenty-three year old legacy McMUN has built would not have been possible without the support of its sponsors.\r\n\r\n## Current sponsors\r\n\r\n[![Tourisme Montreal](/static/img/tourismemontreal.jpg)](http://tourisme-montreal.org)\r\n\r\n[![Star Alliance](/static/img/staralliance.jpg)](http://staralliance.com)\r\n\r\n## Previous sponsors\r\n\r\n* Dean of Arts Development Fund\r\n* D&M publishers\r\n* McGill bookstore\r\n* Greyhound\r\n* Kaplan\r\n* Aslan Media\r\n",
+            "content": "> The twenty-three year old legacy McMUN has built would not have been possible without the support of its sponsors.\r\n\r\n## Current sponsors\r\n\r\n[![Tourisme Montreal](/static/img/tourismemontreal.jpg)](http://tourisme-montreal.org)\r\n\r\n[![Star Alliance](/static/img/staralliance.jpg)](http://staralliance.com)\r\n\r\nFor more information about flight discounts to McMUN, please visit the [Discounted flights](/flights) page.\r\n\r\n## Previous sponsors\r\n\r\n* Dean of Arts Development Fund\r\n* D&M publishers\r\n* McGill bookstore\r\n* Greyhound\r\n* Kaplan\r\n* Aslan Media",
             "long_name": "Our sponsors",
             "custom_template": false,
             "short_name": "sponsors",
