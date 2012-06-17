@@ -201,7 +201,7 @@
         "pk": 21,
         "model": "cms.page",
         "fields": {
-            "content": "Where can i find this",
+            "content": "You can download the rules of procedure in PDF form here:\r\n\r\n[Download the McMUN rules of procedure (PDF)](/static/files/mcmun-rops.pdf)",
             "long_name": "Rules of procedure",
             "custom_template": false,
             "short_name": "rops",
