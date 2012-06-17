@@ -157,7 +157,7 @@
         "pk": 17,
         "model": "cms.page",
         "fields": {
-            "content": "As part of our goal to facilitate the creation of a Global Model UN Network, McMUN is proud to offer Delegation Scholarships. This scholarship is provided with the hope of alleviating some of the costs faced by delegations attending McMUN, and is now offered to delegations originating in Canada, the United States, and internationally. \r\n\r\nPlease note that this scholarship application is due by November 1st, 2012. \r\n\r\n[Apply here](/ \"WTF????\")\r\n\r\nThe number and total value of scholarships awarded each year varies. Please direct any questions to our Charge d\u2019Affaires, Daniel Stysis, at [charge@mcmun.org](mailto:charge@mcmun.org). ",
+            "content": "As part of our goal to facilitate the creation of a Global Model UN Network, McMUN is proud to offer Delegation Scholarships. This scholarship is provided with the hope of alleviating some of the costs faced by delegations attending McMUN, and is now offered to delegations originating in Canada, the United States, and internationally. \r\n\r\nPlease note that this scholarship application is due by November 1st, 2012. \r\n\r\nThe number and total value of scholarships awarded each year varies. Please direct any questions to our Charge d\u2019Affaires, Daniel Stysis, at [charge@mcmun.org](mailto:charge@mcmun.org).\r\n\r\n---\r\n\r\nApplications have not yet opened - please check back soon.",
             "long_name": "Scholarships",
             "custom_template": false,
             "short_name": "scholarships",
