@@ -22,3 +22,14 @@
 	<img src="/static/img/staralliance.png" alt="" />
 	<a href="/travel#star-alliance">Star Alliance</a>
 </div>
+
+<div id="staffing-signup">
+	<form method="post" action="{% url submit_signup 'staff' %}">
+		{% csrf_token %}
+		<input type="text" name="email" placeholder="example@example.com" />
+		<input type="text" name="name" placeholder="First Last" />
+		<input type="submit" name="submit" value="Sign up" />
+	</form>
+	<p>Interested in staffing for McMUN? Sign up for our staff listserv here:</p>
+	<p>For further details please contact our Chief of Staff at staff@mcmun.org.</p>
+</div>

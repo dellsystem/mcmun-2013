@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'committees',
     'cms',
+    'signups',
     'mcmun',
     'django.contrib.admin',
 )
