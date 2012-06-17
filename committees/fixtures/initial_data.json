@@ -242,7 +242,7 @@
         "model": "committees.committee",
         "fields": {
             "category": 4,
-            "description": "Lol no description",
+            "description": "Applications to be a delegate in the Ad-Hoc committee will be posted here before August 1st.",
             "name": "Ad-Hoc Committee of the Secretary-General",
             "slug": "ad-hoc"
         }
