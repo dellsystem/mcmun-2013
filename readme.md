@@ -7,6 +7,8 @@ This is the source for [the McMUN 2013 website](http://www.mcmun.org). I was pla
 
 If you're wondering how everything works, just take a look at the code: the main content management stuff is handled by the `cms` app, the `committees` app takes care of displaying information for all the committees, and the `signups` app handles one-off signups. All the static files are under mcmun/static, the templates are under the templates/ folder in each app directory, and some fixtures containing page content can be found under committees/fixtures and cms/fixtures. (`mcmun` is listed as an installed app but it's really just the project folder that is created automatically by Django; this is so that I can put static files and templates under this directory and have them be loaded automatically.)
 
+The production site uses PostgreSQL for its database and Passenger WSGI for deployment. The admin site is located at a different URL than /admin/ just to prevent anyone from wasting their life away by trying to guess my password.
+
 Licensing information
 ---------------------
 
