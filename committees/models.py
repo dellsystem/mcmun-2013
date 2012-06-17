@@ -19,5 +19,9 @@ class Committee(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	@models.permalink
+	def get_absolute_url(self):
+		return ('committee_view', [self.slug])
+
 	class Meta:
 		ordering = ('category', 'id')
