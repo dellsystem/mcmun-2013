@@ -14,7 +14,7 @@
         "pk": 2,
         "model": "cms.page",
         "fields": {
-            "content": "Find out more about McMUN from our brochure:\r\n\r\n[Download the brochure (PDF)](/static/files/mcmun-brochure.pdf)",
+            "content": "Click on the image below to download our mini-brochure (PDF):\r\n\r\n<br />\r\n\r\n<div class=\"center-align\"><a href=\"/static/files/mcmun-mini-brochure.pdf\"><img src=\"/static/img/mcmun-mini-brochure.png\" alt=\"McMUN mini-brochure cover\" /></a></div>",
             "long_name": "About",
             "custom_template": false,
             "short_name": "about",
