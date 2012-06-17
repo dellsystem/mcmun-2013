@@ -135,7 +135,7 @@
         "pk": 15,
         "model": "cms.page",
         "fields": {
-            "content": "",
+            "content": "You think you have had crazy, memorable nights in the past? Wait until our Saturday night McParte. You are invited to join over 1400 fellow delegates, over 500 staff members and the Secretariat at one of Montreal\u2019s biggest and most popular venues to dance the night away while listening to top hit music. The Secretariat is working hard to make sure that McParte 2013 lives up to and exceeds the standards set by previous years. But, just like any other year, we promise you that McParte will leave you with the best memories, or lack thereof.\r\n\r\nCheck back soon for some more exciting details about McParte\u2019s secret venue and our highlight DJs.",
             "long_name": "Social events",
             "custom_template": false,
             "short_name": "social-events",
