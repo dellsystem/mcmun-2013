@@ -3,5 +3,5 @@
 {% block content %}
 <h1>{{ committee.name }}</h1>
 {% load markup %}
-{{ committee.description|markdown:"footnotes" }}
+{{ committee.description|markdown:"footnotes,def_list" }}
 {% endblock %}
