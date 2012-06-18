@@ -33,6 +33,7 @@ body{background-color:#000000;font-family:"Helvetica Neue",Helvetica,Arial,sans-
 #content dl dd+dd{clear:left;margin-left:200px;}
 #content dl dt{padding-top:20px;width:200px;clear:left;font-weight:bold;}
 #content dl+*{clear:both;padding-top:20px;}
+#content dl+h3{position:relative;top:5px;font-size:1.5em;}
 #content a{color:#1598c7;text-decoration:none;}#content a:hover{text-decoration:underline;color:#0e6382;}
 #content table{width:100%;border:1px solid #cccccc;border-left:0;border-spacing:0;margin:15px 0;}#content table th,#content table td{padding:8px;line-height:18px;text-align:left;border-left:1px solid #cccccc;}
 #content table th{border-bottom:1px solid #cccccc;}
