@@ -9,6 +9,12 @@
 #menu>ul li ul{display:none;}
 #menu>ul li:hover>ul,#menu>ul li>ul:hover{display:block;position:absolute;top:35px;}
 #menu>ul li>ul li{display:block;background:#1e1e1e;text-align:left;font-size:9px;}
+fieldset{border:0;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;margin:10px 0;padding:10px;background:#cccccc;}fieldset legend{position:relative;top:20px;font-size:1.7em;font-weight:bold;}
+fieldset.submit{text-align:center;}
+fieldset input[type=text]{outline-style:none;border:1px solid #888;padding:3px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.2);-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.2);box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.2);width:300px;}fieldset input[type=text]:hover{border-color:#AAA;}
+fieldset dt{width:300px !important;margin-right:10px;}fieldset dt p{font-weight:normal;}
+fieldset.errors{background:#ff4444;}
+fieldset p.errors{color:#aa0000;}
 *{margin:0;padding:0;}
 img{border:0;}
 body{background-color:#000000;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;color:#1e1e1e;width:100%;background-image:url('../img/montreal.jpg');background-size:100%;background-repeat:no-repeat;background-attachment:fixed;background-position:top left;overflow-y:scroll;}
