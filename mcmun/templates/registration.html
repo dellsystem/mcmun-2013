@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Dear Head Delegate,</p>
+
+<p>Thank you for your interest and trust in McMUN 2013. If you have any questions or concerns while filling out the registration application form, you can contact our Charge D'Affaires Daniel Stysis at <a href="mailto:charge@mcmun.org">charge@mcmun.org</a>. Similarly, please note that you only need to fill out this application once and that if any of the information changes after registration, simply inform Daniel Stysis at <a href="mailto:charge@mcmun.org">charge@mcmun.org</a>.</p> 
+
+<p>After you register and click submit, you will receive a confirmation email at the email address that you have provided.</p>
+
+<form action="" method="post">
+	<fieldset class="hidden">
+		{% csrf_token %}
+		<input type="text" name="address" value="" />
+	</fieldset>
+
+	{% if form.errors %}
+	<fieldset class="errors">
+		<p>There were some errors with your registration! Please fix them below.</p>
+	</fieldset>
+	{% endif %}
+
+	<fieldset>
+		<legend>Institution details</legend>
+		<dl>
+			<dt>
+				<label for="id_school_name">Name of institution:</label>
+			</dt>
+			<dd>
+				{{ form.school_name }}
+				{% if form.school_name.errors %}
+					<p class="errors">Please enter the name of your institution.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_address">What is the address of your institution?</label>
+			</dt>
+			<dd>
+				{{ form.address }}
+				{% if form.address.errors %}
+					<p class="errors">Please enter the address of your institution address.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_country">In which country is your institution located?</label>
+			</dt>
+			<dd>
+				{{ form.country }}
+				{% if form.country.errors %}
+					<p class="errors">Please choose the country in which your institution is located.</p>
+				{% endif %}
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>Contact information</legend>
+		<dl>
+			<dt>
+				<label for="id_first_name">First name of head delegate:</label>
+			</dt>
+			<dd>
+				{{ form.first_name }}
+				{% if form.first_name.errors %}
+					<p class="errors">Please enter your first name.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_last_name">Last name of head delegate:</label>
+			</dt>
+			<dd>{{ form.last_name }}
+				{% if form.last_name.errors %}
+					<p class="errors">Please enter your last name.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_email">Head delegate email:</label>
+				<p>Please enter only one email. The receipt will be sent to this email.</p>
+			</dt>
+			<dd>
+				{{ form.email }}
+				{% if form.email.errors %}
+					<p class="errors">Please ensure that you have correctly entered one email.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_phone_number">Phone number:</label>
+			</dt>
+			<dd>
+				{{ form.phone_number }}
+				{% if form.phone_number.errors %}
+					<p class="errors">Allowed characters: digits, spaces, hyphens, parentheses, and the plus sign.</p>
+				{% endif %}
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>Delegation and payment information</legend>
+		<dl>
+			<dt>
+				<label for="id_num_delegates">Number of delegates:</label>
+				<p>If you wish to register more than {{ max_num_delegates }} delegates, or need to change the number of delegates after registering, contact <a href="mailto:charge@mcmun.org">charge@mcmun.org</a>.</p>
+			</dt>
+			<dd>
+				{{ form.num_delegates }}
+				{% if form.num_delegates.errors %}
+					<p class="errors">Please ensure that the number of delegates you select is between {{ min_num_delegates }} and {{ max_num_delegates }}, inclusive.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_use_online_payment">Online payment (via PayPal):</label>
+				<p>You will be emailed instructions on how to complete the payment after your registration is approved. The alternative is to pay by cheque. See our <a href="{% url cms 'payment' %}#payment-methods">payment policy page</a> for more information.</p>
+			</dt>
+			<dd>{{ form.use_online_payment }}</dd>
+
+			<dt>
+				<label for="id_use_tiered">Use the tiered payment system:</label>
+				<p>If you do not wish to pay the full fee up front, select this and you can pay using our tiered system of deposit and remainder. See our <a href="{% url cms 'payment' %}#payment-options">payment policy page</a> for more information..</p>
+			</dt>
+			<dd>{{ form.use_tiered }}</dd>
+
+			<dt id="priority-dt">
+				<label for="id_use_priority">Priority registration:</label>
+				<p>If you select priority registration, the per-delegate fee is $80 but the payment must be sent by October 1. Otherwise, the per-delegate fee is $95 and the payment must be sent by November 18.</p>
+			</dt>
+			<dd>{{ form.use_priority }}</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<p>Please confirm that the above information is correct. You will receive a confirmation email once your registration has been received. Once your registration is approved, you will be notified by email and will receive an invoice as well as payment instructions depending on the method of payment you selected. If you have any technical issues with the registration process, contact <a href="mailto:it@mcmun.org">it@mcmun.org</a>.</p>
+	</fieldset>
+
+	<fieldset class="submit">
+		<input type="submit" name="submit" value="Submit" />
+	</fieldset>
+</form>
+{% endblock %}

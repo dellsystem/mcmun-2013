@@ -71,4 +71,21 @@ $(document).ready(function() {
 			$('#fee-information').show();
 		}
 	});
+
+	// Handle stuff for the registration form
+	var priorityOption = $('#priority-dt');
+	if (priorityOption.length) {
+		// Has to be done this way for now because dl only allows dt, dd (fix later)
+		priorityOption.hide().next().hide();
+		$('#id_country').change(function () {
+			var country = $(this).val();
+
+			// The priority registration option is only valid for North America
+			if (country === 'CA' || country === 'US') {
+				priorityOption.show().next().show();
+			} else {
+				priorityOption.hide().next().hide();
+			}
+		});
+	}
 });
