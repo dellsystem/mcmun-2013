@@ -11,7 +11,7 @@ def deploy():
 		local("git add mcmun/static/css/mcmun.css")
 		local("git commit -m 'Update compiled CSS'")
 	local('git push')
-	run('cd mcmun.org && git pull')
+	run('cd mcmun.org && git pull origin master')
 	run('python mcmun.org/manage.py collectstatic --noinput')
 	run('python mcmun.org/manage.py syncdb')
 	# Kill the process and start it again
