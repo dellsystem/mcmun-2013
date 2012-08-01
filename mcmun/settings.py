@@ -1,3 +1,7 @@
+import djcelery
+import logging
+
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -126,6 +130,8 @@ INSTALLED_APPS = (
     'signups',
     'mcmun',
     'django.contrib.admin',
+    'djcelery',
+    'djcelery.transport',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -166,3 +172,28 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "cms.context_processors.menu",
     "committees.context_processors.committees",
 )
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'it@mcmun.org'
+EMAIL_HOST_PASSWORD = 'EDIT THIS!'
+
+IT_EMAIL = 'it@mcmun.org'
+CHARGE_EMAIL = 'charge@mcmun.org'
+
+ADMIN_URL = 'EDIT THIS!'
+
+ADMINS = (
+    ('IT', 'it@mcmun.org'),
+)
+
+CSRF_COOKIE_DOMAIN = ".mcmun.org"
+DEFAULT_FROM_EMAIL = 'it@mcmun.org'
+
+logging.getLogger('xhtml2pdf')
+
+djcelery.setup_loader()
+BROKER_URL = 'django://'
+CELERY_RESULT_BACKEND = "database"
+CELERY_RESULT_DBURI = "sqlite:///db.sqlite"
