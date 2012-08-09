@@ -25,6 +25,7 @@ class RegisteredSchool(models.Model):
 
 	amount_paid = models.IntegerField(default=0)
 
+	# This should really have been a OneToOneField. Too late now. Next year.
 	# Only set iff the user has been approved
 	account = models.ForeignKey(User, null=True)
 	# Needs a boolean field anyway to make the admin interface better
