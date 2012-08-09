@@ -3,6 +3,10 @@
 {% block content %}
 <h1>Your dashboard</h1>
 
+{% if user.is_staff %}
+<p>This is what the head delegate for {{ school }} would see if they were viewing the dashboard. You can't see the scholarship application, though. You can, however, use the change password and logout links.</p>
+{% endif %}
+
 {% if school %}
 <table id="dashboard-table">
 	<tr>

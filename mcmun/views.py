@@ -47,6 +47,7 @@ def registration(request):
 @login_required
 def dashboard(request):
 	form = None
+	school = None
 	if request.user.registeredschool_set.count():
 		# There should only be one anyway (see comment in models.py)
 		school = request.user.registeredschool_set.filter(is_approved=True)[0]
