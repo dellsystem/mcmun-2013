@@ -197,3 +197,7 @@ djcelery.setup_loader()
 BROKER_URL = 'django://'
 CELERY_RESULT_BACKEND = "database"
 CELERY_RESULT_DBURI = "sqlite:///db.sqlite"
+
+LOGIN_URL = '/login'
+LOGOUT_URL = '/logout'
+LOGIN_REDIRECT_URL = '/dashboard'

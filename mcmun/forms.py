@@ -1,6 +1,6 @@
 import re
 
-from mcmun.models import RegisteredSchool
+from mcmun.models import RegisteredSchool, ScholarshipApp
 
 from django import forms
 
@@ -16,3 +16,9 @@ class RegistrationForm(forms.ModelForm):
 			raise forms.ValidationError("")
 		else:
 			return phone_number
+
+
+class ScholarshipForm(RegistrationForm):
+	class Meta:
+		model = ScholarshipApp
+		exclude = ('school',)

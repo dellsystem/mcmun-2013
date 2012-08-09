@@ -1,7 +1,9 @@
-from mcmun.forms import RegistrationForm
+from mcmun.forms import RegistrationForm, ScholarshipForm
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES
-from mcmun.models import RegisteredSchool
+from mcmun.models import RegisteredSchool, ScholarshipApp
 
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from django_xhtml2pdf.utils import generate_pdf
 from django.shortcuts import render
 
@@ -42,8 +44,39 @@ def registration(request):
 	return render(request, "registration.html", data)
 
 
+@login_required
 def dashboard(request):
+	form = None
+	if request.user.registeredschool_set.count():
+		# There should only be one anyway (see comment in models.py)
+		school = request.user.registeredschool_set.filter(is_approved=True)[0]
+
+		# Iff there is no scholarship application with this school, show the form
+		if ScholarshipApp.objects.filter(school=school).count() == 0:
+			if request.method == 'POST':
+				form = ScholarshipForm(request.POST)
+
+				if form.is_valid():
+					scholarship_app = form.save(commit=False)
+					scholarship_app.school = school
+					scholarship_app.save()
+
+					# Show the "thank you for your application" message
+					form = None
+			else:
+				form = ScholarshipForm()
+	elif request.user.is_staff:
+		# Show a random school (the first one registered)
+		# Admins can see the dashboard, but can't fill out a scholarship app
+		school = RegisteredSchool.objects.get(pk=1)
+
 	data = {
+		'school': school,
+		'form': form,
+		# Needed to show the title (as base.html expects the CMS view)
+		'page': {
+			'long_name': 'Your dashboard',
+		},
 	}
 
 	return render(request, "dashboard.html", data)

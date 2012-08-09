@@ -1,0 +1,182 @@
+<p>Scholarships will be distributed to fully registered delegations based on genuine financial need, demonstrated efforts at fundraising destined for covering the costs of attending McMUN as well as the size and costs faced by the attending delegation.</p>
+
+<p>Please note that, in order to be eligible for the scholarship, your delegation needs to be fully registered by November 1<sup>st</sup>, the deadline for Regular Registration. Delegations selected to receive the scholarship will be notified by email by December 1<sup>st</sup>. The amount of the scholarship can be collected in the form of a cheque at the time of the conference.</p>
+
+<p>If you have any questions regarding the scholarship application or selection process, please do not
+hesitate to contact our Chargé D’Affaires, Daniel Stysis, at charge@mcmun.org.</p>
+
+<form method="post" id="scholarship-form">
+	<fieldset class="hidden">
+		{% csrf_token %}
+	</fieldset>
+
+	{% if form.errors %}
+	<fieldset class="errors">
+		<p>There were some errors with your application! Please fix them below.</p>
+	</fieldset>
+	{% endif %}
+
+	<fieldset>
+		<legend>Delegation information</legend>
+		<dl>
+			<dt>
+				<label for="id_club_name">Student club or association name:</label>
+			</dt>
+			<dd>
+				{{ form.club_name }}
+				{% if form.club_name.errors %}
+					<p class="errors">Please enter the name of your school's Model UN organisation.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_num_days_staying">How many days are you planning on staying in Montreal?</label>
+			</dt>
+			<dd>
+				{{ form.num_days_staying}}
+				{% if form.num_days_staying.errors %}
+					<p class="errors">Please enter a number. Include the day of arrival and the day of departure.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_previously_attended">Have you previously attended McMUN?</label>
+			</dt>
+			<dd>
+				{{ form.previously_attended }}
+				{% if form.previously_attended.errors %}
+					<p class="errors">How can you mess this up? It's a checkbox.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label>If your school has previously received a McMUN Delegation Scholarship, please indicate the year and the amount.</label>
+			</dt>
+			<dd>
+				<label for="id_previous_scholarship_year">Year:</label> {{ form.previous_scholarship_year }}
+				<label for="id_previous_scholarship_amount">Amount:</label> {{ form.previous_scholarship_amount }}
+				{% if form.previous_scholarship_amount.errors or form.previous_scholarship_year.errors %}
+					<p class="errors">Please enter the year and the amount (numbers).</p>
+				{% endif %}
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>Short-answer questions</legend>
+		<dl>
+			<dt>
+				<label for="id_impact_on_delegation">What impact would the McMUN Delegation Scholarship have on your delegation?</label>
+			</dt>
+			<dd>
+				{{ form.impact_on_delegation }}
+				{% if form.impact_on_delegation.errors %}
+					<p class="errors">Please explain the impact that scholarship would have on your delegation.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_principles_of_organisation">Please explain the principles or intent of the organization you represent, previous Model UN experience, its involvement within the Model UN community and any other activities it may be
+involved in.</label>
+			</dt>
+			<dd>
+				{{ form.principles_of_organisation }}
+				{% if form.principles_of_organisation.errors %}
+					<p class="errors">This field is required.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_importance_of_mcmun">Please explain the importance of attending McMUN 2013 as well as of receiving a McMUN Delegation Scholarship.</label>
+			</dt>
+			<dd>
+				{{ form.importance_of_mcmun }}
+				{% if form.importance_of_mcmun.errors %}
+					<p class="errors">This field is required.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_how_funding_works">Are individual delegates responsible for funding their attendance at McMUN, or does your delegation receive alternative funding from a University, organization etc. as well?</label>
+			</dt>
+			<dd>
+				{{ form.how_funding_works }}
+				{% if form.how_funding_works.errors %}
+					<p class="errors">Please explain how your delegation's attendance at McMUN will be funded.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_other_funding_sources">Is your delegation applying for other scholarships or grants and/or undertaking any other efforts to fundraise in order to support your effort to attend McMUN? Please provide details about who, how, for what amount, and when you will know the results.</label>
+			</dt>
+			<dd>
+				{{ form.other_funding_sources }}
+				{% if form.other_funding_sources.errors %}
+					<p class="errors">Please detail other sources of funding that your delegation is investigating.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_budget">Please provide a copy of your budget for attending McMUN 2013, including sources of funding and estimated expenses. Please include the McMUN registration fees, hotel costs, and transportation costs to and from Montreal.</label>
+			</dt>
+			<dd>
+				{{ form.budget }}
+				{% if form.budget.errors %}
+					<p class="errors">This field is required.</p>
+				{% endif %}
+			</dd>
+			
+			<dt>
+				<label for="id_other_information">Is there any other information that you believe should be taken into consideration when reviewing your scholarship application?</label>
+			</dt>
+			<dd>
+				{{ form.other_information }}
+				{% if form.other_information.errors %}
+					<p class="errors">How can there possibly be errors in this field?</p>
+				{% endif %}
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>Contact information</legend>
+		<p>Is there a co-head delegate or somebody else who is responsible for the coordination of your delegation? If so, please provide their name, email, and phone number.</p>
+		<dl>
+			<dt>
+				<label for="id_co_head_name">Name</label>
+			</dt>
+			<dd>
+				{{ form.co_head_name }}
+				{% if form.co_head_name.errors %}
+					<p class="errors">How can there possibly be errors in this field?</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_co_head_email">Email</label>
+			</dt>
+			<dd>
+				{{ form.co_head_email }}
+				{% if form.co_head_email.errors %}
+					<p class="errors">Please enter a valid email address.</p>
+				{% endif %}
+			</dd>
+
+			<dt>
+				<label for="id_co_head_phone">Phone number</label>
+			</dt>
+			<dd>
+				{{ form.co_head_phone }}
+				{% if form.co_head_phone.errors %}
+					<p class="errors">Allowed characters: digits, spaces, hyphens, parentheses, and the plus sign.</p>
+				{% endif %}
+			</dd>
+		</dl>
+	</fieldset>
+
+	<p>Before clicking on the submit button here below, please double check that the information is accurate and up to date.</p>
+
+	<fieldset class="submit">
+		<input type="submit" name="submit" value="Submit" />
+	</fieldset>
+</form>

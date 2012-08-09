@@ -3,5 +3,62 @@
 {% block content %}
 <h1>Your dashboard</h1>
 
-<p>This feature is not yet available. Please check back soon.</p>
+{% if school %}
+<table id="dashboard-table">
+	<tr>
+		<td>
+			<div id="profile">
+				<h3>{{ school }}</h3>
+
+				<p>
+					{{ school.first_name }} {{ school.last_name }}
+					<br />
+					{{ school.address }}
+					<br />
+					{{ school.get_country_display }}
+					<br />
+					{{ school.phone_number }}
+				</p>
+				<br />
+				<p>
+					<strong>Email address:</strong> {{ school.email }}
+					<br />
+					<a href="">Change your password</a> :: <a href="{% url logout %}">Log out</a>
+				</p>
+			</div>
+		</td>
+		<td>
+			<div id="invoice">
+				<h2>Invoice details</h2>
+				<p>
+					<strong>Number of delegates:</strong> {{ school.num_delegates }}
+					<br />
+					<strong>Payment method:</strong> {% if school.use_online_payment %}online payment{% else %}by cheque{% endif %}
+					<br />
+					<strong>Tiered payment:</strong> {% if school.use_tiered %}Yes{% else %}No{% endif %}
+					<br />
+					<strong>Priority registration:</strong> {% if school.use_priority %}Yes{% else %}No{% endif %}
+					<br />
+					<strong>Amount owed:</strong> {{ school.amount_owed }} {{ school.get_currency }}
+					<br />
+					<strong>Amount paid:</strong> ${{ school.amount_paid }} {{ school.get_currency }}
+				</p>
+				<p>Lost your copy of your invoice PDF? Email it@mcmun.org.{% comment %}Eventually I'll make a view to show the PDF to people with the proper permissions. Later.{% endcomment %}</p>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<div id="scholarship">
+	<h2>Scholarship application</h2>
+	{% if form %}
+		{% include 'scholarship_form.html' %}
+	{% else %}
+		<p>Thank you for completing the scholarship application. You will receive information regarding the status of your scholarship by December 1<sup>st</sup>. If you have any questions or wish to change or add information to your application, please do not hesitate to contact our Chargé D’Affaires, Daniel Stysis at charge@mcmun.org.</p>
+	{% endif %}
+</div>
+{% else %}
+<p>Unfortunately there's nothing for you to see here. Please move along.</p>
+{% endif %}
+
 {% endblock %}

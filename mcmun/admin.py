@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from mcmun.models import RegisteredSchool
+from mcmun.models import RegisteredSchool, ScholarshipApp
 
 
 class RegisteredSchoolAdmin(admin.ModelAdmin):
@@ -11,3 +11,4 @@ class RegisteredSchoolAdmin(admin.ModelAdmin):
 	exclude = ('account',)
 
 admin.site.register(RegisteredSchool, RegisteredSchoolAdmin)
+admin.site.register(ScholarshipApp)
