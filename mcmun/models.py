@@ -75,7 +75,7 @@ class RegisteredSchool(models.Model):
 
 	def amount_owed(self):
 		if self.use_tiered:
-			return "$%s (%s deposit, %s remainder)" % (self.get_total_owed(), self.get_deposit(), self.get_remainder())
+			return "$%s ($%s deposit, $%s remainder)" % (self.get_total_owed(), self.get_deposit(), self.get_remainder())
 		else:
 			return "$%s" % self.get_total_owed()
 
