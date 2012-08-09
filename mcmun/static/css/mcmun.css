@@ -64,3 +64,7 @@ body{background-color:#000000;font-family:"Helvetica Neue",Helvetica,Arial,sans-
 #sec-bios .photo .title-hover{position:absolute;bottom:7px;left:5px;right:5px;background:#141414;background:rgba(20, 20, 20, 0.7);color:#ffffff;padding:5px;display:none;}
 #fee-information{display:none;padding-top:10px;}
 #staffing-signup{padding-top:20px;}#staffing-signup form{float:right;margin-left:30px;}
+#dashboard-table td{vertical-align:top;}#dashboard-table td h2,#dashboard-table td h3{padding-top:10px;}
+#scholarship-form input[type=text],#scholarship-form textarea{width:520px;}
+#scholarship-form dt{width:300px !important;margin-right:50px;}
+#id_previous_scholarship_amount,#id_previous_scholarship_year{width:50px !important;}
