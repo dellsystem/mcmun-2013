@@ -14,5 +14,7 @@ urlpatterns = patterns('',
     url(r'^registration', 'mcmun.views.registration', name='registration'),
     url(r'^login$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='login'),
     url(r'^logout$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
+    url(r'^password$', 'django.contrib.auth.views.password_change', {'template_name': 'password.html'}, name='password'),
+    url(r'^password_success$', 'django.contrib.auth.views.password_change_done', {'template_name': 'password_success.html'}, name="password_success"),
     url(r'^', include('cms.urls')),
 )
