@@ -1,5 +1,6 @@
 import djcelery
 import logging
+import django.conf.global_settings as DEFAULT_SETTINGS
 
 
 DEBUG = True
@@ -163,12 +164,7 @@ LOGGING = {
     }
 }
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.contrib.messages.context_processors.messages",
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     "cms.context_processors.menu",
     "committees.context_processors.committees",
 )
