@@ -115,7 +115,8 @@
 
 			<dt>
 				<label for="id_use_online_payment">Online payment (via PayPal):</label>
-				<p>You will be emailed instructions on how to complete the payment after your registration is approved. Note that there is a 3% convenience fee for online payments made by schools that have registered after September 1st. The alternative is to pay by cheque. See our <a href="{% url cms 'payment' %}#payment-methods">payment policy page</a> for more information.</p>
+				<p>You will be emailed instructions on how to complete the payment after your registration is approved. <strong><u>Note that there is a 3% convenience fee for online payments made by schools that have registered after September 1st, due to a fee charged to us by PayPal.</u></strong></p>
+				<p>The alternative is to pay by cheque, mailed with one of the main shipping companies. See our <a href="{% url cms 'payment' %}#payment-methods">payment policy page</a> for more information.</p>
 			</dt>
 			<dd>{{ form.use_online_payment }}</dd>
 
