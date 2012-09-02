@@ -31,7 +31,7 @@ class RegisteredSchool(models.Model):
 	# Needs a boolean field anyway to make the admin interface better
 	is_approved = models.BooleanField(default=False, verbose_name="Approve school")
 	# Effective only for schools that have registered after Sept 1 (when this was deployed)
-	pays_convenience_fee = models.BooleanField(default=False)
+	pays_convenience_fee = models.BooleanField(default=False, editable=False)
 
 	def is_international(self):
 		"""
