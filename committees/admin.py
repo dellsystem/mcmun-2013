@@ -1,11 +1,11 @@
 from django.contrib import admin
-from committees.models import Category, Committee
 
-class CategoryAdmin(admin.ModelAdmin):
-	pass
+from committees.models import Category, Committee, AdHocApplication, BRICSApplication, NixonApplication, WallStreetApplication
 
-class CommitteeAdmin(admin.ModelAdmin):
-	pass
 
-admin.site.register(Category, CategoryAdmin)
-admin.site.register(Committee, CommitteeAdmin)
+admin.site.register(Category)
+admin.site.register(Committee)
+admin.site.register(AdHocApplication)
+admin.site.register(BRICSApplication)
+admin.site.register(NixonApplication)
+admin.site.register(WallStreetApplication)
