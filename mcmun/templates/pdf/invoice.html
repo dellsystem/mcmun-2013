@@ -172,6 +172,17 @@
 					<td class="amount right-border">{{ school.num_delegates }}</td>
 					<td class="amount">${{ school.get_total_delegate_fee }}.00 {{ school.get_currency }}</td>
 				</tr>
+				{% if school.pays_convenience_fee and school.use_online_payment %}
+				<tr class="bottom-border">
+					<td>
+						<p><strong>Convenience fee</strong></p>
+						<p class="left-space"><em>A 3% convenience fee is charged for online payment for all schools that have registered after September 1st.</em></p>
+					</td>
+					<td class="amount">3%</td>
+					<td class="amount right-border">--</td>
+					<td class="amount">${{ school.get_total_convenience_fee }} {{ school.get_currency }}</td>
+				</tr>
+				{% endif %}
 				<tr{% if school.use_tiered %} class="bottom-border"{% endif %}>
 					<td colspan="3" class="right-border">
 						<div class="right-align">
@@ -186,6 +197,9 @@
 					<td colspan="3" class="right-border">
 						<div class="right-align">
 							<p><strong>REQUIRED DEPOSIT (due&nbsp;<u>{% if school.use_priority and not school.is_international %}October 1{% else %}November 18{% endif %})</u></strong><p>
+							{% if school.pays_convenience_fee and school.use_online_payment %}
+							<p>This includes the 3% convenience fee of ${{ school.get_deposit_convenience_fee }} {{ school.get_currency }}.</p>
+							{% endif %}
 						</div>
 					</td>
 					<td class="amount">${{ school.get_deposit }} {{ school.get_currency }}</td>
@@ -194,6 +208,9 @@
 					<td colspan="3" class="right-border">
 						<div class="right-align">
 							<p><strong>REMAINDER (due&nbsp;<u>December 1</u>)</strong><p>
+							{% if school.pays_convenience_fee and school.use_online_payment %}
+							<p>This includes the 3% convenience fee of ${{ school.get_remainder_convenience_fee }}  {{ school.get_currency }}.</p>
+							{% endif %}
 						</div>
 					</td>
 					<td class="amount">${{ school.get_remainder }} {{ school.get_currency }}</td>
@@ -203,7 +220,7 @@
 
 			<h2>Payment instructions</h2>
 			{% if school.use_online_payment %}
-			<p>You have indicated that you wish to pay by <strong>online payment</strong>. For the month of August, you can pay via a PayPal account without any additional fees. You will receive a PayPal invoice via email shortly containing a link to the PayPal payment page. If you have any questions about the online payment process, contact charge@mcmun.org.</p>
+			<p>You have indicated that you wish to pay by <strong>online payment</strong>. The total amounts above include the 3% online payment convenience fee charged for all schools that have registered after September 1st. You will receive a PayPal invoice via email shortly containing a link to the PayPal payment page, from which you can make the payment. If you have any questions about the online payment process, contact charge@mcmun.org.</p>
 			{% else %}
 			<p>You indicated that you wish to pay by <strong>cheque</strong>. We recommend that you send the cheque by courier delivery (e.g., FedEx, UPS, Purolator) as it is usually faster and more secure. We also accept regular mail.</p>
 			<table class="bordered">

@@ -30,6 +30,8 @@ class RegisteredSchool(models.Model):
 	account = models.ForeignKey(User, null=True)
 	# Needs a boolean field anyway to make the admin interface better
 	is_approved = models.BooleanField(default=False, verbose_name="Approve school")
+	# Effective only for schools that have registered after Sept 1 (when this was deployed)
+	pays_convenience_fee = models.BooleanField(default=False)
 
 	def is_international(self):
 		"""
@@ -53,6 +55,26 @@ class RegisteredSchool(models.Model):
 		"""
 		return 'CAD' if self.country == 'CA' else 'USD'
 
+	# These are messy. Deal with it another time.
+	def get_total_convenience_fee(self):
+		return "%.2f" % ((self.num_delegates * self.get_delegate_fee() + DELEGATION_FEE) * 0.03)
+
+	def get_deposit_convenience_fee(self):
+		return "%.2f" % ((DELEGATION_FEE + (self.get_delegate_fee() * self.num_delegates) * 0.5) * 0.03)
+
+	def get_remainder_convenience_fee(self):
+		return "%.2f" % ((self.get_delegate_fee() * self.num_delegates * 0.5) * 0.03)
+
+	def add_convenience_fee(self, number):
+		"""
+		Incorporates a 3% convenience fee into the number given iff the school
+		has selected online payment and has registered after Sept 1.
+		"""
+		if self.use_online_payment and self.pays_convenience_fee:
+			return number * 1.03
+		else:
+			return number
+
 	def get_delegate_fee(self):
 		if self.is_international():
 			delegate_fee = 50
@@ -65,13 +87,19 @@ class RegisteredSchool(models.Model):
 		return self.get_delegate_fee() * self.num_delegates
 
 	def get_total_owed(self):
-		return "%.2f" % (self.num_delegates * self.get_delegate_fee() + DELEGATION_FEE)
+		total_owed = self.num_delegates * self.get_delegate_fee() + DELEGATION_FEE
+
+		return "%.2f" % self.add_convenience_fee(total_owed)
 
 	def get_deposit(self):
-		return "%.2f" % (DELEGATION_FEE + (self.get_delegate_fee() * self.num_delegates) * 0.5)
+		deposit = DELEGATION_FEE + (self.get_delegate_fee() * self.num_delegates) * 0.5
+
+		return "%.2f" % self.add_convenience_fee(deposit)
 
 	def get_remainder(self):
-		return "%.2f" % (self.get_delegate_fee() * self.num_delegates * 0.5)
+		remainder = self.get_delegate_fee() * self.num_delegates * 0.5
+
+		return "%.2f" % self.add_convenience_fee(remainder)
 
 	def amount_owed(self):
 		if self.use_tiered:

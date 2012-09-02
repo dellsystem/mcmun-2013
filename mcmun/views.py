@@ -18,6 +18,8 @@ def registration(request):
 
 		if form.is_valid():
 			registered_school = form.save()
+			registered_school.pays_convenience_fee = True
+			registered_school.save()
 
 			# Send emails to user, stysis, myself
 			registered_school.send_success_email()
