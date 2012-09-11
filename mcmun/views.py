@@ -17,12 +17,14 @@ def registration(request):
 		form = RegistrationForm(request.POST)
 
 		if form.is_valid():
-			registered_school = form.save()
-			registered_school.pays_convenience_fee = True
-			registered_school.save()
+			# Simple spam-prevention technique
+			if not request.POST.get('address', '').startswith('http://'):
+				registered_school = form.save()
+				registered_school.pays_convenience_fee = True
+				registered_school.save()
 
-			# Send emails to user, stysis, myself
-			registered_school.send_success_email()
+				# Send emails to user, stysis, myself
+				registered_school.send_success_email()
 
 			data = {
 				'page': {
