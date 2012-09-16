@@ -3,6 +3,38 @@ $(document).ready(function() {
 	var firstDiv = $('#carousel-blocks div')[0];
 	var timeout;
 
+	// If any element on the page has an ID of collapsible, make the h2+ headings collapsible
+	if ($('#collapsible').length) {
+		var headings = 'h2,h3,h4,h5,h6';
+
+		$(headings).each(function (index, heading) {
+			// Add the [-] / [+] thing
+			this.innerHTML += ' <a href="#" class="toggle-collapse">[-]</a>';
+		});
+
+		$('#content').on('click', '.toggle-collapse', function (event) {
+			var heading = this.parentNode;
+			var headingTag = heading.localName;
+
+			// Get all the headings at this level or bigger
+			var relevantHeadings = headings.substr(0, headings.indexOf(headingTag) + 2);
+			var section = $(heading).nextUntil(relevantHeadings);
+
+			// kind of buggy - if a child is hidden and a parent is hidden then shown, it won't match up
+			if ($(this).hasClass('collapsed')) {
+				$(section).show();
+				this.innerText = '[-]';
+			} else {
+				$(section).hide();
+				this.innerText = '[+]';
+			}
+
+			$(this).toggleClass('collapsed');
+
+			return false;
+		});
+	}
+
 	$('#carousel-blocks div').click(function () {
 		clearTimeout(timeout);
 		$('.active').removeClass();

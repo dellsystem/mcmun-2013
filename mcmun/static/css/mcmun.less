@@ -389,3 +389,22 @@ body {
 #id_previous_scholarship_amount, #id_previous_scholarship_year {
 	width: 50px !important;
 }
+
+#staff-dates {
+	td:nth-child(3), td:nth-child(4), td:nth-child(5) {
+		.center-align;
+	}
+
+	.check {
+		font-size: 1.5em;
+		color: @white;
+		background: @lightBlue;
+		&:before {
+			content:'\2713';
+		}
+	}
+
+	.invited {
+		background: @lighterBlue;
+	}
+}
