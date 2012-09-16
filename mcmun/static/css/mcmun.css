@@ -68,3 +68,6 @@ body{background-color:#000000;font-family:"Helvetica Neue",Helvetica,Arial,sans-
 #scholarship-form input[type=text],#scholarship-form textarea{width:520px;}
 #scholarship-form dt{width:300px !important;margin-right:50px;}
 #id_previous_scholarship_amount,#id_previous_scholarship_year{width:50px !important;}
+#staff-dates td:nth-child(3),#staff-dates td:nth-child(4),#staff-dates td:nth-child(5){text-align:center;}
+#staff-dates .check{font-size:1.5em;color:#ffffff;background:#1598c7;}#staff-dates .check:before{content:'\2713';}
+#staff-dates .invited{background:#dff4fc;}
