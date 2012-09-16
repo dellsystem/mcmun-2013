@@ -1,17 +1,16 @@
 Dear Delegate,
 
-Thank you for your interest in applying for the Wall Street 2008 committee. This
-committee will be run by some of McGill’s finest and most experienced staffers as a
-specialized agency. Moreover, the intense background preparation by the dais promises
-to make Wall Street 2008 a highly challenging and rewarding endeavour. On that note,
-Team Committees and the dais encourage the most experienced delegates to apply, who
-also have the necessary background knowledge.
+Thank you for your interest in joining the Wall Street 2008 committee. We are excited
+to offer this specialised agency. Our goal is to recreate the exciting environment of the
+financial crisis in 2008 with a McMUN twist. This simulation will be tough, will be
+challenging, and, we hope, rewarding. If you have a passion for finance, economics, and
+world politics, and a confidence with debate, we strongly encourage you apply for this
+committee.
 
-Below you will find a questionnaire that will allow us to prepare a more enjoyable and
-productive committee experience. It will also give us insight into the different skills that
-each interested applicant could bring to the committee, with the goal of creating the most
-productive committee dynamic possible. Please feel free to contact us if you have any
-questions regarding Wall Street 2008 at this year’s McMUN.
+Please answer the questionnaire attached. By doing so, it provides insight into your
+strengths and familiarity with the topics that will be debated in this simulation. As
+always, please feel free to contact us if you have any questions or concerns.We look
+forward to hearing from you soon.
 
 Sincerely,
 

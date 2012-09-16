@@ -81,6 +81,6 @@ class NixonApplication(CommitteeApplication):
 class WallStreetApplication(CommitteeApplication):
 	committee_name = "Wall Street 2008"
 
-	why_choose_you = models.TextField(verbose_name="Why should you be chosen as a member of %s? What skills can you bring to this committee?" % committee_name)
-	financial_crisis = models.TextField(verbose_name="Describe the global financial crisis of 2008 in less than 500 words.")
-	what_topic = models.TextField(verbose_name="If it was up to you to select the committee topic, what would you choose to discuss and why?")
+	facebook_ipo = models.TextField(verbose_name="In May 2012, Facebook, Inc. held its initial public offering (IPO) at an unprecedented valuation for an internet corporation. Since then, it is arguable that Facebook's IPO failed to match traders' expectations. Do you agree? Also, what are the long-term and the short-term forecasts for Facebook's stock in your opinion? Explain in less than two hundred words.")
+	british_libor = models.TextField(verbose_name="This summer, the British financial system faced heavy scrutiny and damaging accusations of manipulation of the London Interbank Offered Rate (LIBOR). Should the British government get involved? What are the implications of this scandal? Explain in less than two hundred words.")
+	bull_bear = models.TextField(verbose_name="Are you bull-ish or bear-ish? Explain in two sentences or less.")
