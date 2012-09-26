@@ -13,6 +13,8 @@ Password: %(password)s
 
 Your committee assignments will be released on December 10th, subject to full payment being received. After this date, you will also be able to access your committee assignments, enter the names of the delegates who will be attending, and upload position papers from that page.
 
+If you're interested in booking rooms at the Sheraton, send an email to charge@mcmun.org listing approximately how many rooms you will need, as well as what type of room (single, double, or quadruple occupancy).
+
 Please keep this email for your records.
 
 Looking forward to seeing you in January,
