@@ -3,6 +3,36 @@ $(document).ready(function() {
 	var firstDiv = $('#carousel-blocks div')[0];
 	var timeout;
 
+	// Staff coordinator application form
+	if ($('#staff-coordinator-form').length) {
+		// Hide the ones that don't always need to be filled
+		$('#id_occc_experience').parent().parent().hide();
+		$('#id_event_experience').parent().parent().hide();
+
+		// Show them if the right thing is selected as a preferred position
+		$('#staff-coordinator-form select[id^="id_preferred_position"]').change(function () {
+			var selected = $(this).find('option:selected').val();
+
+			// Truly awful
+			if (selected === 'events-coord' || selected === 'events-tl') {
+				$('#id_event_experience').parent().parent().show();
+			} else {
+				// lol
+				if (!$('#staff-coordinator-form select[id^="id_preferred_position"] option[value^="events"]:selected').length) {
+					$('#id_event_experience').parent().parent().hide();
+				}
+			}
+
+			if (selected === 'occc') {
+				$('#id_occc_experience').parent().parent().show();
+			} else {
+				if (!$('#staff-coordinator-form select[id^="id_preferred_position"] option[value^="occc"]:selected').length) {
+					$('#id_occc_experience').parent().parent().hide();
+				}
+			}
+		});
+	}
+
 	// If any element on the page has an ID of collapsible, make the h2+ headings collapsible
 	if ($('#collapsible').length) {
 		var headings = 'h2,h3,h4,h5,h6';

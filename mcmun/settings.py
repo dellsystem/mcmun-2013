@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'djcelery',
     'djcelery.transport',
+    'staffapps',
 )
 
 # A sample logging configuration. The only tangible logging
