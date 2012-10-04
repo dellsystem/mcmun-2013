@@ -8,7 +8,19 @@ from django import forms
 class RegistrationForm(forms.ModelForm):
 	class Meta:
 		model = RegisteredSchool
-		exclude = ('account', 'is_approved', 'amount_paid', 'pays_convenience_fee')
+		fields = (
+			'school_name',
+			'address',
+			'country',
+			'first_name',
+			'last_name',
+			'email',
+			'phone_number',
+			'num_delegates',
+			'use_online_payment',
+			'use_tiered',
+			'use_priority',
+		)
 
 	def clean_phone_number(self):
 		phone_number = self.cleaned_data['phone_number']
