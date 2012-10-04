@@ -23,7 +23,7 @@ class RegisteredSchool(models.Model):
 	use_tiered = models.BooleanField()
 	use_priority = models.BooleanField()
 
-	amount_paid = models.IntegerField(default=0)
+	amount_paid = models.DecimalField(default=0.0, max_digits=4, decimal_places=2)
 
 	# This should really have been a OneToOneField. Too late now. Next year.
 	# Only set iff the user has been approved
