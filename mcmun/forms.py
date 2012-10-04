@@ -5,6 +5,15 @@ from mcmun.models import RegisteredSchool, ScholarshipApp
 from django import forms
 
 
+class EventForm(forms.ModelForm):
+	class Meta:
+		model = RegisteredSchool
+		fields = (
+			'num_pub_crawl',
+			'num_non_alcohol',
+		)
+
+
 class RegistrationForm(forms.ModelForm):
 	class Meta:
 		model = RegisteredSchool

@@ -1,11 +1,11 @@
-from mcmun.forms import RegistrationForm, ScholarshipForm
+from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES
 from mcmun.models import RegisteredSchool, ScholarshipApp
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django_xhtml2pdf.utils import generate_pdf
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def home(request):
@@ -52,9 +52,15 @@ def registration(request):
 def dashboard(request):
 	form = None
 	school = None
+	event_form = None
+
 	if request.user.registeredschool_set.count():
 		# There should only be one anyway (see comment in models.py)
 		school = request.user.registeredschool_set.filter(is_approved=True)[0]
+
+		# Only show it if the user has not entered values yet
+		if school.num_pub_crawl == 0 and school.num_non_alcohol == 0:
+			event_form = EventForm(instance=school)
 
 		# Iff there is no scholarship application with this school, show the form
 		if ScholarshipApp.objects.filter(school=school).count() == 0:
@@ -77,6 +83,7 @@ def dashboard(request):
 
 	data = {
 		'school': school,
+		'event_form': event_form,
 		'form': form,
 		# Needed to show the title (as base.html expects the CMS view)
 		'page': {
@@ -85,3 +92,17 @@ def dashboard(request):
 	}
 
 	return render(request, "dashboard.html", data)
+
+
+@login_required
+def events(request):
+	user_schools = request.user.registeredschool_set.filter(is_approved=True)
+
+	if request.method == 'POST' and user_schools.count() == 1:
+		school = user_schools[0]
+		form = EventForm(request.POST, instance=school)
+
+		if form.is_valid():
+			form.save()
+
+	return redirect(dashboard)

@@ -25,6 +25,9 @@ class RegisteredSchool(models.Model):
 
 	amount_paid = models.DecimalField(default=0.0, max_digits=4, decimal_places=2)
 
+	num_pub_crawl = models.IntegerField(default=0, verbose_name="Number of delegates interested in attending Pub Crawl")
+	num_non_alcohol = models.IntegerField(default=0, verbose_name="Number of delegates who would prefer to attend a non-alcoholic event instead")
+
 	# This should really have been a OneToOneField. Too late now. Next year.
 	# Only set iff the user has been approved
 	account = models.ForeignKey(User, null=True)

@@ -8,6 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'cms.views.main', name='home'),
     url(r'^dashboard', 'mcmun.views.dashboard', name='dashboard'),
+    url(r'^event-registration', 'mcmun.views.events', name='events'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^committees/', include('committees.urls')),
     url(r'^staff-application/', include('staffapps.urls')),

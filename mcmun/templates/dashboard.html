@@ -53,6 +53,36 @@
 	</tr>
 </table>
 
+<h2 id="events">Event registration</h2>
+
+{% if event_form %}
+<p>If you are interested in attending the Friday night social event, please fill out the form below. Delegates have a choice between <a href="http://www.mcmun.org/social-events#pub-crawl">Pub Crawl</a> and a non-alcoholic event (the details of which will be released closer to the conference itself).</p>
+<form method="post" action="{% url events %}">
+	{% csrf_token %}
+
+	<fieldset>
+	{% for field in event_form %}
+		<dl>
+			<dt>
+				{{ field.label_tag }}
+			</dt>
+			<dd>
+				{{ field }} {{ field.errors }}
+			</dd>
+		</dl>
+	{% endfor %}
+	</fieldset>
+
+	<fieldset class="submit">
+		<input type="submit" name="submit" value="Submit" />
+	</fieldset>
+</form>
+{% else %}
+<p>You have indicated that there are <strong>{{ school.num_pub_crawl }}</strong> delegate{{ school.num_pub_crawl|pluralize }} interested in attending Pub Crawl and <strong>{{ school.num_non_alcohol }}</strong> delegate{{ school.num_non_alcholic|pluralize }} who would prefer to attend a non-alcoholic event instead.</p>
+
+<p>If you need to make changes to these numbers, please contact Daniel Stysis at <a href="charge@mcmun.org">charge@mcmun.org</a>.</p>
+{% endif %}
+
 <div id="scholarship">
 	<h2>Scholarship application</h2>
 	{% if form %}
