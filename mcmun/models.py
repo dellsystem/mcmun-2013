@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -23,7 +25,7 @@ class RegisteredSchool(models.Model):
 	use_tiered = models.BooleanField()
 	use_priority = models.BooleanField()
 
-	amount_paid = models.DecimalField(default=0.0, max_digits=6, decimal_places=2)
+	amount_paid = models.DecimalField(default=Decimal(0), max_digits=6, decimal_places=2)
 
 	num_pub_crawl = models.IntegerField(default=0, verbose_name="Number of delegates interested in attending Pub Crawl")
 	num_non_alcohol = models.IntegerField(default=0, verbose_name="Number of delegates who would prefer to attend a non-alcoholic event instead")
