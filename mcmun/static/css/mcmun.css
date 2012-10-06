@@ -72,3 +72,4 @@ body{background-color:#000000;font-family:"Helvetica Neue",Helvetica,Arial,sans-
 #staff-dates td:nth-child(3),#staff-dates td:nth-child(4),#staff-dates td:nth-child(5){text-align:center;}
 #staff-dates .check{font-size:1.5em;color:#ffffff;background:#1598c7;}#staff-dates .check:before{content:'\2713';}
 #staff-dates .invited{background:#dff4fc;}
+#committees-grid{list-style-type:none;}#committees-grid li{vertical-align:top;display:inline-block;zoom:1;*display:inline;width:200px;text-align:center;}#committees-grid li img{height:100px;}
