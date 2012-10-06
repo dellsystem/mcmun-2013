@@ -3,6 +3,13 @@
 {% load markup %}
 
 {% block content %}
+
+<div class="center-align">
+	<img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.png" />
+</div>
+
+<br />
+
 <h1>{{ committee.name }}</h1>
 
 {{ committee.description|markdown:"footnotes,def_list,tables" }}
