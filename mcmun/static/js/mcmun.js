@@ -134,6 +134,7 @@ $(document).ready(function() {
 		}
 	});
 
+	/*
 	// Handle stuff for the registration form
 	var priorityOption = $('#priority-dt');
 	if (priorityOption.length) {
@@ -150,4 +151,5 @@ $(document).ready(function() {
 			}
 		});
 	}
+	*/
 });

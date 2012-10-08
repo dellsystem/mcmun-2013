@@ -28,7 +28,7 @@ class RegistrationForm(forms.ModelForm):
 			'num_delegates',
 			'use_online_payment',
 			'use_tiered',
-			'use_priority',
+			#'use_priority',
 		)
 
 	def clean_phone_number(self):
