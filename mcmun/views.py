@@ -1,11 +1,13 @@
-from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm
-from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES
-from mcmun.models import RegisteredSchool, ScholarshipApp
+import datetime
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django_xhtml2pdf.utils import generate_pdf
 from django.shortcuts import render, redirect
+
+from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm, CommitteePrefsForm
+from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES
+from mcmun.models import RegisteredSchool, ScholarshipApp
 
 
 def home(request):
@@ -53,6 +55,7 @@ def dashboard(request):
 	form = None
 	school = None
 	event_form = None
+	committees_form = None
 
 	if request.user.registeredschool_set.count():
 		# There should only be one anyway (see comment in models.py)
@@ -76,14 +79,20 @@ def dashboard(request):
 					form = None
 			else:
 				form = ScholarshipForm()
+
+		# If we haven't passed the committee prefs deadline, show the form
+		prefs_deadline = datetime.datetime(2012, 11, 19) # Nov 18 midnight
+		if datetime.datetime.now() < prefs_deadline:
+			committees_form = CommitteePrefsForm(instance=school)
 	elif request.user.is_staff:
 		# Show a random school (the first one registered)
-		# Admins can see the dashboard, but can't fill out a scholarship app
+		# Admins can see the dashboard, but can't fill out any forms
 		school = RegisteredSchool.objects.get(pk=1)
 
 	data = {
 		'school': school,
 		'event_form': event_form,
+		'committees_form': committees_form,
 		'form': form,
 		# Needed to show the title (as base.html expects the CMS view)
 		'page': {
@@ -101,6 +110,21 @@ def events(request):
 	if request.method == 'POST' and user_schools.count() == 1:
 		school = user_schools[0]
 		form = EventForm(request.POST, instance=school)
+
+		if form.is_valid():
+			form.save()
+
+	return redirect(dashboard)
+
+
+@login_required
+def committee_prefs(request):
+	# Fix this
+	user_schools = request.user.registeredschool_set.filter(is_approved=True)
+
+	if request.method == 'POST' and user_schools.count() == 1:
+		school = user_schools[0]
+		form = CommitteePrefsForm(request.POST, instance=school)
 
 		if form.is_valid():
 			form.save()

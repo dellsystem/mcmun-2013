@@ -43,3 +43,9 @@ class ScholarshipForm(RegistrationForm):
 	class Meta:
 		model = ScholarshipApp
 		exclude = ('school',)
+
+
+class CommitteePrefsForm(forms.ModelForm):
+	class Meta:
+		model = RegisteredSchool
+		fields = ('committee_1', 'committee_2', 'committee_3', 'committee_4', 'committee_5')

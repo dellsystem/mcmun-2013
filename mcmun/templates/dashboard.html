@@ -53,6 +53,53 @@
 	</tr>
 </table>
 
+<h2 id="committees">Committee preferences</h2>
+
+{% if committees_form %}
+<p>Please select your committee preferences, with your most desirable committee ranked first. The deadline for selecting your committee preferences is <strong>midnight on November 18</strong>. After that date, you will have to contact charge@mcmun.org if you wish to change your preferences.</p>
+
+<form method="post" action="{% url committee_prefs %}">
+	{% csrf_token %}
+
+	<fieldset>
+	{% for field in committees_form %}
+		<dl>
+			<dt>
+				{{ field.label_tag }}
+			</dt>
+			<dd>
+				{{ field }} {{ field.errors }}
+			</dd>
+		</dl>
+	{% endfor %}
+	</fieldset>
+
+	<fieldset class="submit">
+		<input type="submit" name="submit" value="Submit" />
+	</fieldset>
+</form>
+{% else %}
+<p>The committee preferences form is now <strong>closed</strong>.</p>
+
+{% if school.has_prefs %}
+<p>You have indicated your committee preferences to be:</p>
+
+<ul>
+	<li>{{ school.committee_1 }}</li>
+	<li>{{ school.committee_2 }}</li>
+	<li>{{ school.committee_3 }}</li>
+	<li>{{ school.committee_4 }}</li>
+	<li>{{ school.committee_5 }}</li>
+</ul>
+
+<p>Please contact charge@mcmun.org if you have any questions or wish to change your preferences.</p>
+
+{% else %}
+<p>You have not indicated any committee preferences. Please contact charge@mcmun.org if you would like to set preferences.</p>
+{% endif %}
+
+{% endif %}
+
 <h2 id="events">Event registration</h2>
 
 {% if event_form %}

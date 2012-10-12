@@ -8,6 +8,7 @@ from django.dispatch import receiver
 from mcmun.utils import generate_random_password
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES, COUNTRIES, DELEGATION_FEE
 from mcmun.tasks import send_email, generate_invoice
+from committees.models import Committee
 
 
 class RegisteredSchool(models.Model):
@@ -37,6 +38,17 @@ class RegisteredSchool(models.Model):
 	is_approved = models.BooleanField(default=False, verbose_name="Approve school")
 	# Effective only for schools that have registered after Sept 1 (when this was deployed)
 	pays_convenience_fee = models.BooleanField(default=False, editable=False)
+
+	# Committee preferences. SO BAD
+	committee_1 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_1")
+	committee_2 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_2")
+	committee_3 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_3")
+	committee_4 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_4")
+	committee_5 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_5")
+
+	def has_prefs(self):
+		return (self.committee_1 or self.committee_2 or self.committee_3 or
+			self.committee_4 or self.committee_5)
 
 	def is_international(self):
 		"""
