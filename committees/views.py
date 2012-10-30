@@ -53,7 +53,7 @@ def application(request, slug):
 		form = app_form
 
 	data = {
-		'deadline': 'November 1st',
+		'deadline': 'November 18th',
 		'page': {
 			'long_name': 'Application for %s' % committee.name,
 		},
