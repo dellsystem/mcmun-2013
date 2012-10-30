@@ -92,6 +92,8 @@
 {% if committees_form %}
 <p>Please select your committee preferences, with your most desirable committee ranked first. The deadline for selecting your committee preferences is <strong>midnight on November 18</strong>. After that date, you will have to contact charge@mcmun.org if you wish to change your preferences.</p>
 
+<p><strong>You have indicated the following committee preferences:</strong></p>
+
 <form method="post" action="{% url committee_prefs %}">
 	{% csrf_token %}
 
