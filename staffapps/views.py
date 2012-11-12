@@ -6,8 +6,65 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.views.static import serve
 
-from staffapps.forms import CoordinatorAppForm
+from staffapps.forms import CoordinatorAppForm, LogisticalAppForm, CommitteesAppForm
 from staffapps.models import cv_upload_path
+
+"""
+TODO: Clean this file up sometime
+"""
+
+
+def application_success(request, app_type):
+	context = {
+		'page': {
+			'long_name': 'Application successfully submitted',
+		},
+		'application_type': app_type,
+	}
+
+	return render(request, 'staffapps/success.html', context)
+
+
+def committees(request):
+	if request.method == 'POST':
+		form = CommitteesAppForm(request.POST)
+
+		if form.is_valid():
+			form.save()
+
+			return application_success(request, 'committees')
+	else:
+		form = CommitteesAppForm()
+
+	context = {
+		'page': {
+			'long_name': 'Committees staff application',
+		},
+		'form': form,
+	}
+
+	return render(request, 'staffapps/committees.html', context)
+
+
+def logistical(request):
+	if request.method == 'POST':
+		form = LogisticalAppForm(request.POST)
+
+		if form.is_valid():
+			form.save()
+
+			return application_success(request, 'logistical')
+	else:
+		form = LogisticalAppForm()
+
+	context = {
+		'page': {
+			'long_name': 'Logistical staff application',
+		},
+		'form': form,
+	}
+
+	return render(request, 'staffapps/logistical.html', context)
 
 
 def coordinator(request):
@@ -17,14 +74,7 @@ def coordinator(request):
 		if form.is_valid():
 			form.save()
 
-			context = {
-				'page': {
-					'long_name': 'Application successfully submitted',
-				},
-				'application_type': 'coordinator',
-			}
-
-			return render(request, 'staffapps/success.html', context)
+			return application_success(request, 'coordinator')
 	else:
 		form = CoordinatorAppForm()
 
@@ -36,6 +86,7 @@ def coordinator(request):
 	}
 
 	return render(request, 'staffapps/coordinator.html', context)
+
 
 @login_required
 def serve_cvs(request, file_name):
