@@ -127,11 +127,13 @@
 			</dt>
 			<dd>{{ form.use_online_payment }}</dd>
 
+			{% comment %}
 			<dt>
 				<label for="id_use_tiered">Use the tiered payment system:</label>
 				<p>If you do not wish to pay the full fee up front, select this and you can pay using our tiered system of deposit and remainder. See our <a href="{% url cms 'payment' %}#payment-options">payment policy page</a> for more information..</p>
 			</dt>
 			<dd>{{ form.use_tiered }}</dd>
+			{% endcomment %}
 		</dl>
 	</fieldset>
 

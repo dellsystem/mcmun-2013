@@ -23,7 +23,7 @@ class RegisteredSchool(models.Model):
 
 	num_delegates = models.IntegerField(default=1, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES + 1)])
 	use_online_payment = models.BooleanField()
-	use_tiered = models.BooleanField()
+	use_tiered = models.BooleanField(default=False)
 	use_priority = models.BooleanField(default=False)
 
 	amount_paid = models.DecimalField(default=Decimal(0), max_digits=6, decimal_places=2)
