@@ -8,10 +8,13 @@ from django.dispatch import receiver
 from mcmun.utils import generate_random_password
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES, COUNTRIES, DELEGATION_FEE
 from mcmun.tasks import send_email, generate_invoice
-from committees.models import Committee
+from committees.models import Committee, DelegateAssignment
 
 
 class RegisteredSchool(models.Model):
+	class Meta:
+		ordering = ['school_name']
+
 	school_name = models.CharField(max_length=100, unique=True)
 	address = models.CharField(max_length=255)
 	country = models.CharField(max_length=2, choices=COUNTRIES)
@@ -152,6 +155,9 @@ class RegisteredSchool(models.Model):
 	def send_invoice_email(self, username, password):
 		print "about to delay the generate_invoice task"
 		generate_invoice.delay(self.id, username, password)
+
+	def has_unfilled_assignments(self):
+		return any(not c.is_filled() for c in self.committeeassignment_set.all())
 
 	def __unicode__(self):
 		return self.school_name

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ committee }}</h1>
+<h2>Delegate list and position papers</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>Position</th>
+			<th>Delegate name(s)</th>
+			<th>School</th>
+			<th>Position paper</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for assignment in assignments %}
+		<tr>
+			<td>{{ assignment.assignment }}</td>
+			<td>
+				{% for delegate in assignment.delegateassignment_set.all %}
+				{{ delegate }}<br />
+				{% endfor %}
+			</td>
+			<td>{{ assignment.school }}</td>
+			<td>
+				{% if assignment.position_paper %}
+				<strong><a href="/{{ assignment.position_paper }}">Download</a></strong>
+				{% else %}
+				N/A
+				{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

@@ -3,8 +3,10 @@
 {% block content %}
 <h1>Your dashboard</h1>
 
-{% if user.is_staff %}
-<p>This is what the head delegate for {{ school }} would see if they were viewing the dashboard. You can't see the scholarship application, though. You can, however, use the change password and logout links.</p>
+{% if unfilled_assignments %}
+<div class="alert">
+    <p>You have unfilled committee assignments! Please indicate the names of the delegates who will be occupying each country or character assignment in the <a href="#committee-assignments"><strong>Committee assignments</strong></a> section below, needed for badge-printing purposes.</p>
+</div>
 {% endif %}
 
 {% if school %}
@@ -52,6 +54,61 @@
 		</td>
 	</tr>
 </table>
+
+{% if school.committeeassignment_set.count %}
+<h2 id="committee-assignments">Committee assignments</h2>
+<p>Please ensure that you enter a delegate's name for each position that you have been assigned, by January 12. Once you have filled in the delegate name(s) for each position, make sure to upload the relevant position paper, by January 16.</p>
+<p>Please check that any delegate names that have been entered are entered correctly, as you will not be able to change anything once submitted except by contacting <a href="mailto:charge@mcmun.org">charge@mcmun.org</a>. You do not have to enter all the names at once.</p>
+<form action="{% url assignments %}" method="post" enctype="multipart/form-data">
+{% for m in management_forms %}{{ m }}{% endfor %}
+{% csrf_token %}
+<table class="separated-cells">
+	<thead>
+		<tr>
+			<th>Committee</th>
+			<th>Assignment</th>
+			<th width="20%">Delegate name(s)</th>
+			<th width="25%">Position paper</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for f, d_f in formset %}
+		{% with c=f.instance %}
+		<tr>
+			<td><a href="{{ c.committee.get_absolute_url }}">{{ c.committee }}</a></td>
+			<td>{{ c.assignment }}</td>
+			<td>
+				{% for d in d_f %}
+					{% if d.instance.delegate_name %}
+						<p>Delegate name: {{ d.instance.delegate_name }}</p>
+						<!-- lol -->
+						<div class="hidden">{{ d.as_p }}</div>
+					{% else %}
+						{{ d.as_p }}
+					{% endif %}
+				{% endfor %}
+			</td>
+			<td>
+				{{ f.id }}
+				{% if c.is_filled %}
+					{{ f.position_paper }}
+				{% else %}
+					You will be able to upload a position paper after submitting the delegate name{{ c.num_delegates|pluralize}} for this position.
+				{% endif %}
+			</td>
+		</tr>
+		{% endwith %}
+		{% endfor %}
+	</tbody>
+</table>
+
+<p><strong>Please confirm any names that you've filled in before pressing submit. If you leave a field blank, you may fill it in later.</strong></p>
+
+<fieldset class="submit">
+	<input type="submit" name="submit" value="Submit" />
+</fieldset>
+</form>
+{% endif %}
 
 <h2 id="dates">Important dates</h2>
 

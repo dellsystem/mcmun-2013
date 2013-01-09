@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django_xhtml2pdf.utils import generate_pdf
 from django.shortcuts import render, redirect
 
+from committees.forms import CommitteeAssignmentFormSet, DelegateAssignmentFormset
+from committees.models import DelegateAssignment
 from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm, CommitteePrefsForm
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES
 from mcmun.models import RegisteredSchool, ScholarshipApp
@@ -89,7 +91,16 @@ def dashboard(request):
 		# Admins can see the dashboard, but can't fill out any forms
 		school = RegisteredSchool.objects.get(pk=1)
 
+	com_assignments = school.committeeassignment_set.all()
+	formset = CommitteeAssignmentFormSet(queryset=com_assignments, prefix='lol')
+	del_forms = []
+	for com_assignment in com_assignments:
+		del_forms.append(DelegateAssignmentFormset(queryset=com_assignment.delegateassignment_set.all(), prefix='%d' % com_assignment.id))
+
 	data = {
+		'management_forms': [formset.management_form] + [f.management_form for f in del_forms],
+		'formset': zip(formset, del_forms),
+		'unfilled_assignments': school.has_unfilled_assignments(),
 		'school': school,
 		'event_form': event_form,
 		'committees_form': committees_form,
@@ -102,6 +113,25 @@ def dashboard(request):
 
 	return render(request, "dashboard.html", data)
 
+
+@login_required
+def assignments(request):
+	"""
+	For updating assignments and handling position paper uploads
+	"""
+	user_schools = request.user.registeredschool_set.filter(is_approved=True)
+
+	# Why ...
+	if request.method == 'POST' and user_schools.count() == 1:
+		school = user_schools[0]
+		com_assignments = school.committeeassignment_set.all()
+		formset = CommitteeAssignmentFormSet(request.POST, request.FILES, queryset=com_assignments, prefix='lol')
+		formset.save()
+		for com_ass in com_assignments:
+			formset = DelegateAssignmentFormset(request.POST, request.FILES, queryset=com_ass.delegateassignment_set.all(), prefix='%d' % com_ass.id)
+			formset.save()
+
+	return redirect(dashboard)
 
 @login_required
 def events(request):
