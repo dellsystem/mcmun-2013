@@ -56,7 +56,7 @@ def registration(request):
 @login_required
 def dashboard(request):
 	# If it's a dais member, redirect to that committee's position paper listing
-	if request.user.username.endswith('@mcmun@.org'):
+	if request.user.username.endswith('@mcmun.org'):
 		dais_committee = get_committee_from_email(request.user.username)
 		if dais_committee:
 			return redirect(dais_committee)
