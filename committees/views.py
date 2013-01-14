@@ -93,23 +93,23 @@ def serve_papers(request, file_name):
 
 @login_required
 def list_papers(request, slug):
-    committee = get_object_or_404(Committee, slug=slug)
-    # Because some of the slugs don't exactly correspond to the emails
-    emails = {
-        'congo': 'congocrisis',
-        'social-media': 'sms',
-        'dc-comics': 'dc',
-        'cfp': 'firstministers',
-        'cultural-revolution': 'culturalrev',
-    }
+	committee = get_object_or_404(Committee, slug=slug)
+	# Because some of the slugs don't exactly correspond to the emails
+	emails = {
+		'congo': 'congocrisis',
+		'social-media': 'sms',
+		'dc-comics': 'dc',
+		'cfp': 'firstministers',
+		'cultural-revolution': 'culturalrev',
+	}
 
 	# Having issues with creating permissions, so this will have to do for now
-    # Remove hyphens in the username (not in the emails)
-    username = request.user.username.replace('-', '')
-    needed_username = emails.get(slug, slug) + "@mcmun.org"
+	# Remove hyphens in the username (not in the emails)
+	username = request.user.username.replace('-', '')
+	needed_username = emails.get(slug, slug) + "@mcmun.org"
 
-    # Only the dais for this committee and other admins can access this
-    if username == needed_username or request.user.staff:
+	# Only the dais for this committee and other admins can access this
+	if username == needed_username or request.user.staff:
 		data = {
 			'page': {
 				'long_name': 'Position papers for %s' % committee.name,
