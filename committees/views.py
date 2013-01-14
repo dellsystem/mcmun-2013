@@ -77,10 +77,16 @@ def application(request, slug):
 
 @login_required
 def serve_papers(request, file_name):
-	# Check if user is an admin/mod OR if the user uploaded the file
+	# Check if user is an admin/mod OR if the user uploaded the file OR dais
 	is_authorised = False
+
 	if request.user.is_staff:
 		is_authorised = True
+	elif request.user.username.endswith('@mcmun.org'):
+		# Check the dais
+		committee = get_committee_from_email(request.user.username)
+		if committee and committee.committeeassignment_set.filter(position_paper=full_path):
+			is_authorised = True
 	else:
 		user_schools = request.user.registeredschool_set.filter(is_approved=True)
 		if user_schools.count() == 1:
