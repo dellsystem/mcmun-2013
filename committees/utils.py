@@ -21,6 +21,8 @@ email_committee_map = {
 	'germanolympics@mcmun.org': 'german-olympics',
 	'adhoc@mcmun.org': 'ad-hoc',
 	'kgb@mcmun.org': 'kgb',
+	'awoc@mcmun.org': 'awoc',
+	'rwanda@mcmun.org': 'rwanda',
 }
 
 def get_committee_from_email(email):
