@@ -14,11 +14,14 @@ from committees.utils import get_committee_from_email
 
 def view(request, slug):
 	committee = get_object_or_404(Committee, slug=slug)
+	# If the user is a member of the dais, show a link to the uploads page
+	is_dais = get_committee_from_email(request.user.username) == committee
 
 	data = {
 		'page': {
 			'long_name': committee.name,
 		},
+		'is_dais': is_dais,
 		'committee': committee,
 		'dais_template': 'dais_photos/%s.html' % committee.slug,
 		'DAIS_PHOTO_URL': '%simg/dais/%s/' % (settings.STATIC_URL, committee.slug),
