@@ -79,6 +79,7 @@ def application(request, slug):
 def serve_papers(request, file_name):
 	# Check if user is an admin/mod OR if the user uploaded the file OR dais
 	is_authorised = False
+	full_path = os.path.join(position_paper_upload_path, file_name)
 
 	if request.user.is_staff:
 		is_authorised = True
@@ -91,7 +92,6 @@ def serve_papers(request, file_name):
 		user_schools = request.user.registeredschool_set.filter(is_approved=True)
 		if user_schools.count() == 1:
 			school = user_schools[0]
-			full_path = os.path.join(position_paper_upload_path, file_name)
 			if school.committeeassignment_set.filter(position_paper=full_path):
 				is_authorised = True
 
