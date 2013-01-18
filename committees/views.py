@@ -107,7 +107,7 @@ def list_papers(request, slug):
 
 	# Only the dais for this committee and other admins can access this
 	if (get_committee_from_email(request.user.username) == committee
-		or request.user.staff):
+		or request.user.is_staff):
 		data = {
 			'page': {
 				'long_name': 'Position papers for %s' % committee.name,
