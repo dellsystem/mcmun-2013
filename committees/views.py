@@ -9,15 +9,19 @@ from django.views.static import serve
 
 from committees.models import Committee, position_paper_upload_path
 from committees.forms import AdHocAppForm, BRICSAppForm, NixonAppForm, WallStreetAppForm
+from committees.utils import get_committee_from_email
 
 
 def view(request, slug):
 	committee = get_object_or_404(Committee, slug=slug)
+	# If the user is a member of the dais, show a link to the uploads page
+	is_dais = get_committee_from_email(request.user.username) == committee
 
 	data = {
 		'page': {
 			'long_name': committee.name,
 		},
+		'is_dais': is_dais,
 		'committee': committee,
 		'dais_template': 'dais_photos/%s.html' % committee.slug,
 		'DAIS_PHOTO_URL': '%simg/dais/%s/' % (settings.STATIC_URL, committee.slug),
@@ -73,15 +77,21 @@ def application(request, slug):
 
 @login_required
 def serve_papers(request, file_name):
-	# Check if user is an admin/mod OR if the user uploaded the file
+	# Check if user is an admin/mod OR if the user uploaded the file OR dais
 	is_authorised = False
+	full_path = os.path.join(position_paper_upload_path, file_name)
+
 	if request.user.is_staff:
 		is_authorised = True
+	elif request.user.username.endswith('@mcmun.org'):
+		# Check the dais
+		committee = get_committee_from_email(request.user.username)
+		if committee and committee.committeeassignment_set.filter(position_paper=full_path):
+			is_authorised = True
 	else:
 		user_schools = request.user.registeredschool_set.filter(is_approved=True)
 		if user_schools.count() == 1:
 			school = user_schools[0]
-			full_path = os.path.join(position_paper_upload_path, file_name)
 			if school.committeeassignment_set.filter(position_paper=full_path):
 				is_authorised = True
 
@@ -93,10 +103,11 @@ def serve_papers(request, file_name):
 
 @login_required
 def list_papers(request, slug):
-	# Having issues with creating permissions, so this will have to do for now
-	if request.user.is_staff:
-		committee = get_object_or_404(Committee, slug=slug)
+	committee = get_object_or_404(Committee, slug=slug)
 
+	# Only the dais for this committee and other admins can access this
+	if (get_committee_from_email(request.user.username) == committee
+		or request.user.staff):
 		data = {
 			'page': {
 				'long_name': 'Position papers for %s' % committee.name,
