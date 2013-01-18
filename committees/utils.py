@@ -21,8 +21,13 @@ email_committee_map = {
 	'germanolympics@mcmun.org': 'german-olympics',
 	'adhoc@mcmun.org': 'ad-hoc',
 	'kgb@mcmun.org': 'kgb',
-	'awoc@mcmun.org': 'awoc',
-	'rwanda@mcmun.org': 'rwanda',
+	'awocgov@mcmun.org': 'awoc',
+	'cosanostra@mcmun.org': 'awoc',
+	'unamir@mcmun.org': 'rwanda',
+	'fpr@mcmun.org': 'rwanda',
+	'far@mcmun.org': 'rwanda',
+	'frost@mcmun.org': 'frost-nixon',
+	'nixon@mcmun.org': 'frost-nixon',
 }
 
 def get_committee_from_email(email):
