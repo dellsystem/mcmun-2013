@@ -1,7 +1,8 @@
 $(document).ready(function() {
-	var rotateTimeout = 3500;
-	var firstDiv = $('#carousel-blocks div')[0];
-	var timeout;
+	
+	 $('.slideshow').cycle({
+		fx: 'fade'
+	});
 
 	// Staff coordinator application form
 	if ($('#staff-coordinator-form').length) {
@@ -65,22 +66,8 @@ $(document).ready(function() {
 		});
 	}
 
-	$('#carousel-blocks div').click(function () {
-		clearTimeout(timeout);
-		$('.active').removeClass();
-		$(this).addClass('active');
-		$('#carousel-image').removeClass().addClass($(this).attr('data-image'));
-		timeout = setTimeout(rotateCarousel, rotateTimeout);
-	});
+	
 
-
-	var rotateCarousel = function () {
-		var nextDiv = $('#carousel-blocks .active').next()[0] || firstDiv;
-		timeout = setTimeout(rotateCarousel, rotateTimeout);
-		$(nextDiv).click();
-	};
-
-	timeout = setTimeout(rotateCarousel, rotateTimeout);
 
 	// Show the person's title upon hovering over the photo
 	$('#sec-bios').delegate('.photo', 'mouseenter', function (event) {

@@ -1,16 +1,21 @@
 <div id="carousel">
-	<div id="carousel-image" class="charity">
+	<div class="slideshow">
+		<img src="{{ STATIC_URL }}img/rsz_test1.jpg" />
+		<img src="{{ STATIC_URL }}img/rsz_test2.jpg" style="display:none"/>
+		<img src="{{ STATIC_URL }}img/rsz_test3.jpg" style="display:none"/>
+
 	</div>
-	<div id="carousel-blocks">
-		<div data-image="charity" class="active"><span>Right To Play</span><a href="{{ STATIC_URL }}files/mcmun-right-to-play.pdf">Find out more about our conference charity (PDF)</a></div>
-		<div data-image="ambassador"><span>The Ambassador</span><a href="/ambassador">View issues of McMUN's official publication online</a></div>
-		<div data-image="committees"><span>Committees</span><a href="/committees-list">26 innovative committees</a></div>
+<!--	<div id="carousel-blocks" style = "width: 10px">
+		<div data-image="charity" class="active"></div>
+		<div data-image="ambassador"></div>
+		<div data-image="committees"></div>
 	</div>
+-->
 </div>
 
 <div class="link-block">
 	<img src="/static/img/rtp.png" alt="" />
-	<a href="{{ STATIC_URL }}files/mcmun-right-to-play.pdf">McMUN 2013's official charity (PDF)</a>
+	<a href="{{ STATIC_URL }}files/mcmun-right-to-play.pdf">SSUNS</a>
 </div>
 
 <div class="link-block">
@@ -22,14 +27,23 @@
 	<img src="/static/img/staralliance.png" alt="" />
 	<a href="/flights">Star Alliance</a>
 </div>
+<div class="twitter">
+	<a class="twitter-timeline"  href="https://twitter.com/SSUNS_SG" width="250px" height="300px" data-widget-id="318078278193790976">Tweets by @SSUNS_SG</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+<div class="announcement">
+	<div id="staffing-signup">
+		<p><b>Any announcement goes here</b></p>
+		<p>Interested in staffing for McMUN? Sign up for our staff listserv here:</p>
+		<p>For further details please contact our Chief of Staff at staff@mcmun.org.</p>
+		<p/>
+		<form method="post" action="{% url submit_signup 'staff' %}">
+			{% csrf_token %}
+			<input type="text" name="email" placeholder="example@example.com" />
+			<input type="text" name="name" placeholder="First Last" />
+			<input type="submit" name="submit" value="Sign up" />
+		</form>
 
-<div id="staffing-signup">
-	<form method="post" action="{% url submit_signup 'staff' %}">
-		{% csrf_token %}
-		<input type="text" name="email" placeholder="example@example.com" />
-		<input type="text" name="name" placeholder="First Last" />
-		<input type="submit" name="submit" value="Sign up" />
-	</form>
-	<p>Interested in staffing for McMUN? Sign up for our staff listserv here:</p>
-	<p>For further details please contact our Chief of Staff at staff@mcmun.org.</p>
+	</div>
+</div>
 </div>
