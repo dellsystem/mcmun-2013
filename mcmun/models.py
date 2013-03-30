@@ -11,6 +11,7 @@ from mcmun.tasks import send_email, generate_invoice
 from committees.models import Committee, DelegateAssignment
 
 
+# test
 class RegisteredSchool(models.Model):
 	class Meta:
 		ordering = ['school_name']

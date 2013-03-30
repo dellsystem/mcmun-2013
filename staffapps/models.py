@@ -45,7 +45,7 @@ logistical_choices = (
 	('food', 'Food staff'),
 )
 
-committees_choices = [(committee.slug, committee.name) for committee in Committee.objects.all()]
+committees_choices = []#[(committee.slug, committee.name) for committee in Committee.objects.all()]
 
 
 class StaffApp(models.Model):

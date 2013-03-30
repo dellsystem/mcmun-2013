@@ -19,12 +19,14 @@
 <body>
 	<div id="header">
 		<div id="masthead">
-			<a href="/"><img src="{{ STATIC_URL }}img/logo.png" /></a>
-			<div class="title">
-				<p class="top">McGill Model United Nations</span>
-				<p class="middle">McMUN 2013</span>
-				<p class="bottom">January 24th - 27th, Montreal</span>
-			</div>
+			<img class="logoImg" src="{{ STATIC_URL }}img/logoWhiteLeaves.png"/>
+			<center>
+				<div class="title">
+					<p class="top">Secondary Schools' United Nations Symposium</span>
+					<p class="middle">SSUNS 2013</span>
+					<p class="bottom">November 7th - 10th, Montreal</span>
+				</div>
+			</center>
 			<div class="social-media">
 				<a href="https://twitter.com/#!/mcmun2013" class="twitter" title="Find us on Twitter">&nbsp;</a>&nbsp;
 				<a href="https://facebook.com/pages/McMUN/62890916494" class="facebook" title="Find us on Facebook">&nbsp;</a>&nbsp;
@@ -47,6 +49,7 @@
 			{% endfor %}
 		</ul>
 	</div>
+
 	<div id="content">
 		{% block content %}{% endblock %}
 	</div>

@@ -19,12 +19,15 @@ body {
 	font-size: 12px;
 	color: @bodyText;
 	width: 100%;
+	background: blue;
+	/*
 	background-image: url('../img/montreal.jpg');
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: top left;
 	overflow-y: scroll; // to eliminate the jostling when switching pages
+	*/
 }
 
 .container {
@@ -211,15 +214,15 @@ body {
 #carousel {
 	position: relative;
 	width: 840px;
-	height: 240px;
-	padding: 30px;
+	height: 300px;
+	padding: 0px;
 	#gradient(@carouselBgStart, @carouselBgEnd);
 	box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.35);
 	margin-bottom: 30px;
 	#carousel-image {
 		float: left;
-		width: 600px;
-		height: 240px;
+		width: 840px;
+		height: 300px;
 		&.charity {
 			background-image: url('../img/mcparte_rtp.png');
 		}
@@ -280,6 +283,7 @@ body {
 				}
 			}
 		}
+
 	}
 }
 
@@ -287,6 +291,7 @@ body {
 	.inline-block;
 	height: 200px;
 	position: relative;
+	margin-top: 20px;
 	a {
 		z-index: 2;
 		position: absolute;
