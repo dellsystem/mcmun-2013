@@ -1,8 +1,8 @@
 <div id="carousel">
-	<div class="slideshow">
-		<img src="{{ STATIC_URL }}img/rsz_test1.jpg" />
-		<img src="{{ STATIC_URL }}img/rsz_test2.jpg" style="display:none"/>
-		<img src="{{ STATIC_URL }}img/rsz_test3.jpg" style="display:none"/>
+	<div class="slideshow" style="position:relative">
+		<img src="{{ STATIC_URL }}img/rsz_test1.jpg" style="position:relative" />
+		<img src="{{ STATIC_URL }}img/rsz_test2.jpg" style="display:none;position:relative"/>
+		<img src="{{ STATIC_URL }}img/rsz_test3.jpg" style="display:none;position:relative"/>
 
 	</div>
 <!--	<div id="carousel-blocks" style = "width: 10px">
@@ -20,7 +20,7 @@
 
 <div class="link-block">
 	<img src="/static/img/brochure.png" alt="" />
-	<a href="/about">McMUN brochure</a>
+	<a href="/about">SSUNS brochure</a>
 </div>
 
 <div class="link-block">
@@ -34,8 +34,8 @@
 <div class="announcement">
 	<div id="staffing-signup">
 		<p><b>Any announcement goes here</b></p>
-		<p>Interested in staffing for McMUN? Sign up for our staff listserv here:</p>
-		<p>For further details please contact our Chief of Staff at staff@mcmun.org.</p>
+		<p>Interested in staffing for SSUNS? Sign up for our staff listserv here:</p>
+		<p>For further details please contact our Chief of Staff at staff@ssuns.org.</p>
 		<p/>
 		<form method="post" action="{% url submit_signup 'staff' %}">
 			{% csrf_token %}
