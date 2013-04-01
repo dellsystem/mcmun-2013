@@ -1,3 +1,6 @@
 *.pyc
 db.sqlite
 tmp
+*.swp
+uploads
+*~

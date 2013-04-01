@@ -3,7 +3,20 @@
 {% load markup %}
 
 {% block content %}
+
+<div class="center-align">
+	<img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.png" />
+</div>
+
+<br />
+
 <h1>{{ committee.name }}</h1>
+
+{% if is_dais %}
+<div class="center-align">
+	<big><a href="{% url list_papers committee.slug %}">View position papers</a></big>
+</div>
+{% endif %}
 
 {{ committee.description|markdown:"footnotes,def_list,tables" }}
 

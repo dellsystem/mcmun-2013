@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -6,9 +8,13 @@ from django.dispatch import receiver
 from mcmun.utils import generate_random_password
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES, COUNTRIES, DELEGATION_FEE
 from mcmun.tasks import send_email, generate_invoice
+from committees.models import Committee, DelegateAssignment
 
 
 class RegisteredSchool(models.Model):
+	class Meta:
+		ordering = ['school_name']
+
 	school_name = models.CharField(max_length=100, unique=True)
 	address = models.CharField(max_length=255)
 	country = models.CharField(max_length=2, choices=COUNTRIES)
@@ -20,10 +26,13 @@ class RegisteredSchool(models.Model):
 
 	num_delegates = models.IntegerField(default=1, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES + 1)])
 	use_online_payment = models.BooleanField()
-	use_tiered = models.BooleanField()
-	use_priority = models.BooleanField()
+	use_tiered = models.BooleanField(default=False)
+	use_priority = models.BooleanField(default=False)
 
-	amount_paid = models.IntegerField(default=0)
+	amount_paid = models.DecimalField(default=Decimal(0), max_digits=6, decimal_places=2)
+
+	num_pub_crawl = models.IntegerField(default=0, verbose_name="Number of delegates interested in attending Pub Crawl")
+	num_non_alcohol = models.IntegerField(default=0, verbose_name="Number of delegates who would prefer to attend a non-alcoholic event instead")
 
 	# This should really have been a OneToOneField. Too late now. Next year.
 	# Only set iff the user has been approved
@@ -32,6 +41,17 @@ class RegisteredSchool(models.Model):
 	is_approved = models.BooleanField(default=False, verbose_name="Approve school")
 	# Effective only for schools that have registered after Sept 1 (when this was deployed)
 	pays_convenience_fee = models.BooleanField(default=False, editable=False)
+
+	# Committee preferences. SO BAD
+	committee_1 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_1")
+	committee_2 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_2")
+	committee_3 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_3")
+	committee_4 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_4")
+	committee_5 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_5")
+
+	def has_prefs(self):
+		return (self.committee_1 or self.committee_2 or self.committee_3 or
+			self.committee_4 or self.committee_5)
 
 	def is_international(self):
 		"""
@@ -135,6 +155,9 @@ class RegisteredSchool(models.Model):
 	def send_invoice_email(self, username, password):
 		print "about to delay the generate_invoice task"
 		generate_invoice.delay(self.id, username, password)
+
+	def has_unfilled_assignments(self):
+		return any(not c.is_filled() for c in self.committeeassignment_set.all())
 
 	def __unicode__(self):
 		return self.school_name

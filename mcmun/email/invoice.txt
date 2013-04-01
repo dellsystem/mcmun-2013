@@ -13,6 +13,8 @@ Password: %(password)s
 
 Your committee assignments will be released on December 10th, subject to full payment being received. After this date, you will also be able to access your committee assignments, enter the names of the delegates who will be attending, and upload position papers from that page.
 
+Upon confirmation of registration, your delegation size and contact information are transmitted to the hotel manager, Sonia Monistero, who will contact you with a discount code and specific procedures for booking hotel rooms at the Sheraton.
+
 Please keep this email for your records.
 
 Looking forward to seeing you in January,

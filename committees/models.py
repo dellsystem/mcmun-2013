@@ -1,4 +1,12 @@
+import os
+
 from django.db import models
+
+
+position_paper_upload_path = 'position-papers/'
+
+def get_position_paper_path(instance, filename):
+	return os.path.join(position_paper_upload_path, str(instance.id) + os.path.splitext(filename)[1])
 
 
 class Category(models.Model):
@@ -84,3 +92,51 @@ class WallStreetApplication(CommitteeApplication):
 	facebook_ipo = models.TextField(verbose_name="In May 2012, Facebook, Inc. held its initial public offering (IPO) at an unprecedented valuation for an internet corporation. Since then, it is arguable that Facebook's IPO failed to match traders' expectations. Do you agree? Also, what are the long-term and the short-term forecasts for Facebook's stock in your opinion? Explain in less than two hundred words.")
 	british_libor = models.TextField(verbose_name="This summer, the British financial system faced heavy scrutiny and damaging accusations of manipulation of the London Interbank Offered Rate (LIBOR). Should the British government get involved? What are the implications of this scandal? Explain in less than two hundred words.")
 	bull_bear = models.TextField(verbose_name="Are you bull-ish or bear-ish? Explain in two sentences or less.")
+
+
+class CommitteeAssignment(models.Model):
+	class Meta:
+		ordering = ('school', 'committee')
+        permissions = (("can_view_papers", "Can view position papers"),)
+
+	# Number of delegates is usually 1, except in SOCHUM
+	school = models.ForeignKey('mcmun.RegisteredSchool')
+	num_delegates = models.IntegerField(default=1)
+	committee = models.ForeignKey(Committee)
+	# The country or character name, in plain text
+	assignment = models.CharField(max_length=255)
+	notes = models.TextField(blank=True, null=True)
+	position_paper = models.FileField(upload_to=get_position_paper_path, blank=True, null=True)
+
+	def __unicode__(self):
+		return "%s" % self.assignment
+
+	def is_filled(self):
+		return self.delegateassignment_set.filter(delegate_name__isnull=False).count() == self.num_delegates
+
+
+class DelegateAssignment(models.Model):
+	class Meta:
+		unique_together = ('committee_assignment', 'delegate_name')
+
+	committee_assignment = models.ForeignKey(CommitteeAssignment)
+	# Blank until a delegate is there
+	delegate_name = models.CharField(max_length=255, null=True, blank=True)
+
+	def __unicode__(self):
+		if self.delegate_name:
+			return self.delegate_name
+		else:
+			return "N/A"
+
+
+def create_delegate_assignments(sender, instance, created, **kwargs):
+	"""
+	Defines a post_save hook to create the right number of DelegateAssignments
+	(with no delegate name specified) for each CommitteeAssignment
+	"""
+	if created:
+		for i in xrange(instance.num_delegates):
+			instance.delegateassignment_set.create()
+
+models.signals.post_save.connect(create_delegate_assignments, sender=CommitteeAssignment)
