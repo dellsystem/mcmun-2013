@@ -1,7 +1,9 @@
-[![McMUN logo](http://www.mcmun.org/static/img/logo.png)](http://www.mcmun.org)
+[![McMUN logo](http://ssuns.mcmun.org/static/img/logoWhiteLeaves.png)](http://www.mcmun.org)
 
-McMUN 2013
+SSUNS 2013
 ==========
+
+I forked McMUN 2013 repository and continue replenishing the new website SSUNS 2013 with SSUNS information, which it's overall system is heavily based on the previous McMUN 2013 website. I played around with the layout recently, and planning to hook up with the registration system once bugs are fixed. Here are the following info regarding to the old website written by Dellsystem:
 
 This is the source for [the McMUN 2013 website](http://www.mcmun.org). I was planning to use the same phpBB-based codebase as that for [the SSUNS website](https://github.com/dellsystem/ssuns-2011), but it turns out the McMUN webhost is capable of running more than just PHP (!!) so I built the McMUN site using Django instead.
 
