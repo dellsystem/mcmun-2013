@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+	{% if page.use_home %}
+		{% with "pages/home_template.html" as template_file %}
+			{% include template_file %}
+		{% endwith %}
+	{% endif %}
 	{% if page.show_nav %}
 		<h1>{{ page.long_name }}</h1>
 	{% endif %}

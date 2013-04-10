@@ -13,6 +13,8 @@ class Page(models.Model):
 	content = models.TextField(blank=True, null=True)
 	# Set to true if you want to use a custom template (pages/[short_name].html)
 	custom_template = models.BooleanField(default=False)
+	# Set to true if you want to display as home page
+	use_home = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return self.long_name
