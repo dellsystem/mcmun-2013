@@ -1,13 +1,9 @@
-<<<<<<< HEAD
-[![McMUN logo](http://www.mcmun.org/static/img/mcmun.png)](http://www.mcmun.org)
-=======
+
 [![McMUN logo](http://ssuns.mcmun.org/static/img/logoWhiteLeaves.png)](http://www.mcmun.org)
->>>>>>> ca572c5fd7ef5bc5f2a5c595b9a862d7be5b806e
 
 SSUNS 2013
 ==========
 
-<<<<<<< HEAD
 This is the source for the codebase that I originally wrote for the McMUN
 2013 website. It will also be used to power the McMUN 2014 and SSUNS 2013
 websites. Built with Django.
