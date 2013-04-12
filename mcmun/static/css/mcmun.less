@@ -4,10 +4,6 @@
 @import "menu.less";
 @import "forms.less";
 
-* {
-	margin: 0;
-	padding: 0;
-}
 
 img {
 	border: 0;
@@ -19,15 +15,12 @@ body {
 	font-size: 12px;
 	color: @bodyText;
 	width: 100%;
-	background: blue;
-	/*
 	background-image: url('../img/montreal.jpg');
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: top left;
 	overflow-y: scroll; // to eliminate the jostling when switching pages
-	*/
 }
 
 .container {
@@ -46,35 +39,29 @@ body {
 #masthead {
 	position: relative;
 	padding-top: 20px;
+	padding-left: 50px;
 	.title {
 		position: absolute;
-		top: 70px;
-		right: 50px;
+		top: 35px;
+		right: 180px;
 		color: #FFF;
 		#raleway;
 		font-weight: normal;
 		text-shadow: @headerTextShadow 0 2px 0;
 		text-align: right;
 		.top {
-			font-size: 2.3em;
+			font-size: 2.1em;
 			// Needed for proper sizing in Windows
 			line-height: 1.2em;
 		}
 		.middle {
-			font-size: 6.3em;
+			font-size: 5.7em;
 			line-height: 1.0em;
-			font-weight:bold;
 		}
 		.bottom {
-			font-size: 2.3em;
+			font-size: 2.1em;
 			font-weight: bold;
 			line-height: 1.2em;
-		}
-	.logoImg {
-			position: relative; 
-			margin-left: -200px; 
-			opacity: 0.5;
-			filter: alpha(opacity=40); /* For IE8 and earlier */
 		}
 	}
 	.social-media {
@@ -219,34 +206,83 @@ body {
 
 #carousel {
 	position: relative;
-	width: 880px;
-	height: 320px;
-	padding: 5px;
+	width: 840px;
+	height: 240px;
+	padding: 30px;
 	#gradient(@carouselBgStart, @carouselBgEnd);
 	box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.35);
 	margin-bottom: 30px;
-
+	#carousel-image {
+		float: left;
+		width: 600px;
+		height: 240px;
+		&.charity {
+			background-image: url('../img/mcparte_rtp.png');
+		}
+		&.ambassador {
+			background-image: url('../img/ambassador.png');
+		}
+		&.committees {
+			background-image: url('../img/welcome.jpg');
+		}
+	}
 	#carousel-blocks {
 		float: left;
 		height: 100%;
-		width: 10px;
+		width: 240px;
 		div {
 			height: 80px;
+			#raleway;
+			font-size: 1.6em;
+			font-weight: bold;
+			text-transform: uppercase;
+			line-height: 80px;
+			text-align: right;
+			background: @carouselBg;
+			color: @carouselText;
+			padding-right: 30px;
+			&:hover {
+				background: @carouselHoverBg;
+				cursor: pointer;
+			}
+			&.active {
+				background: @carouselActiveBg;
+				a {
+					display: block;
+				}
+			}
+			a {
+				padding-left: 10px;
+				text-transform: none;
+				text-decoration: none;
+				font-size: 0.9em;
+				color: @white;
+				text-align: left;
+				.hidden;
+				z-index: 5;
+				position: absolute;
+				bottom: 30px;
+				left: 30px;
+				right: 270px;
+				height: 40px;
+				line-height: 40px;
+				.grey-bg(10, 0.8);
+				&:after {
+					// A space and a &raquo;
+					content: "\00a0\00BB";
+				}
+				&:hover {
+					.grey-bg(30, 0.6);
+				}
+			}
 		}
-
 	}
 }
 
-.slideshow {
-	z-index:0;
-}
-
 .link-block {
-	display:inline-block;
-	zoom:1;
-	display:inline;
-	height:150px;
-	position:relative;	
+	.inline-block;
+	height: 200px;
+	position: relative;
 	a {
 		z-index: 2;
 		position: absolute;
@@ -254,7 +290,7 @@ body {
 		bottom: 0px;
 		text-align: center;
 		height: 50px;
-		width: 200px;
+		width: 283px;
 		display: block;
 		line-height: 50px;
 		color: #FFF !important;
@@ -268,18 +304,9 @@ body {
 			text-decoration: none !important;
 		}
 	}
-	img {
-		height:150px;
-		width:200px;
+	& + .link-block {
+		margin-left: 21px;
 	}
-}
-
-.twitter {
-	float:right
-}
-.annoucement {
-	width:620px;
-	margin-top:21px;
 }
 
 #sec-bios {

@@ -4,8 +4,9 @@
         {% for committee in category.committee_set.all %}
             <li>
 <!--		<a href="{% url committees.views.view committee.slug %}">	--->
-		<img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.png" /><br />{{ committee.name }}
+		<img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.jpg" /><br /><h5>{{ committee.name }}</h5>
 <!--		</a>	--->
+		<p />
 	     </li>
         {% endfor %}
     </ul>
