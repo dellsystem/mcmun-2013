@@ -16,7 +16,7 @@
 {% if page.parentpage.subpages.all %}
 	{% for subpage in page.parentpage.subpages.all %}
 		<div class="link-block">
-			<img src="/static/img/pagePic/{{ subpage.short_name }}.jpg" alt="" />
+			<img src="/static/img/pagePic/{{ subpage.pagePic }}.jpg" alt="{{ subpage.long_name }}" />
 			<a href="/{{ subpage.short_name }}">{{ subpage.long_name }}</a>
 		</div>
 	{% endfor %}

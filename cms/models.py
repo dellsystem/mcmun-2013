@@ -15,6 +15,8 @@ class Page(models.Model):
 	custom_template = models.BooleanField(default=False)
 	# Set to true if you want to display as home page
 	use_home = models.BooleanField(default=False)
+	# specify the name of the picture that they wanna use for the icon in the parent page
+	pagePic = models.CharField(max_length=50, blank=True, null=True)
 
 	def __unicode__(self):
 		return self.long_name
