@@ -8,18 +8,18 @@
 </div>
 
 <div class="link-block">
-	<img src="/static/img/pagePic/secretariat.jpg" alt="" />
+	<img src="/static/img/pagePic/secretariat.jpg" alt="Secretariat" />
 	<a href="/secretariat">SSUNS Secretariat</a>
 </div>
 
 <div class="link-block">
-	<img src="/static/img/pagePic/brochure.jpg" alt="" />
+	<img src="/static/img/pagePic/brochure.jpg" alt="Brochure" />
 	<a href="/brochure">SSUNS brochure</a>
 </div>
 
 <div class="link-block">
-	<img src="/static/img/staralliance.png" alt="" />
-	<a href="/flights">Star Alliance</a>
+	<img src="/static/img/charity.jpg" alt="SSUNS Charity" />
+	<a href="/charity">SSUNS Charity</a>
 </div>
 <div class="twitter">
 	<a class="twitter-timeline" href="https://twitter.com/search?q=%23SSUNS" width="250px" height="300px" data-widget-id="321114393083518976">Tweets about "#SSUNS"</a>
@@ -27,10 +27,8 @@
 </div>
 <div class="announcement">
 	<div id="staffing-signup">
-		<p><b>Any announcement goes here</b></p>
-		<p>Interested in staffing for SSUNS? Sign up for our staff listserv here:</p>
-		<p>For further details please contact our Chief of Staff at staff@ssuns.org.</p>
-		<p/>
+		<p>Interested in attending SSUNS? Sign up for our listserv here:</p>
+		<p>For further details please contact our Charge d'Affairs at <a href="mailto:schools@ssuns.org">schools@ssuns.org.</a></p>
 		<form method="post" action="{% url submit_signup 'staff' %}">
 			{% csrf_token %}
 			<input type="text" name="email" placeholder="example@example.com" />

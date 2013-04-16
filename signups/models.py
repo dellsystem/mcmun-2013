@@ -2,6 +2,7 @@ from django.db import models
 
 SIGNUP_CATEGORIES = (
 	(1, 'Staff'),
+	(2, 'Charge')
 )
 
 class Person(models.Model):

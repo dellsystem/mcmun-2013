@@ -24,7 +24,7 @@ def submit(request, category):
 			try:
 				Person.objects.create(email=email, name=name, category=categories.index(category))
 				title = 'Successful signup'
-				message = 'Thank you for signing up for our %s listserv.' % category
+				message = 'Thank you for signing up for our listserv.'
 			except IntegrityError:
 				message = 'That email address has already been used. Perhaps you signed up before and forgot about it?'
 

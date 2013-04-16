@@ -15,7 +15,6 @@ body {
 	font-size: 12px;
 	color: @bodyText;
 	width: 100%;
-	background-image: url('../img/montreal.jpg');
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -30,44 +29,49 @@ body {
 
 #header {
 	.container;
-	background-image: url('../img/dove.png');
 	background-repeat: no-repeat;
 	background-position: 0 20px;
-	height: 320px;
+	height: 260px;
 }
 
 #masthead {
 	position: relative;
 	padding-top: 20px;
-	padding-left: 50px;
 	.title {
 		position: absolute;
-		top: 35px;
-		right: 180px;
+		top: 70px;
+		right: 50px;
 		color: #FFF;
 		#raleway;
 		font-weight: normal;
 		text-shadow: @headerTextShadow 0 2px 0;
 		text-align: right;
 		.top {
-			font-size: 2.1em;
+			font-size: 2.3em;
 			// Needed for proper sizing in Windows
 			line-height: 1.2em;
 		}
 		.middle {
-			font-size: 5.7em;
+			font-size: 6.3em;
 			line-height: 1.0em;
+			font-weight: bold;
 		}
 		.bottom {
-			font-size: 2.1em;
+			font-size: 2.3em;
 			font-weight: bold;
 			line-height: 1.2em;
 		}
 	}
+	.logoImg {
+		position: relative; 
+		margin-left: -200px; 
+		opacity: 0.7;
+		filter: alpha(opacity=40); /* For IE8 and earlier */
+	}
 	.social-media {
 		position: absolute;
-		right: 0px;
-		bottom: -10px;
+		top: 220px;
+		right: 50px;
 		a {
 			text-decoration: none;
 			.inline-block;
@@ -96,13 +100,15 @@ body {
 	padding: 30px;
 	font-size: 13px;
 	h1, h2, h3, h4, h5, h6 {
-		padding-top: 25px;
+		padding-top: 10px;
 		padding-bottom: 10px;
 		clear: both;
 	}
 	h1 {
 		padding-top: 0;
+		padding-bottom: 0;
 		font-size: 3.5em;
+		margin-top: 0;
 		#raleway;
 	}
 	h1 + h2 {
@@ -206,9 +212,9 @@ body {
 
 #carousel {
 	position: relative;
-	width: 840px;
-	height: 240px;
-	padding: 30px;
+	width: 880px;
+	height: 320px;
+	padding: 5px;
 	#gradient(@carouselBgStart, @carouselBgEnd);
 	box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.35);
 	margin-bottom: 30px;
@@ -216,72 +222,24 @@ body {
 		float: left;
 		width: 600px;
 		height: 240px;
-		&.charity {
-			background-image: url('../img/mcparte_rtp.png');
-		}
-		&.ambassador {
-			background-image: url('../img/ambassador.png');
-		}
-		&.committees {
-			background-image: url('../img/welcome.jpg');
-		}
 	}
 	#carousel-blocks {
 		float: left;
 		height: 100%;
-		width: 240px;
+		width: 10px;
 		div {
 			height: 80px;
-			#raleway;
-			font-size: 1.6em;
-			font-weight: bold;
-			text-transform: uppercase;
-			line-height: 80px;
-			text-align: right;
-			background: @carouselBg;
-			color: @carouselText;
-			padding-right: 30px;
-			&:hover {
-				background: @carouselHoverBg;
-				cursor: pointer;
-			}
-			&.active {
-				background: @carouselActiveBg;
-				a {
-					display: block;
-				}
-			}
-			a {
-				padding-left: 10px;
-				text-transform: none;
-				text-decoration: none;
-				font-size: 0.9em;
-				color: @white;
-				text-align: left;
-				.hidden;
-				z-index: 5;
-				position: absolute;
-				bottom: 30px;
-				left: 30px;
-				right: 270px;
-				height: 40px;
-				line-height: 40px;
-				.grey-bg(10, 0.8);
-				&:after {
-					// A space and a &raquo;
-					content: "\00a0\00BB";
-				}
-				&:hover {
-					.grey-bg(30, 0.6);
-				}
-			}
 		}
 	}
 }
 
+.slideshow {
+	z-index:0;
+}
+
 .link-block {
 	.inline-block;
-	height: 200px;
+	height: 150px;
 	position: relative;
 	a {
 		z-index: 2;
@@ -290,7 +248,7 @@ body {
 		bottom: 0px;
 		text-align: center;
 		height: 50px;
-		width: 283px;
+		width: 200px;
 		display: block;
 		line-height: 50px;
 		color: #FFF !important;
@@ -304,13 +262,47 @@ body {
 			text-decoration: none !important;
 		}
 	}
-	& + .link-block {
-		margin-left: 21px;
+	img {
+		height: 150px;
+		width: 200px;
 	}
 }
 
+.sublink-block {
+	.inline-block;
+	height: 50px;
+	position: relative;
+	a {
+		z-index: 2;
+		position: relative;
+		left: 0px;
+		bottom: 0px;
+		text-align: center;
+		height: 50px;
+		width: 295px;
+		display: block;
+		line-height: 50px;
+		background-color: @sublink;
+		text-decoration: none;
+		font-size: 1.3em;
+		#raleway;
+		font-weight: bold;
+		&:hover {
+			.grey-bg(@sublinkBlockBgHoverRgb, @sublinkBlockBgHoverAlpha);
+			text-decoration: none !important;
+		}
+	}
+}
+
+.twitter {
+	float:right;
+}
+.announcement {
+	width: 620px;
+	margin-top: 21px;
+}
 #sec-bios {
-	width: 600px;
+	width: 700px;
 	.bio {
 		position: absolute;
 		width: 300px;
@@ -330,6 +322,8 @@ body {
 		position: relative;
 		img {
 			border: 5px solid @white;
+			width: 180px;
+			height: 270px;
 		}
 		&.active img {
 			border-color: @black;
@@ -357,9 +351,6 @@ body {
 
 #staffing-signup {
 	padding-top: 20px;
-	form {
-		.right-float;
-	}
 }
 
 #dashboard-table {
@@ -421,4 +412,8 @@ body {
 
 .separated-cells td {
     border-top: 1px solid lighten(@lighterGrey, 5%);
+}
+
+.firstrow { 
+	background-color: #dddddd;
 }

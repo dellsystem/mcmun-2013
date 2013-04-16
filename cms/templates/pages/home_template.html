@@ -8,16 +8,16 @@
 </div>
 
 
-<div class="twitter">
+<!--<div class="twitter">
 	<a class="twitter-timeline" href="https://twitter.com/search?q=%23SSUNS" width="250px" height="300px" data-widget-id="321114393083518976">Tweets about "#SSUNS"</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
-
+-->
 {% if page.parentpage.subpages.all %}
 	{% for subpage in page.parentpage.subpages.all %}
-		<div class="link-block">
-			<img src="/static/img/pagePic/{{ subpage.pagePic }}.jpg" alt="{{ subpage.long_name }}" />
-			<a href="/{{ subpage.short_name }}">{{ subpage.long_name }}</a>
+		<div class="sublink-block">
+		<!--	<img src="/static/img/pagePic/.jpg" alt="{{ subpage.long_name }}" />
+		--><a href="/{{ subpage.short_name }}">{{ subpage.long_name }}</a>
 		</div>
 	{% endfor %}
 {% endif %}
