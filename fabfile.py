@@ -29,7 +29,7 @@ def reset():
     local("python manage.py syncdb")
 
 def restart():
-    local("sudo kill -HUP 9789")
+    local("sudo kill -HUP `cat /srv/ssuns.mcmun.org/gunicorn.pid`")
 
 def nginx():
     local("sudo kill -HUP `cat /var/run/nginx.pid`")

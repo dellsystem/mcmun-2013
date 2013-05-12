@@ -12,6 +12,11 @@ INTERNAL_IPS = (
 	'127.0.0.1',
 )
 
+ADMINS = (
+    ('Lucille Hua', 'it@ssuns.org'),
+    ('Wendy Liu', 'it@mcmun.org'),
+)
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -178,11 +183,6 @@ IT_EMAIL = 'it@ssuns.org'
 CHARGE_EMAIL = 'charge@ssuns.org'
 
 ADMIN_URL = '/admin/'
-
-ADMINS = (
-    ('Lucille Hua', 'it@ssuns.org'),
-    ('Wendy Liu', 'it@mcmun.org'),
-)
 
 CSRF_COOKIE_DOMAIN = ".mcmun.org"
 DEFAULT_FROM_EMAIL = 'it@mcmun.org'

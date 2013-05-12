@@ -52,6 +52,42 @@ def registration(request):
 
 	return render(request, "registration.html", data)
 
+def nikhil(request):
+	if request.method == 'POST':
+		form = RegistrationForm(request.POST)
+
+		if form.is_valid():
+			# Simple spam-prevention technique
+			if not request.POST.get('address', '').startswith('http://'):
+				registered_school = form.save()
+				registered_school.pays_convenience_fee = True
+				registered_school.save()
+
+				# Send emails to user, stysis, myself
+				registered_school.send_success_email()
+
+			data = {
+				'page': {
+					'long_name': 'Succcessful registration'
+				}
+			}
+
+			return render(request, "registration_success.html", data)
+	else:
+		form = RegistrationForm()
+
+	data = {
+		'form': form,
+		'page': {
+			'long_name': 'Registration',
+		},
+		'min_num_delegates': MIN_NUM_DELEGATES,
+		'max_num_delegates': MAX_NUM_DELEGATES,
+	}
+
+	return render(request, "nikhil.html", data)
+
+
 
 @login_required
 def dashboard(request):
