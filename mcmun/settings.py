@@ -2,6 +2,8 @@ import djcelery
 import logging
 import django.conf.global_settings as DEFAULT_SETTINGS
 
+import hidden
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -10,18 +12,14 @@ INTERNAL_IPS = (
 	'127.0.0.1',
 )
 
-ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
-)
-
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'db.sqlite',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'ssuns',                      # Or path to database file if using sqlite3.
+        'USER': 'ssuns',                      # Not used with sqlite3.
+        'PASSWORD': hidden.DB_PASS,                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -66,7 +64,7 @@ MEDIA_URL = '/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = '/srv/ssuns.mcmun.org/static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -173,16 +171,17 @@ TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'it@mcmun.org'
-EMAIL_HOST_PASSWORD = 'EDIT THIS!'
+EMAIL_HOST_USER = 'it@ssuns.org'
+EMAIL_HOST_PASSWORD = hidden.EMAIL_PASS
 
-IT_EMAIL = 'it@mcmun.org'
-CHARGE_EMAIL = 'charge@mcmun.org'
+IT_EMAIL = 'it@ssuns.org'
+CHARGE_EMAIL = 'charge@ssuns.org'
 
-ADMIN_URL = 'EDIT THIS!'
+ADMIN_URL = '/admin/'
 
 ADMINS = (
-    ('IT', 'it@mcmun.org'),
+    ('Lucille Hua', 'it@ssuns.org'),
+    ('Wendy Liu', 'it@mcmun.org'),
 )
 
 CSRF_COOKIE_DOMAIN = ".mcmun.org"

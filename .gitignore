@@ -4,3 +4,5 @@ tmp
 *.swp
 uploads
 *~
+# Contains passwords and other sensitive info
+hidden.py

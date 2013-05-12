@@ -27,3 +27,12 @@ def dump():
 def reset():
     local("rm db.sqlite")
     local("python manage.py syncdb")
+
+def restart():
+    local("sudo kill -HUP 9789")
+
+def nginx():
+    local("sudo kill -HUP `cat /var/run/nginx.pid`")
+
+def static():
+    local("python manage.py collectstatic --noinput")
