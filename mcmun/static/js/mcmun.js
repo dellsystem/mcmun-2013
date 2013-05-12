@@ -3,6 +3,29 @@ $(document).ready(function() {
 	 $('.slideshow').cycle({
 		fx: 'fade'
 	});
+	// for registration if it's the first time the school attend ssuns, then ask them more question
+	$('#registration_form select[id^="id_first_time"]').change(function () {
+		var result = $(this).find('option:selected').val();
+		if(result === 'True') {
+			$('#howYouHear').show()		
+		}
+		else {
+			$('#howYouHear').hide()	
+		}
+	});
+	//also for registration for referring from other school. baddddddd
+	$('#registration_form select[id^="id_how_you_hear"]').change(function () {
+		var result = $(this).find('option:selected').val();
+		if(result === 'another_school') {
+			$('#anotherschool').show()
+			$('#other').hide()	
+		}
+		if(result === 'other') {
+			$('#other').show()	
+			$('#anotherschool').hide()
+		}
+	});
+
 
 	// Staff coordinator application form
 	if ($('#staff-coordinator-form').length) {

@@ -75,3 +75,4 @@ body{background-color:#1a2753;font-family:"Helvetica Neue",Helvetica,Arial,sans-
 #committees-grid{list-style-type:none;}#committees-grid li{vertical-align:top;display:inline-block;zoom:1;*display:inline;width:200px;text-align:center;}#committees-grid li img{height:100px;}
 .separated-cells td{border-top:1px solid #d9d9d9;}
 .firstrow{background-color:#dddddd;}
+.hid{display:none;}

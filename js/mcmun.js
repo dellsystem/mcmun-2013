@@ -3,6 +3,24 @@ $(document).ready(function() {
 	 $('.slideshow').cycle({
 		fx: 'fade'
 	});
+	// for registration if it's the first time the school attend ssuns, then ask them more question
+	$('#registration_form select[id^="id_first_time"]').change(function () {
+		var result = $(this).find('option:selected').val();
+		if(result === 'True') {
+			$('#howYouHear').slideToggle()		
+		}
+	});
+	//also for registration for referring from other school. baddddddd
+	$('#registration_form select[id^="id_how_you_hear"]').change(function () {
+		var result = $(this).find('option:selected').val();
+		if(result === 'another_school') {
+			$('#anotherschool').slideToggle()		
+		}
+		if(result === 'other') {
+			$('#other').slideToggle()		
+		}
+	});
+
 
 	// Staff coordinator application form
 	if ($('#staff-coordinator-form').length) {
@@ -121,18 +139,6 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#country').click(function () {
-     		$('#countryblurb').slideToggle("slow");
-   	 });
-	$('#awards').click(function () {
-     		$('#awardsblurb').slideToggle("slow");
-   	 });
-	$('#dress').click(function () {
-     		$('#dressblurb').slideToggle("slow");
-   	 });
-	$('#laptop').click(function () {
-     		$('#laptopblurb').slideToggle("slow");
-   	 });
 	/*
 	// Handle stuff for the registration form
 	var priorityOption = $('#priority-dt');

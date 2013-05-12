@@ -6,7 +6,7 @@ from django.conf import settings
 from django.dispatch import receiver
 
 from mcmun.utils import generate_random_password
-from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES, COUNTRIES, DELEGATION_FEE
+from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES, COUNTRIES, DELEGATION_FEE, YESNO, HOWYOUHEAR
 from mcmun.tasks import send_email, generate_invoice
 from committees.models import Committee, DelegateAssignment
 
@@ -17,13 +17,23 @@ class RegisteredSchool(models.Model):
 		ordering = ['school_name']
 
 	school_name = models.CharField(max_length=100, unique=True)
-	address = models.CharField(max_length=255)
-	country = models.CharField(max_length=2, choices=COUNTRIES)
-
+	first_time = models.BooleanField(choices=YESNO)
+	how_you_hear = models.CharField(max_length=2, choices=HOWYOUHEAR)
+	another_school = models.CharField(max_length=100)
+	other_method = models.CharField(max_length=100)
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
-	email = models.EmailField(max_length=255, unique=True)
-	phone_number = models.CharField(max_length=20)
+	advisor_email = models.EmailField(max_length=255, unique=True)
+	delegate_email = models.EmailField(max_length=255, unique=True)
+	other_email = models.EmailField(max_length=255)
+	address = models.CharField(max_length=2, choices=LOCATION)
+	mail_address = models.CharField(max_length=255)
+	city = models.CharField(max_length=100)
+	province_state = models.CharField(max_length=100)
+	postal_code = models.CharField(max_length=20)
+	phone = models.CharField(max_length=20)
+	fax = phone_number = models.CharField(max_length=20)
+	country = models.CharField(max_length=2, choices=COUNTRIES)
 
 	num_delegates = models.IntegerField(default=1, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES + 1)])
 	use_online_payment = models.BooleanField()
