@@ -23,31 +23,29 @@ class RegisteredSchool(models.Model):
 	other_method = models.CharField(max_length=100)
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
-	advisor_email = models.EmailField(max_length=255, unique=True)
+	email = models.EmailField(max_length=255, unique=True)
 	delegate_email = models.EmailField(max_length=255, unique=True)
 	other_email = models.EmailField(max_length=255)
-	address = models.CharField(max_length=2, choices=LOCATION)
 	mail_address = models.CharField(max_length=255)
 	city = models.CharField(max_length=100)
 	province_state = models.CharField(max_length=100)
 	postal_code = models.CharField(max_length=20)
-	phone = models.CharField(max_length=20)
-	fax = phone_number = models.CharField(max_length=20)
+	advisor_phone = models.CharField(max_length=20)
+	fax = models.CharField(max_length=20)
 	country = models.CharField(max_length=2, choices=COUNTRIES)
 
 	num_delegates = models.IntegerField(default=1, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES + 1)])
 	use_online_payment = models.BooleanField()
 	use_tiered = models.BooleanField(default=False)
 	use_priority = models.BooleanField(default=False)
+	mcgill_tours = models.IntegerField(default=0, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES + 1)])
+	disclaimer = models.BooleanField()
 
 	amount_paid = models.DecimalField(default=Decimal(0), max_digits=6, decimal_places=2)
 
 	num_pub_crawl = models.IntegerField(default=0, verbose_name="Number of delegates interested in attending Pub Crawl")
 	num_non_alcohol = models.IntegerField(default=0, verbose_name="Number of delegates who would prefer to attend a non-alcoholic event instead")
 
-	# This should really have been a OneToOneField. Too late now. Next year.
-	# Only set iff the user has been approved
-	account = models.ForeignKey(User, null=True)
 	# Needs a boolean field anyway to make the admin interface better
 	is_approved = models.BooleanField(default=False, verbose_name="Approve school")
 	# Effective only for schools that have registered after Sept 1 (when this was deployed)
@@ -58,11 +56,23 @@ class RegisteredSchool(models.Model):
 	committee_2 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_2")
 	committee_3 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_3")
 	committee_4 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_4")
-	committee_5 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_5")
+
+
+	# Country preferences.
+	country_1 = models.CharField(max_length=2, choices=COUNTRIES)
+	country_2 = models.CharField(max_length=2, choices=COUNTRIES)
+	country_3 = models.CharField(max_length=2, choices=COUNTRIES)
+	country_4 = models.CharField(max_length=2, choices=COUNTRIES)
+	country_5 = models.CharField(max_length=2, choices=COUNTRIES)
+	country_6 = models.CharField(max_length=2, choices=COUNTRIES)
+	country_7 = models.CharField(max_length=2, choices=COUNTRIES)
+	country_8 = models.CharField(max_length=2, choices=COUNTRIES)
+	country_9 = models.CharField(max_length=2, choices=COUNTRIES)
+	country_10 = models.CharField(max_length=2, choices=COUNTRIES)
 
 	def has_prefs(self):
 		return (self.committee_1 or self.committee_2 or self.committee_3 or
-			self.committee_4 or self.committee_5)
+			self.committee_4)
 
 	def is_international(self):
 		"""
@@ -156,7 +166,7 @@ class RegisteredSchool(models.Model):
 			'first_name': self.first_name,
 			'last_name': self.last_name,
 			'school_name': self.school_name,
-			'email': self.email,
+			'email': self.advisor_email,
 			'admin_url': settings.ADMIN_URL,
 			'school_id': self.id,
 		}

@@ -25,21 +25,19 @@ class RegistrationForm(forms.ModelForm):
 			'other_method',
 			'first_name',
 			'last_name',
-			'advisor_email',
+			'email',
 			'delegate_email',
 			'other_email',
-			'address',
 			'mail_address',
-			'city'
+			'city',
 			'province_state',
 			'postal_code',
-			'phone',
+			'advisor_phone',
 			'fax',
 			'country',
 			'num_delegates',
 			'use_online_payment',
 			'use_tiered',
-			#'use_priority',
 		)
 
 	def clean_phone_number(self):
@@ -59,4 +57,4 @@ class ScholarshipForm(RegistrationForm):
 class CommitteePrefsForm(forms.ModelForm):
 	class Meta:
 		model = RegisteredSchool
-		fields = ('committee_1', 'committee_2', 'committee_3', 'committee_4', 'committee_5')
+		fields = ('committee_1', 'committee_2', 'committee_3', 'committee_4', )

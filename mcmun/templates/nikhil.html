@@ -104,12 +104,12 @@
 			</dd>
 
 			<dt>
-				<label for="id_advisor_email">Faculty Advisor Contact Email:</label>
+				<label for="id_email">Faculty Advisor Contact Email:</label>
 				<p>Please enter only one email. The receipt will be sent to this email.</p>
 			</dt>
 			<dd>
-				{{ form.advisor_email }}
-				{% if form.advisor_email.errors %}
+				{{ form.email }}
+				{% if form.email.errors %}
 					<p class="errors">Please ensure that you have correctly entered one email.</p>
 				{% endif %}
 			</dd>
@@ -128,15 +128,6 @@
 			</dt>
 			<dd>
 				{{ form.other_email }}
-			</dd>
-			<dt>
-				<label for="id_address">Where is your school or educational institute located?</label>
-			</dt>
-			<dd>
-				{{ form.address }}
-				{% if form.address.errors %}
-					<p class="errors">Please enter the address of your institution address.</p>
-				{% endif %}
 			</dd>
 			<dt>
 				<label for="id_mail_address">Mailing Address:</label>
@@ -192,50 +183,11 @@
 					<p class="errors">Allowed characters: digits, spaces, hyphens, parentheses, and the plus sign.</p>
 				{% endif %}
 			</dd>
-		</dl>
-	</fieldset>
-
-	<fieldset>
-		<legend>Contact information</legend>
-		<dl>
 			<dt>
-				<label for="id_first_name">First name of head delegate:</label>
+				<label for="id_fax">Fax Number</label>
 			</dt>
 			<dd>
-				{{ form.first_name }}
-				{% if form.first_name.errors %}
-					<p class="errors">Please enter your first name.</p>
-				{% endif %}
-			</dd>
-
-			<dt>
-				<label for="id_last_name">Last name of head delegate:</label>
-			</dt>
-			<dd>{{ form.last_name }}
-				{% if form.last_name.errors %}
-					<p class="errors">Please enter your last name.</p>
-				{% endif %}
-			</dd>
-
-			<dt>
-				<label for="id_email">Head delegate email:</label>
-				<p>Please enter only one email. The receipt will be sent to this email.</p>
-			</dt>
-			<dd>
-				{{ form.email }}
-				{% if form.email.errors %}
-					<p class="errors">Please ensure that you have correctly entered one email.</p>
-				{% endif %}
-			</dd>
-
-			<dt>
-				<label for="id_phone_number">Phone number:</label>
-			</dt>
-			<dd>
-				{{ form.phone_number }}
-				{% if form.phone_number.errors %}
-					<p class="errors">Allowed characters: digits, spaces, hyphens, parentheses, and the plus sign.</p>
-				{% endif %}
+				{{ form.fax }}
 			</dd>
 		</dl>
 	</fieldset>
@@ -245,7 +197,7 @@
 		<dl>
 			<dt>
 				<label for="id_num_delegates">Number of delegates:</label>
-				<p>If you wish to register more than {{ max_num_delegates }} delegates, or need to change the number of delegates after registering, contact <a href="mailto:charge@ssuns.org">charge@ssuns.org</a>.</p>
+				<p>If you wish to register more than {{ max_num_delegates }} delegates, or need to change the number of delegates after registering, contact <a href="mailto:schools@ssuns.org">schools@ssuns.org</a>.</p>
 			</dt>
 			<dd>
 				{{ form.num_delegates }}
