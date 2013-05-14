@@ -184,8 +184,8 @@ CHARGE_EMAIL = 'charge@ssuns.org'
 
 ADMIN_URL = '/admin/'
 
-CSRF_COOKIE_DOMAIN = ".mcmun.org"
-DEFAULT_FROM_EMAIL = 'it@mcmun.org'
+CSRF_COOKIE_DOMAIN = ".ssuns.org"
+DEFAULT_FROM_EMAIL = 'it@ssuns.org'
 
 logging.getLogger('xhtml2pdf')
 
