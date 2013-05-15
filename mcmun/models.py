@@ -18,44 +18,40 @@ class RegisteredSchool(models.Model):
 
 	school_name = models.CharField(max_length=100, unique=True)
 	first_time = models.BooleanField(choices=YESNO)
-	how_you_hear = models.CharField(max_length=2, choices=HOWYOUHEAR)
-	another_school = models.CharField(max_length=100)
-	other_method = models.CharField(max_length=100)
+	how_you_hear = models.CharField(max_length=14, choices=HOWYOUHEAR, null=True, blank=True)
+	another_school = models.CharField(max_length=100, null=True, blank=True)
+	other_method = models.CharField(max_length=100, null=True, blank=True)
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
 	email = models.EmailField(max_length=255, unique=True)
 	delegate_email = models.EmailField(max_length=255, unique=True)
-	other_email = models.EmailField(max_length=255)
+	other_email = models.EmailField(max_length=255, null=True, blank=True)
+	address = models.CharField(max_length=255, null=True, blank=True)
 	mail_address = models.CharField(max_length=255)
 	city = models.CharField(max_length=100)
 	province_state = models.CharField(max_length=100)
 	postal_code = models.CharField(max_length=20)
 	advisor_phone = models.CharField(max_length=20)
-	fax = models.CharField(max_length=20)
+	fax = models.CharField(max_length=20, null=True, blank=True)
 	country = models.CharField(max_length=2, choices=COUNTRIES)
-
-	num_delegates = models.IntegerField(default=1, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES + 1)])
-	use_online_payment = models.BooleanField()
-	use_tiered = models.BooleanField(default=False)
-	use_priority = models.BooleanField(default=False)
-	mcgill_tours = models.IntegerField(default=0, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES + 1)])
-	disclaimer = models.BooleanField()
 
 	amount_paid = models.DecimalField(default=Decimal(0), max_digits=6, decimal_places=2)
 
 	num_pub_crawl = models.IntegerField(default=0, verbose_name="Number of delegates interested in attending Pub Crawl")
 	num_non_alcohol = models.IntegerField(default=0, verbose_name="Number of delegates who would prefer to attend a non-alcoholic event instead")
 
+
+	num_delegates = models.IntegerField(default=1, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES + 1)])
+	amount_paid = models.DecimalField(default=Decimal(0), max_digits=6, decimal_places=2)
+
 	# Needs a boolean field anyway to make the admin interface better
 	is_approved = models.BooleanField(default=False, verbose_name="Approve school")
-	# Effective only for schools that have registered after Sept 1 (when this was deployed)
-	pays_convenience_fee = models.BooleanField(default=False, editable=False)
 
 	# Committee preferences. SO BAD
-	committee_1 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_1")
-	committee_2 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_2")
-	committee_3 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_3")
-	committee_4 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_4")
+	committee_1 = models.ForeignKey(Committee, related_name="school_1")
+	committee_2 = models.ForeignKey(Committee, related_name="school_2")
+	committee_3 = models.ForeignKey(Committee, related_name="school_3")
+	committee_4 = models.ForeignKey(Committee, related_name="school_4")
 
 
 	# Country preferences.
@@ -70,9 +66,16 @@ class RegisteredSchool(models.Model):
 	country_9 = models.CharField(max_length=2, choices=COUNTRIES)
 	country_10 = models.CharField(max_length=2, choices=COUNTRIES)
 
+	experience = models.TextField(null=True, blank=True)
+	mcgill_tours = models.IntegerField(default=0, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES + 1)])
+	disclaimer = models.BooleanField(choices=YESNO, default=True)
+
+	use_online_payment = models.BooleanField(choices=YESNO)
+
 	def has_prefs(self):
 		return (self.committee_1 or self.committee_2 or self.committee_3 or
 			self.committee_4)
+
 
 	def is_international(self):
 		"""
@@ -150,7 +153,7 @@ class RegisteredSchool(models.Model):
 
 	def send_success_email(self):
 		# Send out email to user (receipt of registration)
-		receipt_subject = 'Successful registration for McMUN 2013'
+		receipt_subject = 'Successful registration for SSUNS 2013'
 		receipt_message_filename = 'registration_success'
 		receipt_context = {
 			'first_name': self.first_name,
@@ -160,13 +163,13 @@ class RegisteredSchool(models.Model):
 		send_email.delay(receipt_subject, receipt_message_filename, [self.email], context=receipt_context)
 
 		# Send out email to Stysis, myself (link to approve registration)
-		approve_subject = 'New registration for McMUN'
+		approve_subject = 'New registration for SSUNS'
 		approve_message_filename = 'registration_approve'
 		approve_context = {
 			'first_name': self.first_name,
 			'last_name': self.last_name,
 			'school_name': self.school_name,
-			'email': self.advisor_email,
+			'email': self.email,
 			'admin_url': settings.ADMIN_URL,
 			'school_id': self.id,
 		}

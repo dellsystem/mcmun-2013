@@ -20,7 +20,7 @@ def home(request):
 def registration(request):
 	if request.method == 'POST':
 		form = RegistrationForm(request.POST)
-
+		print formset.errors
 		if form.is_valid():
 			# Simple spam-prevention technique
 			if not request.POST.get('address', '').startswith('http://'):
@@ -60,7 +60,6 @@ def nikhil(request):
 			# Simple spam-prevention technique
 			if not request.POST.get('address', '').startswith('http://'):
 				registered_school = form.save()
-				registered_school.pays_convenience_fee = True
 				registered_school.save()
 
 				# Send emails to user, stysis, myself

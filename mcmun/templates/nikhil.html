@@ -22,6 +22,7 @@
 	{% if form.errors %}
 	<fieldset class="errors">
 		<p>There were some errors with your registration! Please fix them below.</p>
+		{{ form.errors }}
 	</fieldset>
 	{% endif %}
 
@@ -42,9 +43,6 @@
 			</dt>
 			<dd>
 				{{ form.first_time }}
-				{% if form.first_time.errors %}
-					<p class="errors">Please choose yes or no.</p>
-				{% endif %}
 			</dd>
 		</dl>
 		<dl id="howYouHear" style="display:none;"> <!-- bad style. fix later -->	
@@ -53,9 +51,6 @@
 			</dt>
 			<dd>
 				{{ form.how_you_hear }}
-				{% if form.how_you_hear.errors %}
-					<p class="errors">Please choose one of the options.</p>
-				{% endif %}
 			</dd>
 			<dl id="anotherschool" style="display:none;">
 				<dt>
@@ -63,9 +58,6 @@
 				</dt>
 				<dd>
 					{{ form.another_school }}
-					{% if form.another_school.errors %}
-						<p class="errors">Please type in the school name.</p>
-					{% endif %}
 				</dd>
 			</dl>
 			<dl id="other" style="display:none;">
@@ -74,9 +66,6 @@
 				</dt>
 				<dd>
 					{{ form.other_method }}
-					{% if form.other_method.errors %}
-						<p class="errors">Please specify.</p>
-					{% endif %}
 				</dd>
 			</dl>
 		</dl>
@@ -114,7 +103,7 @@
 				{% endif %}
 			</dd>
 			<dt>
-				<label for="id_advisor_email">Faculty Advisor Contact Email:</label>
+				<label for="id_advisor_email">Head Delegate Contact Email:</label>
 				<p>Please enter only one email. The receipt will be sent to this email.</p>
 			</dt>
 			<dd>
@@ -124,7 +113,7 @@
 				{% endif %}
 			</dd>
 			<dt>
-				<label for="id_other_email">Faculty Advisor Contact Email:</label>
+				<label for="id_other_email">Other Contact Email:</label>
 			</dt>
 			<dd>
 				{{ form.other_email }}
@@ -191,6 +180,155 @@
 			</dd>
 		</dl>
 	</fieldset>
+	
+	<fieldset>
+		<legend>Country Selection</legend>
+		<dl>
+		<table>
+		<tr>
+			<td>
+			<dt>
+				<p>Please choose 10 countries and/or NGOs in order of preference, 
+				with 1 being the highest. You may wish to refer to the <a href="/matrix" target="_blank">country-committee matrix</a> to make your selections. 
+				The matrix is in PDF format. To read it, you'll need Adobe Acrobat Reader, available <a href="http://get.adobe.com/reader/">here</a>. 
+				To read our country assignment policy, click <a href="/conference-policies" target="_blank">here</a>. </p>
+			</dt>
+			</td>
+			<td>
+			<dd>
+				{{ form.country_1 }}
+				{% if form.country_1.errors %}
+					<p class="errors"> Please select one country.</p>
+				{% endif %}
+			
+				{{ form.country_2 }}
+				{% if form.country_2.errors %}
+					<p class="errors"> Please select one country.</p>
+				{% endif %}
+			
+				{{ form.country_3 }}
+				{% if form.country_3.errors %}
+					<p class="errors"> Please select one country.</p>
+				{% endif %}
+			
+				{{ form.country_4 }}
+				{% if form.country_4.errors %}
+					<p class="errors"> Please select one country.</p>
+				{% endif %}
+			
+				{{ form.country_5 }}
+				{% if form.country_5.errors %}
+					<p class="errors"> Please select one country.</p>
+				{% endif %}
+			
+				{{ form.country_6 }}
+				{% if form.country_6.errors %}
+					<p class="errors"> Please select one country.</p>
+				{% endif %}
+			
+				{{ form.country_7 }}
+				{% if form.country_7.errors %}
+					<p class="errors"> Please select one country.</p>
+				{% endif %}
+			
+				{{ form.country_8 }}
+				{% if form.country_8.errors %}
+					<p class="errors"> Please select one country.</p>
+				{% endif %}
+			
+				{{ form.country_9 }}
+				{% if form.country_9.errors %}
+					<p class="errors"> Please select one country.</p>
+				{% endif %}
+			
+				{{ form.country_10 }}
+				{% if form.country_10.errors %}
+					<p class="errors"> Please select one country.</p>
+				{% endif %}
+			</dd>
+			</td>
+		</tr>
+		</table>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>Specialized Agencies and Crises</legend>
+		<dl>
+		<table>
+		<tr>
+			<td>
+			<dt>
+				<p>SSUNS will be simulating a diverse array of small and exciting specialized agencies and crises. 
+				Please indicate your first three preferences for the following committees should you be interested in participating in them. 
+				More information on the specific committee can be obtained by from the <a href="/committees-list" target="_blank">committees list</a>. 
+				Please be advised that due to its nature, the Ad-Hoc Committee of the Secretary General is application-based.<p>
+			</dt>
+			</td>
+			<td>
+			<dd>
+				{{ form.committee_1 }}
+				{% if form.committee_1.errors %}
+					<p class="errors"> Please select one committee.</p>
+				{% endif %}
+			
+				{{ form.committee_2 }}
+				{% if form.committee_2.errors %}
+					<p class="errors"> Please select one committee.</p>
+				{% endif %}
+			
+				{{ form.committee_3 }}
+				{% if form.committee_3.errors %}
+					<p class="errors"> Please select one committee.</p>
+				{% endif %}
+			
+				{{ form.committee_4 }}
+				{% if form.committee_4.errors %}
+					<p class="errors"> Please select one committee.</p>
+				{% endif %}
+			</dd>
+			</td>
+		</tr>
+		</table>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>Previous Model United Nations Experience (highly recommended)</legend>
+		<dl>
+			<dt>
+				<p>Please describe your previous experience at SSUNS, 
+				and with other Model United Nations programs including any previous achievements.  
+				If you wish, you may include this information in a separate e-mail message addressed to Serena Wang,
+				 Chargée d'Affaires (<a href="mailto:schools@ssuns.org">schools@ssuns.org</a>).
+				</p>
+			</dt>
+			<dd>
+				{{ form.experience }}
+			</dd>
+		</dl>
+	</fieldset>
+	<fieldset>
+		<legend>McGill Tours</legend>
+		<dl>
+			<dt>
+				<label for="id_mcgill_tours">Number Attending McGill Tours (incl. Faculty Advisers):</label>
+			       <p>Are you considering attending one of Canada’s most prestigious universities? 
+				Are you interested in learning more about McGill University or simply finding out more about what student life in Montreal is like? 
+				SSUNS is also offering McGill tours on the Thursday morning of the conference. 
+				The tour will be guided by official tour guides who will be giving one-hour tours of the campus. 
+				Delegates will be divided into groups of around 15, and at the end of the tour, delegates will have the opportunity to visit the bookstore and pick up a few souvenirs. 
+				For more information, you can visit <a href="http://ssuns.org/mcgill-tours" target="_blank">http://ssuns.org/mcgill-tours</a>). Cost per delegate is $2. 
+				</p>
+			</dt>
+			<dd>
+				{{ form.mcgill_tours }}
+				{% if form.mcgill_tours.errors %}
+					<p class="errors">Please select a number.</p>
+				{% endif %}
+			</dd>
+		</dl>
+	</fieldset>
 
 	<fieldset>
 		<legend>Delegation and payment information</legend>
@@ -220,6 +358,17 @@
 			</dt>
 			<dd>{{ form.use_tiered }}</dd>
 			{% endcomment %}
+		</dl>
+	</fieldset>
+	<fieldset>
+		<legend>Disclaimer</legend>
+		<dl>
+			<dt>
+				<p>Every year, we hire photographers to capture every moment of SSUNS when it comes to the experience of the staffers, delegates and faculty advisors alike. In an effort to promote our conference, we would like to use these pictures on our website/brochure/pamphlets for others to see and learn more about SSUNS. Would your school be amenable for SSUNS to use such photos? </p>
+			</dt>
+			<dd>
+				{{ form.disclaimer }}
+			</dd>
 		</dl>
 	</fieldset>
 
