@@ -22,6 +22,7 @@ class DelegateAssignmentAdmin(admin.ModelAdmin):
 
 admin.site.register(Category)
 admin.site.register(Committee)
+admin.site.register(Committee_Dais)
 admin.site.register(AdHocApplication)
 admin.site.register(BRICSApplication)
 admin.site.register(NixonApplication)

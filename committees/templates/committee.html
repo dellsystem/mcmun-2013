@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="center-align">
-	<img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.png" />
+	<img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.jpg" />
 </div>
 
 <br />
@@ -22,6 +22,17 @@
 
 <h2>Dais</h2>
 
-{% include dais_template %}
+<table>
+	<tr>
+		{% for dais in committee.committee_dais_set.all %}
+		<td>
+			{{ dais.name }} <p />
+			{{ dais.position }} <p />
+			{{ DAIS_PHOTO_URL }}{{ dais.pic_name }}
+		</td>
+		{% endfor %}
+	</tr>
+</table>
+
 
 {% endblock %}

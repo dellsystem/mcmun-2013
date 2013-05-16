@@ -180,7 +180,7 @@ EMAIL_HOST_USER = 'it@ssuns.org'
 EMAIL_HOST_PASSWORD = hidden.EMAIL_PASS
 
 IT_EMAIL = 'it@ssuns.org'
-CHARGE_EMAIL = 'charge@ssuns.org'
+CHARGE_EMAIL = 'schools@ssuns.org'
 
 ADMIN_URL = '/admin/'
 

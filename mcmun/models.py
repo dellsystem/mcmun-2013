@@ -71,6 +71,7 @@ class RegisteredSchool(models.Model):
 	disclaimer = models.BooleanField(choices=YESNO, default=True)
 
 	use_online_payment = models.BooleanField(choices=YESNO)
+	country_assigned = models.CharField(max_length=100, choices=COUNTRIES, null=True, blank=True)
 
 	def has_prefs(self):
 		return (self.committee_1 or self.committee_2 or self.committee_3 or
@@ -162,7 +163,7 @@ class RegisteredSchool(models.Model):
 
 		send_email.delay(receipt_subject, receipt_message_filename, [self.email], context=receipt_context)
 
-		# Send out email to Stysis, myself (link to approve registration)
+		# Send out email to Serena, myself (link to approve registration)
 		approve_subject = 'New registration for SSUNS'
 		approve_message_filename = 'registration_approve'
 		approve_context = {

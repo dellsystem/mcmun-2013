@@ -35,6 +35,16 @@ class Committee(models.Model):
 	class Meta:
 		ordering = ('category', 'id')
 
+class Committee_Dais(models.Model):
+	name = models.CharField(max_length=255)
+	position = models.CharField(max_length=255)
+	pic_name = models.CharField(max_length=255, unique=True)
+	committee = models.ForeignKey(Committee)
+
+	def __unicode__(self):
+		return self.name
+	class Meta:
+		ordering = ('committee', 'id')
 
 class CommitteeApplication(models.Model):
 	"""
