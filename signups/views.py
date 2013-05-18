@@ -2,36 +2,38 @@ from django.shortcuts import redirect, render
 from django.db import IntegrityError
 from django.core.validators import email_re
 
-from signups.models import Person, SIGNUP_CATEGORIES
+from signups.models import Person
+from signups.forms import PersonForm
 
+def submit(request):
+	if request.method == 'POST':
+		form = PersonForm(request.POST)
+		# print formset.errors
+		if form.is_valid():
+			# Simple spam-prevention technique
+			if not request.POST.get('email', '').startswith('http://'):
+				person = form.save()
+				person.save()
+		
+			title = 'Successful signup'
+			message = 'Thank you for signing up for our listserv.'
 
-def submit(request, category):
-	categories = [x[1].lower() for x in SIGNUP_CATEGORIES]
+			data = {
+				'title': title,
+				'message': message
+			}
 
-	# Looks like a malicious request - ignore (go back to homepage)
-	if category not in categories or request.method != 'POST':
-		return redirect('home')
+			return render(request, 'confirmation.html', data)
+
 	else:
-		email = request.POST.get('email', '')
-		name = request.POST.get('name', '')
+		form = PersonForm()
 
-		title = 'Unable to process submission'
-		if email == '' or not email_re.match(email):
-			message = 'Please enter a valid email address and name.'
-		elif name == '':
-			message = 'Please enter your name.'
-		else:
-			try:
-				Person.objects.create(email=email, name=name, category=categories.index(category))
-				title = 'Successful signup'
-				message = 'Thank you for signing up for our listserv.'
-			except IntegrityError:
-				message = 'That email address has already been used. Perhaps you signed up before and forgot about it?'
+	data = {
+		'form': form,
+		'page': {
+			'long_name': 'signup listserv',
+		},
+	}
 
-		# Why is this method so messy. Switch to using forms later?
-		data = {
-			'title': title,
-			'message': message
-		}
+	return render(request, "listserv.html", data)
 
-		return render(request, 'confirmation.html', data)
