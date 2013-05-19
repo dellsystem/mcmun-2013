@@ -44,12 +44,11 @@ def generate_invoice(school_id, username, password):
 		'payment_type': school.get_payment_type(),
 		'total_balance': school.get_total_owed(),
 		'currency': school.get_currency(),
-		'tiered_or_not': 'using our tiered system of deposit and remainder' if school.use_tiered else 'in full',
 	}
 
 	# Send out an email to the user explaining that their account has been approved
 	# CC myself just in case they forget the password or whatever
-	invoice_subject = 'Invoice for McMUN 2013'
+	invoice_subject = 'Invoice for SSUNS 2013'
 	invoice_message_filename = 'invoice'
 
 	invoice_id = 'MC13' + str(school_id).zfill(3)
@@ -61,7 +60,7 @@ def generate_invoice(school_id, username, password):
 	}
 
 	# Generate the invoice PDF, save it under tmp/
-	pdf_filename = 'tmp/mcmun_invoice_%s.pdf' % invoice_id
+	pdf_filename = 'mcmun/invoice/mcmun_invoice_%s.pdf' % invoice_id
 	file = open(pdf_filename, 'wb')
 	pdf = generate_pdf('pdf/invoice.html', file_object=file, context=pdf_context)
 	file.close()
