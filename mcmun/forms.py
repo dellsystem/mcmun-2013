@@ -2,6 +2,7 @@ import re
 
 from mcmun.models import RegisteredSchool, ScholarshipApp
 
+
 from django import forms
 
 

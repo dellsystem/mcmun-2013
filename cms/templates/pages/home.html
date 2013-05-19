@@ -27,15 +27,8 @@
 </div>
 <div class="announcement">
 	<div id="staffing-signup">
-		<p>Interested in attending SSUNS? Sign up for our listserv here:</p>
+		<p>Interested in attending SSUNS? Sign up for our listserv <a href="/signups/">here</a>.</p>
 		<p>For further details please contact our Charge d'Affairs at <a href="mailto:schools@ssuns.org">schools@ssuns.org.</a></p>
-		<form method="post" action="{% url submit_signup 'staff' %}">
-			{% csrf_token %}
-			<input type="text" name="email" placeholder="example@example.com" />
-			<input type="text" name="name" placeholder="First Last" />
-			<input type="submit" name="submit" value="Sign up" />
-		</form>
-
 	</div>
 </div>
 </div>

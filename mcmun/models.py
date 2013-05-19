@@ -1,5 +1,5 @@
 from decimal import Decimal
-
+from django.db.models import Q
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -24,7 +24,7 @@ class RegisteredSchool(models.Model):
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
 	email = models.EmailField(max_length=255, unique=True)
-	delegate_email = models.EmailField(max_length=255, unique=True)
+	delegate_email = models.EmailField(max_length=255, null=True, blank=True)
 	other_email = models.EmailField(max_length=255, null=True, blank=True)
 	address = models.CharField(max_length=255, null=True, blank=True)
 	mail_address = models.CharField(max_length=255)
@@ -48,10 +48,10 @@ class RegisteredSchool(models.Model):
 	is_approved = models.BooleanField(default=False, verbose_name="Approve school")
 
 	# Committee preferences. SO BAD
-	committee_1 = models.ForeignKey(Committee, related_name="school_1")
-	committee_2 = models.ForeignKey(Committee, related_name="school_2")
-	committee_3 = models.ForeignKey(Committee, related_name="school_3")
-	committee_4 = models.ForeignKey(Committee, related_name="school_4")
+	committee_1 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undf') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc')), related_name="school_1")
+	committee_2 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undf') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc')), related_name="school_2")
+	committee_3 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undf') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc')), related_name="school_3")
+	committee_4 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undf') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc')), related_name="school_4")
 
 
 	# Country preferences.
@@ -71,8 +71,7 @@ class RegisteredSchool(models.Model):
 	disclaimer = models.BooleanField(choices=YESNO, default=True)
 
 	use_online_payment = models.BooleanField(choices=YESNO)
-	country_assigned = models.CharField(max_length=100, choices=COUNTRIES, null=True, blank=True)
-
+	
 	def has_prefs(self):
 		return (self.committee_1 or self.committee_2 or self.committee_3 or
 			self.committee_4)

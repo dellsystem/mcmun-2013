@@ -202,3 +202,8 @@ def committee_prefs(request):
 			form.save()
 
 	return redirect(dashboard)
+
+
+def nikhil_error(request):
+    # For testing errors
+    raise SystemError
