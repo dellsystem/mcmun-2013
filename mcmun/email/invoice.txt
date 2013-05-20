@@ -1,22 +1,20 @@
 Dear %(first_name)s,
 
-Your registration for %(school_name)s at McMUN 2013 has been approved.
+Your registration for %(school_name)s at SSUNS 2013 has been approved.
 
-Our records indicate that your delegation is comprised of %(num_delegates)d delegates, that your desired payment is %(payment_method)s (%(payment_type)s registration), and that you wish to pay the total balance of $%(total_balance)s %(currency)s %(tiered_or_not)s.
+Our records indicate that your delegation is comprised of %(num_delegates)d delegates, that your desired payment is %(payment_method)s (%(payment_type)s registration), and that you wish to pay the total balance of $%(total_balance)s %(currency)s in full.
 
 Attached you will find a PDF invoice containing a breakdown of the costs as well as payment instructions.
 
-You can now log in at http://www.mcmun.org/dashboard to check the details of your registration or submit a scholarship application, using the following username and password:
+You can now log in at http://www.ssuns.org/dashboard to check the details of your registration or submit a scholarship application, using the following username and password:
 
 Username: %(username)s
 Password: %(password)s
 
-Your committee assignments will be released on December 10th, subject to full payment being received. After this date, you will also be able to access your committee assignments, enter the names of the delegates who will be attending, and upload position papers from that page.
-
-Upon confirmation of registration, your delegation size and contact information are transmitted to the hotel manager, Sonia Monistero, who will contact you with a discount code and specific procedures for booking hotel rooms at the Sheraton.
+You will be able to enter the names of the delegates who will be attending, and upload position papers from that page.
 
 Please keep this email for your records.
 
-Looking forward to seeing you in January,
+Looking forward to seeing you in November,
 
-the McMUN 2013 Secretariat
+the SSUNS 2013 Secretariat

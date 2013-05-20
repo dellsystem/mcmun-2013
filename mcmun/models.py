@@ -69,9 +69,10 @@ class RegisteredSchool(models.Model):
 	experience = models.TextField(null=True, blank=True)
 	mcgill_tours = models.IntegerField(default=0, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES + 1)])
 	disclaimer = models.BooleanField(choices=YESNO, default=True)
+	account = models.ForeignKey(User, null=True)
 
 	use_online_payment = models.BooleanField(choices=YESNO)
-	
+	use_priority = models.BooleanField(default=True)
 	def has_prefs(self):
 		return (self.committee_1 or self.committee_2 or self.committee_3 or
 			self.committee_4)
@@ -84,9 +85,7 @@ class RegisteredSchool(models.Model):
 		return self.country != 'CA' and self.country != 'US'
 
 	def get_payment_type(self):
-		if self.is_international():
-			payment_type = 'international'
-		elif self.use_priority:
+		if self.use_priority:
 			payment_type = 'priority'
 		else:
 			payment_type = 'regular'
@@ -98,6 +97,13 @@ class RegisteredSchool(models.Model):
 		Returns CAD if the institution is Canadian, USD otherwise.
 		"""
 		return 'CAD' if self.country == 'CA' else 'USD'
+
+	def get_tour_fee(self):
+		return (self.mcgill_tours * 2)
+
+	def get_tour_fee_str(self):
+		return "%.2f" % (self.mcgill_tours * 2)
+
 
 	# These are messy. Deal with it another time.
 	def get_total_convenience_fee(self):
@@ -114,16 +120,13 @@ class RegisteredSchool(models.Model):
 		Incorporates a 3% convenience fee into the number given iff the school
 		has selected online payment and has registered after Sept 1.
 		"""
-		if self.use_online_payment and self.pays_convenience_fee:
+		if self.use_online_payment:
 			return number * 1.03
 		else:
 			return number
 
 	def get_delegate_fee(self):
-		if self.is_international():
-			delegate_fee = 50
-		else:
-			delegate_fee = 80 if self.use_priority else 95
+		delegate_fee = 85 if self.use_priority else 90
 
 		return delegate_fee
 
@@ -131,7 +134,7 @@ class RegisteredSchool(models.Model):
 		return self.get_delegate_fee() * self.num_delegates
 
 	def get_total_owed(self):
-		total_owed = self.num_delegates * self.get_delegate_fee() + DELEGATION_FEE
+		total_owed = self.num_delegates * self.get_delegate_fee() + DELEGATION_FEE + self.get_tour_fee()
 
 		return "%.2f" % self.add_convenience_fee(total_owed)
 
@@ -146,10 +149,7 @@ class RegisteredSchool(models.Model):
 		return "%.2f" % self.add_convenience_fee(remainder)
 
 	def amount_owed(self):
-		if self.use_tiered:
-			return "$%s ($%s deposit, $%s remainder)" % (self.get_total_owed(), self.get_deposit(), self.get_remainder())
-		else:
-			return "$%s" % self.get_total_owed()
+		return "$%s" % self.get_total_owed()
 
 	def send_success_email(self):
 		# Send out email to user (receipt of registration)

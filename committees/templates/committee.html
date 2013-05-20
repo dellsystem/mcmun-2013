@@ -26,9 +26,9 @@
 	<tr>
 		{% for dais in committee.committee_dais_set.all %}
 		<td>
-			{{ dais.name }} <p />
+			<b>{{ dais.name }}</b><p />
 			{{ dais.position }} <p />
-			{{ DAIS_PHOTO_URL }}{{ dais.pic_name }}
+			<img src="{{ STATIC_URL }}img/dais/{{ committee.slug }}/{{ dais.pic_name }}" />
 		</td>
 		{% endfor %}
 	</tr>

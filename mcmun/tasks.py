@@ -51,7 +51,7 @@ def generate_invoice(school_id, username, password):
 	invoice_subject = 'Invoice for SSUNS 2013'
 	invoice_message_filename = 'invoice'
 
-	invoice_id = 'MC13' + str(school_id).zfill(3)
+	invoice_id = 'SSUNS13' + str(school_id).zfill(3)
 
 	pdf_context = {
 		'invoice_id': invoice_id,
@@ -60,7 +60,7 @@ def generate_invoice(school_id, username, password):
 	}
 
 	# Generate the invoice PDF, save it under tmp/
-	pdf_filename = 'mcmun/invoice/mcmun_invoice_%s.pdf' % invoice_id
+	pdf_filename = 'mcmun/invoice/ssuns_invoice_%s.pdf' % invoice_id
 	file = open(pdf_filename, 'wb')
 	pdf = generate_pdf('pdf/invoice.html', file_object=file, context=pdf_context)
 	file.close()

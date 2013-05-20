@@ -1,9 +1,14 @@
 <div id="carousel">
 	<div class="slideshow" style="position:relative">
-		<img src="{{ STATIC_URL }}img/rsz_front1.jpg" style="position:relative" />
-		<img src="{{ STATIC_URL }}img/rsz_front2.jpg" style="display:none;position:relative"/>
-		<img src="{{ STATIC_URL }}img/rsz_front3.jpg" style="display:none;position:relative"/>
-
+		{% if page.titlePic %}
+			<img src="{{ STATIC_URL }}img/pagePic/{{ page.short_name }}.jpg" style="position:relative" />
+			<img src="{{ STATIC_URL }}img/pagePic/{{ page.short_name }}1.jpg" style="display:none;position:relative"/>
+			<img src="{{ STATIC_URL }}img/pagePic/{{ page.short_name }}2.jpg" style="display:none;position:relative"/>
+		{% else %}
+			<img src="{{ STATIC_URL }}img/rsz_front1.jpg" style="position:relative" />
+                        <img src="{{ STATIC_URL }}img/rsz_front2.jpg" style="display:none;position:relative"/>
+                        <img src="{{ STATIC_URL }}img/rsz_front3.jpg" style="display:none;position:relative"/>
+		{% endif %}
 	</div>
 </div>
 

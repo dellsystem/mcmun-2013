@@ -126,9 +126,9 @@
 			<p>&nbsp;</p>
 
 			<div class="center-align">
-				<h2>Invoice for McGill Model United Nations Assembly 2013</h2>
+				<h2>Invoice for Secondary Schools' United Nations Symposium 2013</h2>
 				<h3>3480 McTavish, Suite 410 :: Montr&eacute;al, QC H3A 1X9 :: Canada</h3>
-				<p>+1 (514) 398 6816 :: www.mcmun.org</p>
+				<p>+1 (514) 398 6816 :: www.ssuns.org</p>
 			</div>
 
 			<div>
@@ -143,7 +143,7 @@
 					<br />
 					{{ school.get_country_display }}
 					<br />
-					{{ school.phone_number }}
+					{{ school.advisor_phone }}
 				</p>
 			</div>
 
@@ -156,27 +156,35 @@
 				</tr>
 				<tr>
 					<td>
-						<p><strong>Club registration fee</strong></p>
+						<p><strong>Delegation fee</strong></p>
 						<p class="left-space"><em>A one-time fee, regardless of delegation size.</em></p>
 					</td>
-					<td class="amount">$75.00</td>
+					<td class="amount">$85.00</td>
 					<td class="amount right-border">1</td>
-					<td class="amount">$75.00 {{ school.get_currency }}</td>
+					<td class="amount">$85.00 {{ school.get_currency }}</td>
 				</tr>
 				<tr class="bottom-border">
 					<td>
 						<p><strong>Per-delegate fee ({{ payment_type }})</strong></p>
-						<p class="left-space"><em>{% if payment_type == 'international' %}For delegates outside of Canada and the US.{% else %}Applicable for Canadian/US payments sent {% if payment_type == 'regular' %}after{% else %}before{% endif %} October 2.{% endif %}</em></p>
+						<p class="left-space"><em>Applicable for all schools {% if payment_type == 'regular' %}after{% else %}before{% endif %} July 30.</em></p>
 					</td>
 					<td class="amount">${{ school.get_delegate_fee }}.00</td>
 					<td class="amount right-border">{{ school.num_delegates }}</td>
 					<td class="amount">${{ school.get_total_delegate_fee }}.00 {{ school.get_currency }}</td>
 				</tr>
-				{% if school.pays_convenience_fee and school.use_online_payment %}
+				<tr class="bottom-border">
+					<td>
+						<p><strong>McGill Tours fee</strong></p>
+					</td>
+					<td class="amount">$2.00</td>
+					<td class="amount right-border">{{ school.mcgill_tours }}</td>
+					<td class="amount">${{ school.get_tour_fee_str }} {{ school.get_currency }}</td>
+				</tr>
+				{% if school.use_online_payment %}
 				<tr class="bottom-border">
 					<td>
 						<p><strong>Convenience fee</strong></p>
-						<p class="left-space"><em>A 3% convenience fee is charged for online payment for all schools that have registered after September 1st.</em></p>
+						<p class="left-space"><em>A 3% convenience fee is charged for online payment for all schools that have registered.</em></p>
 					</td>
 					<td class="amount">3%</td>
 					<td class="amount right-border">--</td>
@@ -186,7 +194,7 @@
 				<tr{% if school.use_tiered %} class="bottom-border"{% endif %}>
 					<td colspan="3" class="right-border">
 						<div class="right-align">
-							<p><strong>TOTAL{% if not school.use_tiered %} (due&nbsp;<u>{% if school.use_priority %}October 1{% else %}November 18{% endif %}</u>){% endif %}</strong><p>
+							<p><strong>TOTAL{% if not school.use_tiered %} (due&nbsp;<u>{% if school.use_priority %}July 30th{% else %}October 1st{% endif %}</u>){% endif %}</strong><p>
 							<p><em>{% if school.get_currency == 'CAD' %}Canadian delegations must pay in Canadian dollars.{% else %}Delegations located outside of Canada must pay in US dollars.{% endif %}</em></p>
 						</div>
 					</td>
@@ -220,7 +228,7 @@
 
 			<h2>Payment instructions</h2>
 			{% if school.use_online_payment %}
-			<p>You have indicated that you wish to pay by <strong>online payment</strong>. The total amounts above include the 3% online payment convenience fee charged for all schools that have registered after September 1st. You will receive a PayPal invoice via email shortly containing a link to the PayPal payment page, from which you can make the payment. If you have any questions about the online payment process, contact charge@mcmun.org.</p>
+			<p>You have indicated that you wish to pay by <strong>online payment</strong>. The total amounts above include the 3% online payment convenience fee charged for all schools. You will receive a PayPal invoice via email shortly containing a link to the PayPal payment page, from which you can make the payment. If you have any questions about the online payment process, contact schools@ssuns.org.</p>
 			{% else %}
 			<p>You indicated that you wish to pay by <strong>cheque</strong>. We recommend that you send the cheque by courier delivery (e.g., FedEx, UPS, Purolator) as it is usually faster and more secure. We also accept regular mail.</p>
 			<table class="bordered">
@@ -229,7 +237,7 @@
 					<th>Regular mail</th>
 				</tr>
 				<tr>
-					<td>McGill Model United Nations Assembly<br />c/o IRSAM Inc.<br />3480 rue McTavish, Suite 410<br />Montreal QC, H3A 1X9, Canada</td>
+					<td>Secondary Schools' United Nations Symposium<br />c/o IRSAM Inc.<br />3480 rue McTavish, Suite 410<br />Montreal QC, H3A 1X9, Canada</td>
 					<td>IRSAM<br />PO Box 55 Montreal Succursale B<br />Montreal, QC, H3B 3J5, Canada</td>
 				</tr>
 			</table>
@@ -242,26 +250,26 @@
 
 			<h2>Refund policy</h2>
 
-			<p>The $75 club registration fee is a one-time non-refundable fee per delegation. If you decide not to join us at McMUN 2013:</p>
+			<p>The $85 club registration fee is a one-time non-refundable fee per delegation. If you decide not to join us at SSUNS 2013:</p>
 			<ul>
-				<li>Before November 18th, your refund will be the payment received minus the $75 club registration fee.</li>
-				<li>Before January 1st, your refund will be the payment received minus the deposit of {{ school.get_deposit }}.</li>
+				<li>Before September 10th, your refund will be the payment received minus the $85 club registration fee.</li>
+				<li>Before October 1st, your refund will be a 50% refund of your Total Delegate Fee.</li>
 			</ul>
-			<p>Please note that after January 1st there are no refunds under any circumstances.</p>
+			<p>Please note that after October 1st there are no refunds under any circumstances.</p>
 
 			<p>&nbsp;</p>
-			<h2>Contacting McMUN</h2>
-			<p>If you have any questions about your invoice or registration please contact Lea El Houssami, Chief Financial Officer, or Daniel Stysis, Charg&eacute; d'Affaires, respectively.</p>
+			<h2>Contacting SSUNS</h2>
+			<p>If you have any questions about your invoice or registration please contact Paola Daniore, USG Finance, or Serena Wang, Charg&eacute;e d'Affaires, respectively.</p>
 			<p>&nbsp;</p>
 			<table class="center-align">
 				<tr>
 					<td>
 						<p>
-							Daniel Stysis
+							Serena Wang
 							<br />
-							Charg&eacute; d'Affaires
+							Charg&eacute;e d'Affaires
 							<br />
-							Email: charge@mcmun.org
+							Email: schools@ssuns.org
 							<br />
 							Office: (514) 398-6816
 							<br />
@@ -270,11 +278,11 @@
 					</td>
 					<td>
 						<p>
-							Lea El Houssami
+							Paola Daniore
 							<br />
-							Chief Financial Officer
+							USG Finance
 							<br />
-							Email: finance@mcmun.org
+							Email: finance@ssuns.org
 							<br />
 							Office: (514) 398-6816
 							<br />

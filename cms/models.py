@@ -17,7 +17,9 @@ class Page(models.Model):
 	use_home = models.BooleanField(default=False)
 	# specify the name of the picture that they wanna use for the icon in the parent page
 	pagePic = models.CharField(max_length=50, blank=True, null=True)
-
+	#whether to display titlepic or not
+	titlePic = models.BooleanField(default=False)
+	
 	def __unicode__(self):
 		return self.long_name
 
