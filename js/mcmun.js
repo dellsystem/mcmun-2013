@@ -7,17 +7,22 @@ $(document).ready(function() {
 	$('#registration_form select[id^="id_first_time"]').change(function () {
 		var result = $(this).find('option:selected').val();
 		if(result === 'True') {
-			$('#howYouHear').slideToggle()		
+			$('#howYouHear').show()		
+		}
+		else {
+			$('#howYouHear').hide()	
 		}
 	});
 	//also for registration for referring from other school. baddddddd
 	$('#registration_form select[id^="id_how_you_hear"]').change(function () {
 		var result = $(this).find('option:selected').val();
 		if(result === 'another_school') {
-			$('#anotherschool').slideToggle()		
+			$('#anotherschool').show()
+			$('#other').hide()	
 		}
 		if(result === 'other') {
-			$('#other').slideToggle()		
+			$('#other').show()	
+			$('#anotherschool').hide()
 		}
 	});
 

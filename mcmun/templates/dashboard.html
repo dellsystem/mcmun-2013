@@ -41,15 +41,13 @@
 					<br />
 					<strong>Payment method:</strong> {% if school.use_online_payment %}online payment{% else %}by cheque{% endif %}
 					<br />
-					<strong>Tiered payment:</strong> {% if school.use_tiered %}Yes{% else %}No{% endif %}
-					<br />
 					<strong>Priority registration:</strong> {% if school.use_priority %}Yes{% else %}No{% endif %}
 					<br />
 					<strong>Amount owed:</strong> {{ school.amount_owed }} {{ school.get_currency }}
 					<br />
 					<strong>Amount paid:</strong> ${{ school.amount_paid }} {{ school.get_currency }}
 				</p>
-				<p>Lost your copy of your invoice PDF? Email it@mcmun.org.{% comment %}Eventually I'll make a view to show the PDF to people with the proper permissions. Later.{% endcomment %}</p>
+				<p>Lost your copy of your invoice PDF? Email it@ssuns.org.{% comment %}Eventually I'll make a view to show the PDF to people with the proper permissions. Later.{% endcomment %}</p>
 			</div>
 		</td>
 	</tr>
@@ -112,89 +110,52 @@
 
 <h2 id="dates">Important dates</h2>
 
-<dl>
-	<dt>Nov. 1</dt>
-	<dd>Scholarship application deadline.</dd>
-
-	<dt>Nov. 18</dt>
-	<dd>Registration closes and waiting list opens.</dd>
-	<dd>Deposit due.</dd>
-	<dd>Visa invitation letters request deadline.</dd>
-	<dd>Applications for the following committees are due: <a href="/committees/brics">BRICS</a>, <a href="/committees/ad-hoc">Ad-Hoc</a>, <a href="/committees/wall-street">Wall Street</a>, <a href="/committees/frost-nixon">Frost/Nixon</a>.</dd>
-
-	<dt>Dec. 1</dt>
-	<dd>Remainder of payment due.</dd>
-
-	<dt>First week of December</dt>
-	<dd>Background guides come online.</dd>
-
-	<dt>Dec. 17</dt>
-	<dd>Committee assignments are released.</dd>
-
-	<dt>Dec. 21</dt>
-	<dd>Hotel room bookings at the Sheraton are due.</dd>
-
-	<dt>Jan. 1</dt>
-	<dd>Refund request deadline.</dd>
-
-	<dt>Jan. 12</dt>
-	<dd>Delegate badge list due (online submission).</dd>
-
-	<dt>Jan. 23</dt>
-	<dd>Position paper deadline (online submission). You must have submitted a position paper to be eligible for an award.</dd>
-
-	<dt>Jan. 24-27</dt>
-	<dd>McMUN 2013.</dd>
-</dl>
+<table>
+   	<tr><td><b>July 30:</b> Priority Registration Deadline (All Payments Made to be Eligible for Priority Fees)</td></tr>
+	<tr><td><b>First Week of September:</b> Background Guides come online</td></tr>
+	<tr><td><b>First Week of September:</b> Initial Committee Assignments Released</td></tr>
+	<tr><td><b>September 10:</b> Deadline for 100% Refund of Delegate Fees</td></tr>
+	<tr><td><b>September 17:</b> Scholarship Applications Deadline</td></tr>
+	<tr><td><b>October 1:</b> Deadline for 50% Refund of Delegate Fees</td></tr>
+	<tr><td><b>October 8:</b> Regular Registration Closes and Waiting List Opens</td></tr>
+	<tr><td><b>October 8:</b> Hotel Room Bookings at Delta Centreville Due</td></tr>
+	<tr><td><b>October 25:</b> Position Paper Feedback Deadline</td></tr>
+	<tr><td><b>October 29:</b> Delegate Badge List Due</td></tr>
+	<tr><td><b>November 6:</b> Final Position Paper Deadline</td></tr>
+	<tr><td><b>November 7-10:</b> SSUNS 2013</td></tr>
+</table>
 
 <h2 id="committees">Committee preferences</h2>
 
 <p>The committee preferences form is now <strong>closed</strong>.</p>
 
-{% if school.has_prefs %}
 <p>You have indicated your committee preferences to be:</p>
 
-<ul>
-	<li>{{ school.committee_1 }}</li>
-	<li>{{ school.committee_2 }}</li>
-	<li>{{ school.committee_3 }}</li>
-	<li>{{ school.committee_4 }}</li>
-</ul>
+<table>
+	<tr><td>{{ school.committee_1 }}</td></tr>
+	<tr><td>{{ school.committee_2 }}</td></tr>
+	<tr><td>{{ school.committee_3 }}</td></tr>
+	<tr><td>{{ school.committee_4 }}</td></tr>
+</table>
 
 <p>Please contact <a href="mailto:schools@ssuns.org">schools@ssuns.org</a> if you have any questions or wish to change your preferences.</p>
 
-{% endif %}
+<h2 id="committees">Country Preferences</h2>
+<table>
+   <tr>
+	<td>{{ school.country_1 }}</td>
+	<td>{{ school.country_2 }}</td>
+	<td>{{ school.country_3 }}</td>
+	<td>{{ school.country_4 }}</td>
+	<td>{{ school.country_5 }}</td>
+	<td>{{ school.country_6 }}</td>
+	<td>{{ school.country_7 }}</td>
+	<td>{{ school.country_8 }}</td>
+	<td>{{ school.country_9 }}</td>
+	<td>{{ school.country_10 }}</td>
+   </tr>
+</table>
 
-
-<h2 id="events">Event registration</h2>
-
-{% if event_form %}
-<p>If you are interested in attending the Friday night social event, please fill out the form below. Delegates have a choice between <a href="http://www.mcmun.org/social-events#pub-crawl">Pub Crawl</a> and a non-alcoholic event (the details of which will be released closer to the conference itself).</p>
-<form method="post" action="{% url events %}">
-	{% csrf_token %}
-
-	<fieldset>
-	{% for field in event_form %}
-		<dl>
-			<dt>
-				{{ field.label_tag }}
-			</dt>
-			<dd>
-				{{ field }} {{ field.errors }}
-			</dd>
-		</dl>
-	{% endfor %}
-	</fieldset>
-
-	<fieldset class="submit">
-		<input type="submit" name="submit" value="Submit" />
-	</fieldset>
-</form>
-{% else %}
-<p>You have indicated that there are <strong>{{ school.num_pub_crawl }}</strong> delegate{{ school.num_pub_crawl|pluralize }} interested in attending Pub Crawl and <strong>{{ school.num_non_alcohol }}</strong> delegate{{ school.num_non_alcohol|pluralize }} who would prefer to attend a non-alcoholic event instead.</p>
-
-<p>If you need to make changes to these numbers, please contact Serena Wang at <a href="schools@ssuns.org">schools@ssuns.org</a>.</p>
-{% endif %}
 
 {% comment %}
 <div id="scholarship">

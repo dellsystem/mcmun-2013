@@ -3,7 +3,7 @@
 {% load markup %}
 
 {% block content %}
-
+<a href="/committees-list">Go back</a>
 <div class="center-align">
 	<img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.jpg" />
 </div>
@@ -28,7 +28,7 @@
 		<td>
 			<b>{{ dais.name }}</b><p />
 			{{ dais.position }} <p />
-			<img src="{{ STATIC_URL }}img/dais/{{ committee.slug }}/{{ dais.pic_name }}" />
+			<img src="{{ STATIC_URL }}img/dais/{{ committee.slug }}/{{ dais.pic_name }}" width="150px" height="225px"/>
 		</td>
 		{% endfor %}
 	</tr>

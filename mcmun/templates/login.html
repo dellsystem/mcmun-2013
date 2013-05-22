@@ -13,10 +13,10 @@
 	{% endif %}
 
 	{% csrf_token %}
-	<table>
+	<table style="width:400px">
 	<tr>
-		<td><label for="id_username">Email address</label></td>
-		<td>{{ form.username }}</td>
+		<td style="width:200px"><label for="id_username">Email address</label></td>
+		<td style="width:200px">{{ form.username }}</td>
 	</tr>
 	<tr>
 		<td>{{ form.password.label_tag }}</td>
