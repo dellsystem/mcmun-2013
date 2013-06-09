@@ -109,6 +109,11 @@ $(document).ready(function() {
 		$(this).addClass('active').next().show();
 	});
 
+	// want to do the same thing for newsletter page
+	$('#newsletter').delegate('.news-list', 'click', function (event) {
+		$('.news-content').show();
+	});
+
 	var delegationFee = 75;
 
 	$('#fee-calculator').delegate('select', 'change', function (event) {

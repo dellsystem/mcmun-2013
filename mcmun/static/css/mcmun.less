@@ -344,6 +344,32 @@ body {
 	}
 }
 
+#newsletter {
+	width: 900px;
+	height: 750px;
+	.news-content {
+		position: absolute;
+		width: 750px;
+		height: 750px;
+		top: 5px;
+		right: 5px;
+	}
+	.news-list {
+		height: 50px;
+		width: 160px;
+		position: relative;
+		text-align:center;
+		line-height:50px;
+		&:hover {
+			.grey-bg(@sublinkBlockBgHoverRgb, @sublinkBlockBgHoverAlpha);
+			text-decoration: none !important;
+		}
+	}
+}
+
+
+
+
 #fee-information {
 	.hidden;
 	padding-top: 10px;

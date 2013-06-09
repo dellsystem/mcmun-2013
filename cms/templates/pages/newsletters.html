@@ -1,0 +1,21 @@
+<script>
+	function showContent(message)
+	{
+		var content = "<iframe src='http://docs.google.com/gview?url=http://www.ssuns.org/static/files/newsletter/" + message + ".pdf&embedded=true' style='width:750px; height:750px;' frameborder='0'></iframe>";
+		document.getElementById('news').innerHTML = content
+	}
+
+</script>
+
+
+
+<div id="newsletter">
+	<div class="news-content" id='news'>
+		<iframe src="http://docs.google.com/gview?url=http://www.ssuns.org/static/files/newsletter/june.pdf&embedded=true" 
+style="width:750px; height:750px;" frameborder="0"></iframe>
+	</div>
+	<div class="news-list" onclick="showContent('may')"><a>Newsletter (May Issue)</a></div>
+	
+	<div class="news-list" onclick="showContent('june')"><a>Newsletter (June Issue)</a></div>
+
+</div>

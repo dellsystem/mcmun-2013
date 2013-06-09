@@ -68,3 +68,45 @@ def generate_invoice(school_id, username, password):
 	attachment_filenames = [pdf_filename]
 
 	send_email.delay(invoice_subject, invoice_message_filename, [school.email], context=invoice_context, bcc=[settings.IT_EMAIL, settings.CHARGE_EMAIL], attachment_filenames=attachment_filenames)
+
+
+
+@task
+def regenerate_invoice(school_id):
+	print "starting the generate_invoice task"
+	RegisteredSchool = get_model('mcmun', 'RegisteredSchool')
+	school = RegisteredSchool.objects.get(pk=school_id)
+
+	invoice_context = {
+		'first_name': school.first_name,
+		'school_name': school.school_name,
+		'num_delegates': school.num_delegates,
+		'payment_method': 'online payment' if school.use_online_payment else 'cheque',
+		'payment_type': school.get_payment_type(),
+		'total_balance': school.get_total_owed(),
+		'currency': school.get_currency(),
+	}
+
+	# Send out an email to the user explaining that their account has been approved
+	# CC myself just in case they forget the password or whatever
+	invoice_subject = 'Invoice for SSUNS 2013'
+	invoice_message_filename = 're-invoice'
+
+	invoice_id = 'SSUNS13' + str(school_id).zfill(3)
+
+	pdf_context = {
+		'invoice_id': invoice_id,
+		'payment_type': school.get_payment_type(),
+		'school': school,
+	}
+
+	# Generate the invoice PDF, save it under tmp/
+	pdf_filename = 'mcmun/invoice/ssuns_invoice_%s.pdf' % invoice_id
+	file = open(pdf_filename, 'wb')
+	pdf = generate_pdf('pdf/invoice.html', file_object=file, context=pdf_context)
+	file.close()
+
+	attachment_filenames = [pdf_filename]
+
+	send_email.delay(invoice_subject, invoice_message_filename, [school.email], context=invoice_context, bcc=[settings.IT_EMAIL, settings.CHARGE_EMAIL], attachment_filenames=attachment_filenames)
+

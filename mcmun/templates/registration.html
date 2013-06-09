@@ -90,22 +90,22 @@
 
 			<dt>
 				<label for="id_email">Faculty Advisor Contact Email:</label>
-				<p>Please enter only one email. The receipt will be sent to this email.</p>
+				<p>Please enter an unique email with less than 30 characters. The receipt will be sent to this email. The address will be your new account username</p>
 			</dt>
 			<dd>
 				{{ form.email }}
 				{% if form.email.errors %}
-					<p class="errors">Please ensure that you have correctly entered one email.</p>
+					<p class="errors">Please ensure that you have correctly entered one email with less than 50 characters.</p>
 				{% endif %}
 			</dd>
 			<dt>
-				<label for="id_advisor_email">Head Delegate Contact Email:</label>
-				<p>Please enter only one email. The receipt will be sent to this email.</p>
+				<label for="id_delegate_email">Head Delegate Contact Email:</label>
+				<p>Please enter only one email with less than 50 characters.</p>
 			</dt>
 			<dd>
 				{{ form.delegate_email }}
 				{% if form.delegate_email.errors %}
-					<p class="errors">Please ensure that you have correctly entered one email.</p>
+					<p class="errors">Please ensure that you have correctly entered one email with less than 50 characters.</p>
 				{% endif %}
 			</dd>
 			<dt>

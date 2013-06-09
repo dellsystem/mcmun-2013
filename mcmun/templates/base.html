@@ -1,7 +1,9 @@
 <doctype html>
 <html>
 <head>
-	<meta name="description" content="Model United Nations conference held in Montreal, January 24-27 2013. Organised by McGill international relations organisation (IRSAM)." />
+	<meta name="description" content="Secondary Schools' United Nations Symposium, November 7th - 10th. Organised by McGill international relations organisation (IRSAM)." />
+	<meta name="og:image" content="{{ STATIC_URL }}img/logoWhiteLeaves.png" />
+
 	{% if debug %}
 	<link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}css/mcmun.less" />
 	<script src="{{ STATIC_URL }}js/less.min.js"></script>
@@ -12,9 +14,8 @@
 	<script src="{{ STATIC_URL }}js/jquery.cycle.all.js"></script>
 	<script src="{{ STATIC_URL }}js/mcmun.js"></script>
 	<title>SSUNS 2013 :: {{ page.long_name }}</title>
-	<!-- Background image by Anirudh Koul
-	http://www.flickr.com/photos/anirudhkoul/788832193/sizes/l/in/photostream/
-	You can view this repository's source on Github:
+	<!-- make sure facebook has the right title and webpage description -->
+	<!-- You can view this repository's source on Github:
 	https://github.com/dellsystem/mcmun-2013 -->
 </head>
 <body>

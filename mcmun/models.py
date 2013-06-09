@@ -23,8 +23,8 @@ class RegisteredSchool(models.Model):
 	other_method = models.CharField(max_length=100, null=True, blank=True)
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
-	email = models.EmailField(max_length=255, unique=True)
-	delegate_email = models.EmailField(max_length=255, null=True, blank=True)
+	email = models.EmailField(max_length=50, unique=True)
+	delegate_email = models.EmailField(max_length=50, null=True, blank=True)
 	other_email = models.EmailField(max_length=255, null=True, blank=True)
 	address = models.CharField(max_length=255, null=True, blank=True)
 	mail_address = models.CharField(max_length=255)
@@ -48,10 +48,10 @@ class RegisteredSchool(models.Model):
 	is_approved = models.BooleanField(default=False, verbose_name="Approve school")
 
 	# Committee preferences. SO BAD
-	committee_1 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undf') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc')), related_name="school_1")
-	committee_2 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undf') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc')), related_name="school_2")
-	committee_3 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undf') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc')), related_name="school_3")
-	committee_4 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undf') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc')), related_name="school_4")
+	committee_1 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undef') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc') | Q(slug='punic') | Q(slug='robinh')), related_name="school_1")
+	committee_2 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undef') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc') | Q(slug='punic') | Q(slug='robinh')), related_name="school_2")
+	committee_3 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undef') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc') | Q(slug='punic') | Q(slug='robinh')), related_name="school_3")
+	committee_4 = models.ForeignKey(Committee, limit_choices_to= (Q(slug='automobile') | Q(slug='igf') | Q(slug='epha') | Q(slug='emirs') | Q(slug='undef') | Q(slug='tunisian') | Q(slug='newspaper') | Q(slug='nfl') |Q(slug='korean') | Q(slug='war') | Q(slug='ad-hoc') | Q(slug='punic') | Q(slug='robinh')), related_name="school_4")
 
 
 	# Country preferences.
@@ -219,8 +219,8 @@ def approve_schools(sender, instance, **kwargs):
 	if instance.is_approved and instance.account is None:
 		# School does not have an account. Make one!
 		password = generate_random_password()
-		new_account = User.objects.create_user(username=instance.email,
-											   password=password)
+		username = instance.email[:30]
+		new_account = User.objects.create_user(username=username, password=password)
 		instance.account = new_account
 
 		instance.send_invoice_email(new_account.username, password)

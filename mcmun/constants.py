@@ -69,7 +69,6 @@ COUNTRIES = (
 	('ES', u'Spain'), ('LK', u'Sri Lanka'), ('SD', u'Sudan'), ('SR', u'Suriname'), 
 	('SZ', u'Swaziland'), ('SE', u'Sweden'), 
 	('CH', u'Switzerland'), ('SY', u'Syrian Arab Republic'), ('TH', u'Thailand'), 
-	('CD', u'The Democratic Republic of the Congo'), 
 	('TL', u'Timor-leste'), ('TG', u'Togo'), 
 	('TT', u'Trinidad and Tobago'), 
 	('TN', u'Tunisia'), ('TR', u'Turkey'), ('TM', u'Turkmenistan'), 
