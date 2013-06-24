@@ -3,6 +3,7 @@ from django.contrib import admin
 from committees.models import *
 
 
+
 class CommitteeAssignmentAdmin(admin.ModelAdmin):
 	list_display = ('school', 'committee', 'assignment')
 

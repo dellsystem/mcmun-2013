@@ -8,9 +8,9 @@ from django.shortcuts import render, redirect
 from committees.forms import CommitteeAssignmentFormSet, DelegateAssignmentFormset
 from committees.models import DelegateAssignment
 from committees.utils import get_committee_from_email
-from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm, CommitteePrefsForm
+from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm, CommitteePrefsForm, ScholarshipIndividualForm
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES
-from mcmun.models import RegisteredSchool, ScholarshipApp
+from mcmun.models import RegisteredSchool, ScholarshipApp, ScholarshipIndividual
 
 
 def home(request):
@@ -167,6 +167,36 @@ def committee_prefs(request):
 			form.save()
 
 	return redirect(dashboard)
+
+
+def scholarship_individual(request):
+	if request.method == 'POST':
+		form = ScholarshipIndividualForm(request.POST)
+
+		if form.is_valid():
+			scholar_ind = form.save()
+			scholar_ind.save()
+
+			data = {
+				'page': {
+					'long_name': 'Succcessful submission'
+				}
+			}
+
+			return render(request, "scholarship_success.html", data)
+	else:
+		form = ScholarshipIndividualForm()
+
+	data = {
+		'form': form,
+		'page': {
+			'long_name': 'Individual Scholarship',
+		},
+	}
+
+	return render(request, "scholarship_individual.html", data)
+
+
 
 
 def nikhil_error(request):

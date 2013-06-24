@@ -189,21 +189,45 @@ class RegisteredSchool(models.Model):
 
 class ScholarshipApp(models.Model):
 	school = models.OneToOneField(RegisteredSchool)
-	club_name = models.CharField(max_length=100)
-	num_days_staying = models.IntegerField()
+	# club_name = models.CharField(max_length=100)
+	# num_days_staying = models.IntegerField()
+	new_school = models.BooleanField()
+	international = models.BooleanField()
+	# previously_attended = models.BooleanField()
+	previous_scholarship_amount = models.IntegerField(null=True, blank=True)
+	previous_scholarship_year = models.IntegerField(null=True, blank=True)
+	impact_on_delegation = models.TextField()
+	principles_of_organisation = models.TextField()
+	importance_of_ssuns = models.TextField()
+	# how_funding_works = models.TextField()
+	# other_funding_sources = models.TextField()
+	# budget = models.TextField()
+	other_information = models.TextField(null=True, blank=True)
+	# co_head_name = models.CharField(max_length=100, null=True, blank=True)
+	# co_head_email = models.EmailField(max_length=255, null=True, blank=True)
+	# co_head_phone = models.CharField(max_length=20, null=True, blank=True)
+
+	def __unicode__(self):
+		return self.school.school_name
+
+
+class ScholarshipIndividual(models.Model):
+	school = models.OneToOneField(RegisteredSchool)
+	# club_name = models.CharField(max_length=100)
+	# num_days_staying = models.IntegerField()
 	previously_attended = models.BooleanField()
 	previous_scholarship_amount = models.IntegerField(null=True, blank=True)
 	previous_scholarship_year = models.IntegerField(null=True, blank=True)
 	impact_on_delegation = models.TextField()
 	principles_of_organisation = models.TextField()
-	importance_of_mcmun = models.TextField()
-	how_funding_works = models.TextField()
-	other_funding_sources = models.TextField()
-	budget = models.TextField()
+	importance_of_ssuns = models.TextField()
+	# how_funding_works = models.TextField()
+	# other_funding_sources = models.TextField()
+	# budget = models.TextField()
 	other_information = models.TextField(null=True, blank=True)
-	co_head_name = models.CharField(max_length=100, null=True, blank=True)
-	co_head_email = models.EmailField(max_length=255, null=True, blank=True)
-	co_head_phone = models.CharField(max_length=20, null=True, blank=True)
+	# co_head_name = models.CharField(max_length=100, null=True, blank=True)
+	# co_head_email = models.EmailField(max_length=255, null=True, blank=True)
+	# co_head_phone = models.CharField(max_length=20, null=True, blank=True)
 
 	def __unicode__(self):
 		return self.school.school_name

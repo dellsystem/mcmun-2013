@@ -1,6 +1,6 @@
 import re
 
-from mcmun.models import RegisteredSchool, ScholarshipApp
+from mcmun.models import RegisteredSchool, ScholarshipApp, ScholarshipIndividual
 
 
 from django import forms
@@ -71,6 +71,10 @@ class ScholarshipForm(RegistrationForm):
 	class Meta:
 		model = ScholarshipApp
 		exclude = ('school',)
+
+class ScholarshipIndividualForm(forms.ModelForm):
+	class Meta:
+		model = ScholarshipIndividual
 
 
 class CommitteePrefsForm(forms.ModelForm):

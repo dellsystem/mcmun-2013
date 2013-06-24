@@ -1,7 +1,9 @@
 import os
 
 from django.db import models
-
+from django import forms
+from mcmun.constants import COUNTRIES
+from committees.constants import ASSIGN_TYPE, COUNTRIES_CHARACTER
 
 position_paper_upload_path = 'position-papers/'
 
@@ -24,9 +26,14 @@ class Committee(models.Model):
 	slug = models.CharField(max_length=20, unique=True)
 	description = models.TextField()
 	category = models.ForeignKey(Category)
+	assign_type = models.BooleanField(choices=ASSIGN_TYPE, verbose_name="Assignment Type")
 
 	def __unicode__(self):
+		return self.name + " (" + self.get_assign_type_display() + ")"
+	
+	def get_name(self):
 		return self.name
+
 
 	@models.permalink
 	def get_absolute_url(self):
@@ -43,6 +50,7 @@ class Committee_Dais(models.Model):
 
 	def __unicode__(self):
 		return self.name
+
 	class Meta:
 		ordering = ('committee', 'id')
 
@@ -104,6 +112,12 @@ class WallStreetApplication(CommitteeApplication):
 	bull_bear = models.TextField(verbose_name="Are you bull-ish or bear-ish? Explain in two sentences or less.")
 
 
+
+class CustomModelChoiceField(forms.ModelChoiceField):
+	def label_from_instance(self, obj):
+		return "%s (%s)" % (obj.name, obj.get_assign_type_display())
+
+
 class CommitteeAssignment(models.Model):
 	class Meta:
 		ordering = ('school', 'committee')
@@ -114,12 +128,12 @@ class CommitteeAssignment(models.Model):
 	num_delegates = models.IntegerField(default=1)
 	committee = models.ForeignKey(Committee)
 	# The country or character name, in plain text
-	assignment = models.CharField(max_length=255)
+	assignment = models.CharField(max_length=255, choices=COUNTRIES_CHARACTER, null=True, blank=True)
 	notes = models.TextField(blank=True, null=True)
 	position_paper = models.FileField(upload_to=get_position_paper_path, blank=True, null=True)
 
 	def __unicode__(self):
-		return "%s" % self.assignment
+		return "%s" % self.get_assignment_display()
 
 	def is_filled(self):
 		return self.delegateassignment_set.filter(delegate_name__isnull=False).count() == self.num_delegates

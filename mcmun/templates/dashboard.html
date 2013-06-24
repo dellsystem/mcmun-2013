@@ -73,7 +73,7 @@
 		{% for f, d_f in formset %}
 		{% with c=f.instance %}
 		<tr>
-			<td><a href="{{ c.committee.get_absolute_url }}">{{ c.committee }}</a></td>
+			<td><a href="{{ c.committee.get_absolute_url }}">{{ c.committee.get_name }}</a></td>
 			<td>{{ c.assignment }}</td>
 			<td>
 				{% for d in d_f %}
@@ -132,10 +132,10 @@
 <p>You have indicated your committee preferences to be:</p>
 
 <table>
-	<tr><td>{{ school.committee_1 }}</td></tr>
-	<tr><td>{{ school.committee_2 }}</td></tr>
-	<tr><td>{{ school.committee_3 }}</td></tr>
-	<tr><td>{{ school.committee_4 }}</td></tr>
+	<tr><td>{{ school.committee_1.get_name }}</td></tr>
+	<tr><td>{{ school.committee_2.get_name }}</td></tr>
+	<tr><td>{{ school.committee_3.get_name }}</td></tr>
+	<tr><td>{{ school.committee_4.get_name }}</td></tr>
 </table>
 
 <p>Please contact <a href="mailto:schools@ssuns.org">schools@ssuns.org</a> if you have any questions or wish to change your preferences.</p>
@@ -155,8 +155,7 @@
    </tr>
 </table>
 
-
-{% comment %}
+{% if school.id == 27 %}
 <div id="scholarship">
 	<h2>Scholarship application</h2>
 	{% if form %}
@@ -166,7 +165,7 @@
 		<p><em>It is required that all scholarship recipients stay at the Sheraton during the conference.</em></p>
 	{% endif %}
 </div>
-{% endcomment %}
+{% endif %}
 {% else %}
 <p>Unfortunately there's nothing for you to see here. Please move along.</p>
 {% endif %}
