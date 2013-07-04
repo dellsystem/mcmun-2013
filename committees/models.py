@@ -138,6 +138,9 @@ class CommitteeAssignment(models.Model):
 	def is_filled(self):
 		return self.delegateassignment_set.filter(delegate_name__isnull=False).count() == self.num_delegates
 
+	def is_valid(self):
+		return CommitteeAssignment.objects.filter(committee=self.committee, assignment=self.assignment).count() == 1
+	is_valid.boolean = True
 
 class DelegateAssignment(models.Model):
 	class Meta:

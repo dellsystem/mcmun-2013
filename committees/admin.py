@@ -1,12 +1,10 @@
 from django.contrib import admin
-
+from django import forms
 from committees.models import *
 
 
-
 class CommitteeAssignmentAdmin(admin.ModelAdmin):
-	list_display = ('school', 'committee', 'assignment')
-
+	list_display = ('school', 'committee', 'assignment', 'is_valid')
 
 class DelegateAssignmentAdmin(admin.ModelAdmin):
 	list_display = ('school', 'committee', 'committee_assignment', 'delegate_name')
