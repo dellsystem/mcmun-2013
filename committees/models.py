@@ -6,6 +6,7 @@ from mcmun.constants import COUNTRIES
 from committees.constants import ASSIGN_TYPE, COUNTRIES_CHARACTER
 
 position_paper_upload_path = 'position-papers/'
+scholarship_upload_path = 'scholarship/'
 
 def get_position_paper_path(instance, filename):
 	return os.path.join(position_paper_upload_path, str(instance.id) + os.path.splitext(filename)[1])
@@ -125,22 +126,24 @@ class CommitteeAssignment(models.Model):
 
 	# Number of delegates is usually 1, except in SOCHUM
 	school = models.ForeignKey('mcmun.RegisteredSchool')
-	num_delegates = models.IntegerField(default=1)
 	committee = models.ForeignKey(Committee)
 	# The country or character name, in plain text
 	assignment = models.CharField(max_length=255, choices=COUNTRIES_CHARACTER, null=True, blank=True)
-	notes = models.TextField(blank=True, null=True)
 	position_paper = models.FileField(upload_to=get_position_paper_path, blank=True, null=True)
 
 	def __unicode__(self):
 		return "%s" % self.get_assignment_display()
 
 	def is_filled(self):
-		return self.delegateassignment_set.filter(delegate_name__isnull=False).count() == self.num_delegates
+		return self.delegateassignment_set.filter(delegate_name__isnull=False).count() == 1
 
 	def is_valid(self):
 		return CommitteeAssignment.objects.filter(committee=self.committee, assignment=self.assignment).count() == 1
 	is_valid.boolean = True
+
+	def unassigned(self):
+		num = int(self.school.num_delegates) - CommitteeAssignment.objects.filter(school=self.school).count()
+		return "%s" % num
 
 class DelegateAssignment(models.Model):
 	class Meta:
@@ -163,7 +166,6 @@ def create_delegate_assignments(sender, instance, created, **kwargs):
 	(with no delegate name specified) for each CommitteeAssignment
 	"""
 	if created:
-		for i in xrange(instance.num_delegates):
-			instance.delegateassignment_set.create()
+		instance.delegateassignment_set.create()
 
 models.signals.post_save.connect(create_delegate_assignments, sender=CommitteeAssignment)

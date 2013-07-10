@@ -4,7 +4,7 @@ from committees.models import *
 
 
 class CommitteeAssignmentAdmin(admin.ModelAdmin):
-	list_display = ('school', 'committee', 'assignment', 'is_valid')
+	list_display = ('school', 'committee', 'assignment', 'is_valid', 'unassigned')
 
 class DelegateAssignmentAdmin(admin.ModelAdmin):
 	list_display = ('school', 'committee', 'committee_assignment', 'delegate_name')

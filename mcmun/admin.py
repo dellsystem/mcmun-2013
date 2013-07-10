@@ -2,6 +2,11 @@ from django.contrib import admin
 
 from mcmun.models import RegisteredSchool, ScholarshipApp, ScholarshipIndividual
 from mcmun.tasks import regenerate_invoice
+from committees.models import CommitteeAssignment
+
+class CommitteeInline(admin.StackedInline):
+	model = CommitteeAssignment
+	extra = 0
 
 class RegisteredSchoolAdmin(admin.ModelAdmin):
 	# Sort reverse chronologically
@@ -9,6 +14,7 @@ class RegisteredSchoolAdmin(admin.ModelAdmin):
 	list_display = ('school_name', 'email', 'is_approved', 'num_delegates', 'amount_owed', 'amount_paid')
 	list_filter = ('is_approved', 'use_online_payment')
 	exclude = ('account',)
+	inlines = [CommitteeInline]
 
 	def re_invoice(self, request, queryset):
 		for obj in queryset:

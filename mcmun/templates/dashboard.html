@@ -74,7 +74,7 @@
 		{% with c=f.instance %}
 		<tr>
 			<td><a href="{{ c.committee.get_absolute_url }}">{{ c.committee.get_name }}</a></td>
-			<td>{{ c.assignment }}</td>
+			<td>{{ c.get_assignment_display }}</td>
 			<td>
 				{% for d in d_f %}
 					{% if d.instance.delegate_name %}
@@ -155,7 +155,7 @@
    </tr>
 </table>
 
-{% if school.id == 27 %}
+{% comment %}
 <div id="scholarship">
 	<h2>Scholarship application</h2>
 	{% if form %}
@@ -165,7 +165,7 @@
 		<p><em>It is required that all scholarship recipients stay at the Sheraton during the conference.</em></p>
 	{% endif %}
 </div>
-{% endif %}
+{% endcomment %}
 {% else %}
 <p>Unfortunately there's nothing for you to see here. Please move along.</p>
 {% endif %}
