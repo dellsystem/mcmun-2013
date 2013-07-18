@@ -65,33 +65,41 @@
 		<tr>
 			<th>Committee</th>
 			<th>Assignment</th>
-			<th width="20%">Delegate name(s)</th>
-			<th width="25%">Position paper</th>
+			<th>Delegate name(s)</th>
+			<th>Position paper</th>
+			<th>Scholarship application</th>
 		</tr>
 	</thead>
 	<tbody>
-		{% for f, d_f in formset %}
-		{% with c=f.instance %}
+		{% for f, s_f in formset %}
+		{% with c=f.instance s=s_f.instance %}
 		<tr>
 			<td><a href="{{ c.committee.get_absolute_url }}">{{ c.committee.get_name }}</a></td>
 			<td>{{ c.get_assignment_display }}</td>
 			<td>
-				{% for d in d_f %}
-					{% if d.instance.delegate_name %}
-						<p>Delegate name: {{ d.instance.delegate_name }}</p>
-						<!-- lol -->
-						<div class="hidden">{{ d.as_p }}</div>
-					{% else %}
-						{{ d.as_p }}
-					{% endif %}
-				{% endfor %}
+				{% if c.delegate_name %}
+					<p>Delegate name: {{ c.delegate_name }}</p>
+					<div class="hidden">{{ f.delegate_name }}</div>
+				{% else %}
+					{{ f.delegate_name }}
+				{% endif %}
 			</td>
 			<td>
+            	{{ f.id }}
+                {% if c.delegate_name %}
+                   	{{ f.position_paper }}
+                {% else %}
+                    Uploading position paper after submitting the delegate name.
+                {% endif %}
+            </td>
+			<td>
 				{{ f.id }}
-				{% if c.is_filled %}
-					{{ f.position_paper }}
+				{% if c.delegate_name %}
+					{% for s in s_f %}
+						{{ s.scholarship_individual }}
+					{% endfor %}
 				{% else %}
-					You will be able to upload a position paper after submitting the delegate name{{ c.num_delegates|pluralize}} for this position.
+					Apply individual scholarship after submitting the delegate name.
 				{% endif %}
 			</td>
 		</tr>

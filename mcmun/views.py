@@ -5,12 +5,12 @@ from django.contrib.auth.decorators import login_required
 from django_xhtml2pdf.utils import generate_pdf
 from django.shortcuts import render, redirect
 
-from committees.forms import CommitteeAssignmentFormSet, DelegateAssignmentFormset
-from committees.models import DelegateAssignment
+from committees.forms import CommitteeAssignmentFormSet, ScholarshipIndividualFormset
+from committees.models import ScholarshipIndividual
 from committees.utils import get_committee_from_email
-from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm, CommitteePrefsForm, ScholarshipIndividualForm
+from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm, CommitteePrefsForm
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES
-from mcmun.models import RegisteredSchool, ScholarshipApp, ScholarshipIndividual
+from mcmun.models import RegisteredSchool, ScholarshipApp
 
 
 def home(request):
@@ -56,23 +56,18 @@ def registration(request):
 @login_required
 def dashboard(request):
 	# If it's a dais member, redirect to that committee's position paper listing
-	if request.user.username.endswith('@mcmun.org'):
+	if request.user.username.endswith('@ssuns.org'):
 		dais_committee = get_committee_from_email(request.user.username)
 		if dais_committee:
 			return redirect(dais_committee)
 
 	form = None
 	school = None
-	event_form = None
 	committees_form = None
 
 	if request.user.registeredschool_set.count():
 		# There should only be one anyway (see comment in models.py)
 		school = request.user.registeredschool_set.filter(is_approved=True)[0]
-
-		# Only show it if the user has not entered values yet
-		if school.num_pub_crawl == 0 and school.num_non_alcohol == 0:
-			event_form = EventForm(instance=school)
 
 		# Iff there is no scholarship application with this school, show the form
 		if ScholarshipApp.objects.filter(school=school).count() == 0:
@@ -90,9 +85,6 @@ def dashboard(request):
 				form = ScholarshipForm()
 
 		# If we haven't passed the committee prefs deadline, show the form
-		prefs_deadline = datetime.datetime(2012, 11, 19) # Nov 18 midnight
-		if datetime.datetime.now() < prefs_deadline:
-			committees_form = CommitteePrefsForm(instance=school)
 	elif request.user.is_staff:
 		# Show a random school (the first one registered)
 		# Admins can see the dashboard, but can't fill out any forms
@@ -102,14 +94,13 @@ def dashboard(request):
 	formset = CommitteeAssignmentFormSet(queryset=com_assignments, prefix='lol')
 	del_forms = []
 	for com_assignment in com_assignments:
-		del_forms.append(DelegateAssignmentFormset(queryset=com_assignment.delegateassignment_set.all(), prefix='%d' % com_assignment.id))
+		del_forms.append(ScholarshipIndividualFormset(queryset=com_assignment.scholarshipindividual_set.all(), prefix='%d' % com_assignment.id))
 
 	data = {
 		'management_forms': [formset.management_form] + [f.management_form for f in del_forms],
 		'formset': zip(formset, del_forms),
 		'unfilled_assignments': school.has_unfilled_assignments(),
 		'school': school,
-		'event_form': event_form,
 		'committees_form': committees_form,
 		'form': form,
 		# Needed to show the title (as base.html expects the CMS view)
@@ -135,67 +126,10 @@ def assignments(request):
 		formset = CommitteeAssignmentFormSet(request.POST, request.FILES, queryset=com_assignments, prefix='lol')
 		formset.save()
 		for com_ass in com_assignments:
-			formset = DelegateAssignmentFormset(request.POST, request.FILES, queryset=com_ass.delegateassignment_set.all(), prefix='%d' % com_ass.id)
+			formset = ScholarshipIndividualFormset(request.POST, request.FILES, queryset=com_ass.scholarshipindividual_set.all(), prefix='%d' % com_ass.id)
 			formset.save()
 
 	return redirect(dashboard)
-
-@login_required
-def events(request):
-	user_schools = request.user.registeredschool_set.filter(is_approved=True)
-
-	if request.method == 'POST' and user_schools.count() == 1:
-		school = user_schools[0]
-		form = EventForm(request.POST, instance=school)
-
-		if form.is_valid():
-			form.save()
-
-	return redirect(dashboard)
-
-
-@login_required
-def committee_prefs(request):
-	# Fix this
-	user_schools = request.user.registeredschool_set.filter(is_approved=True)
-
-	if request.method == 'POST' and user_schools.count() == 1:
-		school = user_schools[0]
-		form = CommitteePrefsForm(request.POST, instance=school)
-
-		if form.is_valid():
-			form.save()
-
-	return redirect(dashboard)
-
-
-def scholarship_individual(request):
-	if request.method == 'POST':
-		form = ScholarshipIndividualForm(request.POST)
-
-		if form.is_valid():
-			scholar_ind = form.save()
-			scholar_ind.save()
-
-			data = {
-				'page': {
-					'long_name': 'Succcessful submission'
-				}
-			}
-
-			return render(request, "scholarship_success.html", data)
-	else:
-		form = ScholarshipIndividualForm()
-
-	data = {
-		'form': form,
-		'page': {
-			'long_name': 'Individual Scholarship',
-		},
-	}
-
-	return render(request, "scholarship_individual.html", data)
-
 
 
 

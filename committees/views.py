@@ -83,7 +83,7 @@ def serve_papers(request, file_name):
 
 	if request.user.is_staff:
 		is_authorised = True
-	elif request.user.username.endswith('@mcmun.org'):
+	elif request.user.username.endswith('@ssuns.org'):
 		# Check the dais
 		committee = get_committee_from_email(request.user.username)
 		if committee and committee.committeeassignment_set.filter(position_paper=full_path):

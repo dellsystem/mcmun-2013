@@ -1,5 +1,5 @@
 from committees.models import AdHocApplication, BRICSApplication, NixonApplication, WallStreetApplication, \
-	CommitteeAssignment, DelegateAssignment
+	CommitteeAssignment, ScholarshipIndividual
 
 from django import forms
 
@@ -25,7 +25,7 @@ class WallStreetAppForm(forms.ModelForm):
 
 
 CommitteeAssignmentFormSet = forms.models.modelformset_factory(CommitteeAssignment,
-	fields=('position_paper',), extra=0)
+	fields=('delegate_name', 'position_paper',), extra=0)
 
-DelegateAssignmentFormset = forms.models.modelformset_factory(DelegateAssignment,
-	fields=('delegate_name',), extra=0)
+ScholarshipIndividualFormset = forms.models.modelformset_factory(ScholarshipIndividual,
+	fields=('scholarship_individual',), extra=0)

@@ -11,6 +11,10 @@ scholarship_upload_path = 'scholarship/'
 def get_position_paper_path(instance, filename):
 	return os.path.join(position_paper_upload_path, str(instance.id) + os.path.splitext(filename)[1])
 
+def get_scholarship_upload_path(instance, filename):
+	return os.path.join(scholarship_upload_path, str(instance.id) + os.path.splitext(filename)[1])
+
+
 
 class Category(models.Model):
 	name = models.CharField(max_length=50)
@@ -129,13 +133,14 @@ class CommitteeAssignment(models.Model):
 	committee = models.ForeignKey(Committee)
 	# The country or character name, in plain text
 	assignment = models.CharField(max_length=255, choices=COUNTRIES_CHARACTER, null=True, blank=True)
+	delegate_name = models.CharField(max_length=255, null=True, blank=True)
 	position_paper = models.FileField(upload_to=get_position_paper_path, blank=True, null=True)
 
 	def __unicode__(self):
 		return "%s" % self.get_assignment_display()
 
 	def is_filled(self):
-		return self.delegateassignment_set.filter(delegate_name__isnull=False).count() == 1
+		return self.delegate_name != ""
 
 	def is_valid(self):
 		return CommitteeAssignment.objects.filter(committee=self.committee, assignment=self.assignment).count() == 1
@@ -145,27 +150,30 @@ class CommitteeAssignment(models.Model):
 		num = int(self.school.num_delegates) - CommitteeAssignment.objects.filter(school=self.school).count()
 		return "%s" % num
 
-class DelegateAssignment(models.Model):
+class ScholarshipIndividual(models.Model):
 	class Meta:
-		unique_together = ('committee_assignment', 'delegate_name')
+		unique_together = ('committee_assignment', 'scholarship_individual')
 
 	committee_assignment = models.ForeignKey(CommitteeAssignment)
-	# Blank until a delegate is there
-	delegate_name = models.CharField(max_length=255, null=True, blank=True)
+	scholarship_individual = models.FileField(upload_to=get_scholarship_upload_path, blank=True, null=True)
 
-	def __unicode__(self):
-		if self.delegate_name:
-			return self.delegate_name
+	def name_of_delegate(self):
+		delegate = self.committee_assignment.delegate_name
+		if delegate != "":
+			return delegate
 		else:
-			return "N/A"
+			return "Delegate not assigned yet"
 
+	def is_uploaded(self):
+		return self.scholarship_individual != ""
+	is_uploaded.boolean = True
 
-def create_delegate_assignments(sender, instance, created, **kwargs):
+def create_scholarship_individual(sender, instance, created, **kwargs):
 	"""
 	Defines a post_save hook to create the right number of DelegateAssignments
 	(with no delegate name specified) for each CommitteeAssignment
 	"""
 	if created:
-		instance.delegateassignment_set.create()
+		instance.scholarshipindividual_set.create()
 
-models.signals.post_save.connect(create_delegate_assignments, sender=CommitteeAssignment)
+models.signals.post_save.connect(create_scholarship_individual, sender=CommitteeAssignment)

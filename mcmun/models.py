@@ -8,7 +8,7 @@ from django.dispatch import receiver
 from mcmun.utils import generate_random_password
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES, COUNTRIES, DELEGATION_FEE, YESNO, HOWYOUHEAR
 from mcmun.tasks import send_email, generate_invoice
-from committees.models import Committee, DelegateAssignment
+from committees.models import Committee, ScholarshipIndividual
 
 
 # test
@@ -107,7 +107,7 @@ class RegisteredSchool(models.Model):
 
 	# These are messy. Deal with it another time.
 	def get_total_convenience_fee(self):
-		return "%.2f" % ((self.num_delegates * self.get_delegate_fee() + DELEGATION_FEE) * 0.03)
+		return "%.2f" % ((self.num_delegates * self.get_delegate_fee() + DELEGATION_FEE + self.get_tour_fee())  * 0.03)
 
 	def get_deposit_convenience_fee(self):
 		return "%.2f" % ((DELEGATION_FEE + (self.get_delegate_fee() * self.num_delegates) * 0.5) * 0.03)
@@ -194,28 +194,6 @@ class ScholarshipApp(models.Model):
 	new_school = models.BooleanField()
 	international = models.BooleanField()
 	# previously_attended = models.BooleanField()
-	previous_scholarship_amount = models.IntegerField(null=True, blank=True)
-	previous_scholarship_year = models.IntegerField(null=True, blank=True)
-	impact_on_delegation = models.TextField()
-	principles_of_organisation = models.TextField()
-	importance_of_ssuns = models.TextField()
-	# how_funding_works = models.TextField()
-	# other_funding_sources = models.TextField()
-	# budget = models.TextField()
-	other_information = models.TextField(null=True, blank=True)
-	# co_head_name = models.CharField(max_length=100, null=True, blank=True)
-	# co_head_email = models.EmailField(max_length=255, null=True, blank=True)
-	# co_head_phone = models.CharField(max_length=20, null=True, blank=True)
-
-	def __unicode__(self):
-		return self.school.school_name
-
-
-class ScholarshipIndividual(models.Model):
-	school = models.OneToOneField(RegisteredSchool)
-	# club_name = models.CharField(max_length=100)
-	# num_days_staying = models.IntegerField()
-	previously_attended = models.BooleanField()
 	previous_scholarship_amount = models.IntegerField(null=True, blank=True)
 	previous_scholarship_year = models.IntegerField(null=True, blank=True)
 	impact_on_delegation = models.TextField()

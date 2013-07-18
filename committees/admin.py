@@ -6,8 +6,9 @@ from committees.models import *
 class CommitteeAssignmentAdmin(admin.ModelAdmin):
 	list_display = ('school', 'committee', 'assignment', 'is_valid', 'unassigned')
 
-class DelegateAssignmentAdmin(admin.ModelAdmin):
-	list_display = ('school', 'committee', 'committee_assignment', 'delegate_name')
+class ScholarshipIndividualAdmin(admin.ModelAdmin):
+	list_display = ('name_of_delegate', 'school', 'committee', 'is_uploaded')
+	ordering = ['committee_assignment']
 
 	def school(self, obj):
 		return "%s" % obj.committee_assignment.school
@@ -27,4 +28,4 @@ admin.site.register(BRICSApplication)
 admin.site.register(NixonApplication)
 admin.site.register(WallStreetApplication)
 admin.site.register(CommitteeAssignment, CommitteeAssignmentAdmin)
-admin.site.register(DelegateAssignment, DelegateAssignmentAdmin)
+admin.site.register(ScholarshipIndividual, ScholarshipIndividualAdmin)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from mcmun.models import RegisteredSchool, ScholarshipApp, ScholarshipIndividual
+from mcmun.models import RegisteredSchool, ScholarshipApp
 from mcmun.tasks import regenerate_invoice
 from committees.models import CommitteeAssignment
 
@@ -30,4 +30,3 @@ class RegisteredSchoolAdmin(admin.ModelAdmin):
 
 admin.site.register(RegisteredSchool, RegisteredSchoolAdmin)
 admin.site.register(ScholarshipApp)
-admin.site.register(ScholarshipIndividual)

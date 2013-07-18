@@ -18,9 +18,11 @@
 		<tr>
 			<td>{{ assignment.assignment }}</td>
 			<td>
-				{% for delegate in assignment.delegateassignment_set.all %}
-				{{ delegate }}<br />
-				{% endfor %}
+				{% if assignment.delegate_name %}
+					{{ assignment.delegate_name }}
+				{% else %}
+				N/A
+				{% endif %}
 			</td>
 			<td>{{ assignment.school }}</td>
 			<td>
