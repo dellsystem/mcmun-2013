@@ -35,11 +35,6 @@ class RegisteredSchool(models.Model):
 	fax = models.CharField(max_length=20, null=True, blank=True)
 	country = models.CharField(max_length=2, choices=COUNTRIES)
 
-	amount_paid = models.DecimalField(default=Decimal(0), max_digits=6, decimal_places=2)
-
-	num_pub_crawl = models.IntegerField(default=0, verbose_name="Number of delegates interested in attending Pub Crawl")
-	num_non_alcohol = models.IntegerField(default=0, verbose_name="Number of delegates who would prefer to attend a non-alcoholic event instead")
-
 
 	num_delegates = models.IntegerField(default=1, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES + 1)])
 	amount_paid = models.DecimalField(default=Decimal(0), max_digits=6, decimal_places=2)
@@ -134,9 +129,12 @@ class RegisteredSchool(models.Model):
 		return self.get_delegate_fee() * self.num_delegates
 
 	def get_total_owed(self):
-		total_owed = self.num_delegates * self.get_delegate_fee() + DELEGATION_FEE + self.get_tour_fee()
+		total_owed = self.num_delegates * self.get_delegate_fee() + DELEGATION_FEE + self.get_tour_fee() - float(self.amount_paid)
 
 		return "%.2f" % self.add_convenience_fee(total_owed)
+
+	def get_amount_paid(self):
+		return "$%s" % self.amount_paid
 
 	def get_deposit(self):
 		deposit = DELEGATION_FEE + (self.get_delegate_fee() * self.num_delegates) * 0.5

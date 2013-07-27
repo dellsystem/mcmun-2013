@@ -8,7 +8,7 @@
 	<thead>
 		<tr>
 			<th>Position</th>
-			<th>Delegate name(s)</th>
+			<th>Delegate name</th>
 			<th>School</th>
 			<th>Position paper</th>
 		</tr>
@@ -27,7 +27,7 @@
 			<td>{{ assignment.school }}</td>
 			<td>
 				{% if assignment.position_paper %}
-				<strong><a href="/{{ assignment.position_paper }}">Download</a></strong>
+				<strong><a href="/{{ assignment.position_paper }}" target="_blank">Download</a></strong>
 				{% else %}
 				N/A
 				{% endif %}

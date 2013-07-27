@@ -45,9 +45,9 @@
 					<br />
 					<strong>Amount owed:</strong> {{ school.amount_owed }} {{ school.get_currency }}
 					<br />
-					<strong>Amount paid:</strong> ${{ school.amount_paid }} {{ school.get_currency }}
+					<strong>Amount paid:</strong> {{ school.get_amount_paid }} {{ school.get_currency }}
 				</p>
-				<p>Lost your copy of your invoice PDF? Email it@ssuns.org.{% comment %}Eventually I'll make a view to show the PDF to people with the proper permissions. Later.{% endcomment %}</p>
+				<p>Lost your copy of your invoice PDF? Email <a href="mailto:it@ssuns.org">it@ssuns.org</a>.{% comment %}Eventually I'll make a view to show the PDF to people with the proper permissions. Later.{% endcomment %}</p>
 			</div>
 		</td>
 	</tr>
@@ -66,8 +66,8 @@
 			<th>Committee</th>
 			<th>Assignment</th>
 			<th>Delegate name(s)</th>
-			<th>Position paper</th>
-			<th>Scholarship application</th>
+			<th width="20%">Position paper</th>
+			<th width="20%">Scholarship application</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -93,10 +93,9 @@
                 {% endif %}
             </td>
 			<td>
-				{{ f.id }}
 				{% if c.delegate_name %}
 					{% for s in s_f %}
-						{{ s.scholarship_individual }}
+						{{ s.as_p }}
 					{% endfor %}
 				{% else %}
 					Apply individual scholarship after submitting the delegate name.

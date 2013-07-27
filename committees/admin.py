@@ -8,7 +8,7 @@ class CommitteeAssignmentAdmin(admin.ModelAdmin):
 
 class ScholarshipIndividualAdmin(admin.ModelAdmin):
 	list_display = ('name_of_delegate', 'school', 'committee', 'is_uploaded')
-	ordering = ['committee_assignment']
+	ordering = ['-scholarship_individual']
 
 	def school(self, obj):
 		return "%s" % obj.committee_assignment.school

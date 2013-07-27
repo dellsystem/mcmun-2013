@@ -191,6 +191,14 @@
 					<td class="amount">${{ school.get_total_convenience_fee }} {{ school.get_currency }}</td>
 				</tr>
 				{% endif %}
+				<tr class="bottom-border">
+					<td>
+						<p><strong>Amount paid</strong></p>
+					</td>
+					<td class="amount">--</td>
+					<td class="amount right-border">--</td>
+					<td class="amount">{{ school.get_amount_paid }} {{ school.get_currency }}</td>
+				</tr>
 				<tr{% if school.use_tiered %} class="bottom-border"{% endif %}>
 					<td colspan="3" class="right-border">
 						<div class="right-align">

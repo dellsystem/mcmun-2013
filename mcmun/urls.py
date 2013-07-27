@@ -1,6 +1,5 @@
 from django.conf.urls import patterns, include, url
 from mcmun.pages import pages
-
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -19,6 +18,8 @@ urlpatterns = patterns('',
     url(r'^password$', 'django.contrib.auth.views.password_change', {'template_name': 'password.html'}, name='password'),
     url(r'^password_success$', 'django.contrib.auth.views.password_change_done', {'template_name': 'password_success.html'}, name="password_success"),
     url(r'^position-papers/(?P<file_name>[^/]+)', 'committees.views.serve_papers'),
+    url(r'^scholarship/(?P<file_name>[^/]+)', 'committees.views.serve_scholarship'),
+    url(r'^scholarship_list$', 'committees.views.list_scholarship', name='list_scholarship'),
     url(r'^nikhilerror$', 'mcmun.views.nikhil_error'),
     url(r'^', include('cms.urls')),
 )

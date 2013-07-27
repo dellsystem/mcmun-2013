@@ -63,7 +63,7 @@ body{background-color:#1a2753;font-family:"Helvetica Neue",Helvetica,Arial,sans-
 #sec-bios .photo.active img{border-color:#000000;}
 #sec-bios .photo:hover img{border-color:#aa0000;}
 #sec-bios .photo .title-hover{position:absolute;bottom:7px;left:5px;right:5px;background:#141414;background:rgba(20, 20, 20, 0.7);color:#ffffff;padding:5px;display:none;}
-#newsletter{width:900px; height:750px;}#newsletter .news-content{position:absolute;width:750px;height:750px;top:5px;right:5px;}
+#newsletter{width:900px;height:750px;}#newsletter .news-content{position:absolute;width:750px;height:750px;top:5px;right:5px;}
 #newsletter .news-list{height:50px;width:160px;position:relative;text-align:center;line-height:50px;}#newsletter .news-list:hover{background:#141414;background:rgba(20, 20, 20, 0.2);text-decoration:none !important;}
 #fee-information{display:none;padding-top:10px;}
 #staffing-signup{padding-top:20px;}
@@ -75,5 +75,5 @@ body{background-color:#1a2753;font-family:"Helvetica Neue",Helvetica,Arial,sans-
 #staff-dates .check{font-size:1.5em;color:#ffffff;background:#1598c7;}#staff-dates .check:before{content:'\2713';}
 #staff-dates .invited{background:#dff4fc;}
 #committees-grid{list-style-type:none;}#committees-grid li{vertical-align:top;display:inline-block;zoom:1;*display:inline;width:200px;text-align:center;}#committees-grid li img{height:100px;}
-.separated-cells td{border-top:1px solid #d9d9d9;}
+.separated-cells td{border-top:1px solid #d9d9d9;width:20%;}
 .firstrow{background-color:#dddddd;}

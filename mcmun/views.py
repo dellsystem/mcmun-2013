@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 from committees.forms import CommitteeAssignmentFormSet, ScholarshipIndividualFormset
 from committees.models import ScholarshipIndividual
 from committees.utils import get_committee_from_email
-from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm, CommitteePrefsForm
+from mcmun.forms import RegistrationForm, ScholarshipForm, CommitteePrefsForm
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES
 from mcmun.models import RegisteredSchool, ScholarshipApp
 
@@ -63,7 +63,6 @@ def dashboard(request):
 
 	form = None
 	school = None
-	committees_form = None
 
 	if request.user.registeredschool_set.count():
 		# There should only be one anyway (see comment in models.py)
@@ -92,16 +91,15 @@ def dashboard(request):
 
 	com_assignments = school.committeeassignment_set.all()
 	formset = CommitteeAssignmentFormSet(queryset=com_assignments, prefix='lol')
-	del_forms = []
+	scholar_forms = []
 	for com_assignment in com_assignments:
-		del_forms.append(ScholarshipIndividualFormset(queryset=com_assignment.scholarshipindividual_set.all(), prefix='%d' % com_assignment.id))
+		scholar_forms.append(ScholarshipIndividualFormset(queryset=com_assignment.scholarshipindividual_set.all(), prefix='%d' % com_assignment.id))
 
 	data = {
-		'management_forms': [formset.management_form] + [f.management_form for f in del_forms],
-		'formset': zip(formset, del_forms),
+		'management_forms': [formset.management_form] + [f.management_form for f in scholar_forms],
+		'formset': zip(formset, scholar_forms),
 		'unfilled_assignments': school.has_unfilled_assignments(),
 		'school': school,
-		'committees_form': committees_form,
 		'form': form,
 		# Needed to show the title (as base.html expects the CMS view)
 		'page': {

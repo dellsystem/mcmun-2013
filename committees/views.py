@@ -7,7 +7,7 @@ from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.static import serve
 
-from committees.models import Committee, position_paper_upload_path
+from committees.models import Committee, position_paper_upload_path, scholarship_upload_path
 from committees.forms import AdHocAppForm, BRICSAppForm, NixonAppForm, WallStreetAppForm
 from committees.utils import get_committee_from_email
 
@@ -75,6 +75,7 @@ def application(request, slug):
 	return render(request, 'committee_app.html', data)
 
 
+
 @login_required
 def serve_papers(request, file_name):
 	# Check if user is an admin/mod OR if the user uploaded the file OR dais
@@ -119,3 +120,54 @@ def list_papers(request, slug):
 		return render(request, 'list_papers.html', data)
 	else:
 		raise Http404
+
+@login_required
+def serve_scholarship(request, file_name):
+	# Check if user is an admin/mod OR if the user uploaded the file OR dais
+	is_authorised = False
+	full_path = os.path.join(scholarship_upload_path, file_name)
+
+	if request.user.is_staff:
+		is_authorised = True
+	elif request.user.username.endswith('@ssuns.org'):
+                # Check the dais
+		committee = get_committee_from_email(request.user.username)
+		if committee and committee.committeeassignment_set.filter(position_paper=full_path):
+			is_authorised = True
+	else:
+		user_schools = request.user.registeredschool_set.filter(is_approved=True)
+		if user_schools.count() == 1:
+			school = user_schools[0]
+			if school.committeeassignment_set.filter(position_paper=full_path):
+				is_authorised = True
+
+	if is_authorised:
+		return serve(request, file_name, os.path.join(settings.MEDIA_ROOT, scholarship_upload_path))
+	else:
+		raise PermissionDenied
+
+@login_required
+def list_scholarship(request):
+	scholarship_list = []
+	delegate_list = []
+        # Only the dais for this committee and other admins can access this
+        if (request.user.username.endswith('@ssuns.org') or request.user.is_staff):
+                committee_list = Committee.objects.all()
+		for committee in committee_list:
+			assignment = committee.committeeassignment_set.all()
+			for ass in assignment:
+				scholarship = ass.scholarshipindividual_set.all()
+				for scholar in scholarship:
+					if scholar.scholarship_individual!="":
+						scholarship_list.append(scholar)
+						delegate_list.append(ass)
+		data = {
+                        'page': {
+                                'long_name': 'scholarship list'
+                        },
+                        'scholarship_list': zip(delegate_list, scholarship_list),
+                }
+
+                return render(request, 'list_scholarship.html', data)
+        else:
+                raise Http404
