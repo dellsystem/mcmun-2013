@@ -16,6 +16,12 @@ def view(request, slug):
 	committee = get_object_or_404(Committee, slug=slug)
 	# If the user is a member of the dais, show a link to the uploads page
 	is_dais = get_committee_from_email(request.user.username) == committee
+	# If background guide is uploaded
+	bgset = committee.committeebackgroundguide_set.all()
+	bg_uploaded = False
+	if bgset.count():
+		bg_uploaded = True
+
 
 	data = {
 		'page': {
@@ -23,6 +29,8 @@ def view(request, slug):
 		},
 		'is_dais': is_dais,
 		'committee': committee,
+		'bg_uploaded': bg_uploaded,
+		'bgset': bgset,
 		'dais_template': 'dais_photos/%s.html' % committee.slug,
 		'DAIS_PHOTO_URL': '%simg/dais/%s/' % (settings.STATIC_URL, committee.slug),
 	}

@@ -318,10 +318,8 @@
 				</p>
 			</dt>
 			<dd>
-				{{ form.mcgill_tours }}
-				{% if form.mcgill_tours.errors %}
-					<p class="errors">Please select a number.</p>
-				{% endif %}
+				<p>The McGill Tours Application reached the maximum capacity. It is now closed. Contact <a href="mailto:ops@ssuns.org">ops@ssuns.org</a> for more information.</p>
+				<div class="hidden">{{ form.mcgill_tours }}</div>
 			</dd>
 		</dl>
 	</fieldset>

@@ -6,13 +6,13 @@ from mcmun.constants import COUNTRIES
 from committees.constants import ASSIGN_TYPE, COUNTRIES_CHARACTER
 
 position_paper_upload_path = 'position-papers/'
-scholarship_upload_path = 'scholarship/'
+scholarship_upload_path = 'scholarship/individual/'
 
 def get_position_paper_path(instance, filename):
-	return os.path.join(position_paper_upload_path, str(instance.id) + os.path.splitext(filename)[1])
+	return os.path.join(position_paper_upload_path, str(instance.id) + filename)
 
 def get_scholarship_upload_path(instance, filename):
-	return os.path.join(scholarship_upload_path, str(instance.id) + os.path.splitext(filename)[1])
+	return os.path.join(scholarship_upload_path, str(instance.id) + filename)
 
 
 
@@ -58,6 +58,18 @@ class Committee_Dais(models.Model):
 
 	class Meta:
 		ordering = ('committee', 'id')
+
+class CommitteeBackgroundGuide(models.Model):
+	committee = models.ForeignKey(Committee)
+	bg_name = models.CharField(max_length=255)
+	bg_link = models.CharField(max_length=255)
+	
+	def __unicode__(self):
+		return self.bg_name
+
+	class Meta:
+		ordering = ('committee', 'id')
+
 
 class CommitteeApplication(models.Model):
 	"""

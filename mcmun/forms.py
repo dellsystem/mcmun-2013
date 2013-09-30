@@ -1,7 +1,7 @@
 import re
 
-from mcmun.models import RegisteredSchool, ScholarshipApp, ScholarshipIndividual
-
+from mcmun.models import RegisteredSchool, AddDelegates, ScholarshipSchoolApp, ScholarshipIndividual, DelegateSurvey
+from mcmun.constants import SURVEYANSWER
 
 from django import forms
 
@@ -57,17 +57,23 @@ class RegistrationForm(forms.ModelForm):
 		else:
 			return phone_number
 
-
-class ScholarshipForm(RegistrationForm):
+class AddDelegatesForm(forms.ModelForm):
 	class Meta:
-		model = ScholarshipApp
+		model = AddDelegates
+
+class ScholarshipSchoolForm(forms.ModelForm):
+	class Meta:
+		model = ScholarshipSchoolApp
 		exclude = ('school',)
 
 class ScholarshipIndividualForm(forms.ModelForm):
 	class Meta:
 		model = ScholarshipIndividual
 
-
+class DelegateSurveyForm(forms.ModelForm):
+	class Meta:
+		model = DelegateSurvey
+	
 class CommitteePrefsForm(forms.ModelForm):
 	class Meta:
 		model = RegisteredSchool

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from mcmun.models import RegisteredSchool, ScholarshipApp
-from mcmun.tasks import regenerate_invoice
+from mcmun.models import RegisteredSchool, AddDelegates, ScholarshipSchoolApp, DelegateSurvey
+from mcmun.tasks import regenerate_invoice, regenerate_add_invoice
 from committees.models import CommitteeAssignment
 
 class CommitteeInline(admin.StackedInline):
@@ -28,5 +28,29 @@ class RegisteredSchoolAdmin(admin.ModelAdmin):
 	re_invoice.short_description = "Send invoice to selected schools"
 	actions = ['re_invoice']
 
+class AddDelegatesAdmin(admin.ModelAdmin):
+	# Sort reverse chronologically
+	ordering = ['-id']
+	list_display = ('school', 'add_num_delegates', 'amount_owed_additional', 'get_add_amount_paid')
+	list_filter = ('add_use_online_payment',)
+
+	def re_invoice(self, request, queryset):
+		for obj in queryset:
+			add_id = obj.id
+			school_id = obj.school_id
+			regenerate_add_invoice(school_id, add_id)
+		message = "invoice successfully sent"
+		self.message_user(request, message)
+
+	re_invoice.short_description = "Send invoice to selected schools"
+	actions = ['re_invoice']
+
+class ScholarshipSchoolAdmin(admin.ModelAdmin):
+	list_display = ('school', 'new_school_application_uploaded', 'international_application_uploaded')
+
+class DelegateSurveyAdmin(admin.ModelAdmin):
+	list_display = ('school', 'first_name', 'last_name')
 admin.site.register(RegisteredSchool, RegisteredSchoolAdmin)
-admin.site.register(ScholarshipApp)
+admin.site.register(AddDelegates, AddDelegatesAdmin)
+admin.site.register(ScholarshipSchoolApp, ScholarshipSchoolAdmin)
+admin.site.register(DelegateSurvey, DelegateSurveyAdmin)

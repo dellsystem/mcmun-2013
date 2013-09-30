@@ -53,10 +53,49 @@
 	</tr>
 </table>
 
+{% if additional_pay %}
+	<div id="invoice">
+	<h2>Additional Delegates Invoice Details</h2>
+	<table class="separated-cells">
+		<tr>
+			<th>Number of delegates</th>
+			<th>Payment method</th>
+			<th>Priority registration</th>
+			<th>Amount owed</th>
+			<th>Amount paid</th>
+		</tr>
+		{% for addpay in additional_pay %}
+		<tr>
+			<td> {{ addpay.add_num_delegates }} </td>
+			<td> {% if addpay.add_use_online_payment %}online payment{% else %}by cheque{% endif %} </td>
+			<td> No </td>
+			<td> {{ addpay.amount_owed_additional }} {{ school.get_currency }} </td>
+			<td> {{ addpay.get_add_amount_paid }} {{ school.get_currency }} </td>
+		</tr>
+		{% endfor %}
+		</table>
+	</div>
+	<p>Lost your copy of your invoice PDF? Email <a href="mailto:it@ssuns.org">it@ssuns.org</a>.{% comment %}Eventually I'll make a view to show the PDF to people with the proper permissions. Later.{% endcomment %}</p>
+{% endif %}
+
+<h3>Sample Background Guides</h3>
+<p>To access the background guides for your committees, please go to <a href="www.ssuns.org/committees-list">www.ssuns.org/committees-list</a>, then select the committee you have been assigned to. You will be able to download the background guide at the bottom of the committee page by entering the password "ssjuns2013". Please do not share this password with students who are not attending SSUNS. </p>
+
 {% if school.committeeassignment_set.count %}
 <h2 id="committee-assignments">Committee assignments</h2>
-<p>Please ensure that you enter a delegate's name for each position that you have been assigned, by January 12. Once you have filled in the delegate name(s) for each position, make sure to upload the relevant position paper, by January 23.</p>
-<p>Please check that any delegate names that have been entered are entered correctly, as you will not be able to change anything once submitted except by contacting <a href="mailto:charge@mcmun.org">charge@mcmun.org</a>. You do not have to enter all the names at once.</p>
+
+<p>
+Please ensure that you enter a delegate's name for each position that you have been assigned by October 22. Once you have filled in the delegate name(s) for each position, make sure to upload the relevant position paper by November 6. If you would like feedback for your position paper, please tell your delegate to email it to <a href="mailto:committees@ssuns.org">committees@ssuns.org</a> by October 25th. Their corresponding deputy will report back to them. Kindly note that only final position papers should be uploaded here.
+</p>
+<p>
+Please check that any delegate names that have been entered are entered correctly, as you will not be able to change anything once submitted except by contacting <a href="mailto:schools@ssuns.org">schools@ssuns.org</a>. You do not have to enter all the names at once.
+</p>
+<p>
+In addition, if any of your students would like to apply for 'Individual Need-Based or Need & Merit Based' scholarships, kindly ask them to fill out the application available for download <a href="/scholarships" target="_blank">here</a>. We ask faculty advisers to submit the final application below on the dashboard. Deadline is September 17.
+</p>
+<p><strong>Please upload PDF files for both position paper and scholarship application. We do not recommend any other document formats.<br />
+IMPORTANT: All position papers and scholarship applications must be submitted on the dashboard via your relevant faculty advisor. If you wish to change your position paper, email <a href="mailto:committees@ssuns.org">committees@ssuns.org</a>. To change your scholarship application, email <a href="mailto:pr@ssuns.org">pr@ssuns.org</a></strong></p>
+
 <form action="{% url assignments %}" method="post" enctype="multipart/form-data">
 {% for m in management_forms %}{{ m }}{% endfor %}
 {% csrf_token %}
@@ -87,18 +126,32 @@
 			<td>
             	{{ f.id }}
                 {% if c.delegate_name %}
-                   	{{ f.position_paper }}
+			{% if c.position_paper %}
+				<a href="{{ c.position_paper }}" target="_blank">view</a>
+			{% else %}
+                   		{{ f.position_paper }}
+			{% endif %}
                 {% else %}
                     Uploading position paper after submitting the delegate name.
                 {% endif %}
             </td>
 			<td>
 				{% if c.delegate_name %}
-					{% for s in s_f %}
-						{{ s.as_p }}
+					{% for f in s_f %}
+					{% with m=f.instance %}
+						{% if m.scholarship_individual %}
+							<a href="/{{ m.scholarship_individual }}" target="_blank">view</a>
+							<div class="hidden">{{ f.as_p }}</div>
+						{% else %}
+							{{ f.as_p }}
+						{% endif %}
+					{% endwith %}
 					{% endfor %}
 				{% else %}
 					Apply individual scholarship after submitting the delegate name.
+					{% for f in s_f %}
+						<div class="hidden">{{ f.as_p }}</div>
+					{% endfor %}
 				{% endif %}
 			</td>
 		</tr>
@@ -115,6 +168,37 @@
 </form>
 {% endif %}
 
+<div id="scholarship">
+	<h2>School Scholarship application</h2>
+	<p>We only offer scholarship applications for International/New Schools attending SSUNS. An International School is defined as a school which is outside Canada/United States and a New School is defined as a school that hasn't attended SSUNS in the last five years. Kindly find the corresponding applications on <a href="/scholarships" target="_blank">this page</a>
+	</p>
+	{% if form %}
+		<p><strong>Please upload PDF files for school scholarship application. We do not recommend any other document formats. You cannot reupload school scholarship application once you submit. If you are eligible for both scholarship, please upload them both at the same time.</strong></p>
+		<form action="{% url dashboard %}" method="post" enctype="multipart/form-data">
+			<fieldset class="hidden">
+				{% csrf_token %}
+			</fieldset>
+			{% if school.is_international %}
+				<p>International school scholarship application: {{ form.scholarship_international }}</p>
+			{% else %}
+				<p>Your school is not eligible for international school scholarship</p>
+			{% endif %}
+				<p>New school scholarship application: {{ form.scholarship_new }}</p>
+			<fieldset class="submit">
+				<input type="submit" name="submit" value="Submit" />
+			</fieldset>
+		</form>
+	{% else %}
+		{% if scholarshipfile.scholarship_international %}
+			<p>Uploaded international school scholarship application: <a href="/{{ scholarshipfile.scholarship_international }}" target="_blank">view</a></p>
+		{% endif %}
+		{% if scholarshipfile.scholarship_new %}	
+			<p>Uploaded new school scholarship application: <a href="/{{ scholarshipfile.scholarship_new }}" target="_blank">view</a></p>
+		{% endif %}	
+			<p>If you want to reupload school scholarship application, please contact <a href="mailto:pr@ssuns.org">pr@ssuns.org</a></p>
+	{% endif %}
+</div>
+
 <h2 id="dates">Important dates</h2>
 
 <table>
@@ -126,8 +210,8 @@
 	<tr><td><b>October 1:</b> Deadline for 50% Refund of Delegate Fees</td></tr>
 	<tr><td><b>October 8:</b> Regular Registration Closes and Waiting List Opens</td></tr>
 	<tr><td><b>October 8:</b> Hotel Room Bookings at Delta Centreville Due</td></tr>
+	<tr><td><b>October 22:</b> Delegate Badge List Due</td></tr>
 	<tr><td><b>October 25:</b> Position Paper Feedback Deadline</td></tr>
-	<tr><td><b>October 29:</b> Delegate Badge List Due</td></tr>
 	<tr><td><b>November 6:</b> Final Position Paper Deadline</td></tr>
 	<tr><td><b>November 7-10:</b> SSUNS 2013</td></tr>
 </table>
@@ -161,18 +245,6 @@
 	    <td>{{ school.get_country_10_display }}</td>
    </tr>
 </table>
-
-{% comment %}
-<div id="scholarship">
-	<h2>Scholarship application</h2>
-	{% if form %}
-		{% include 'scholarship_form.html' %}
-	{% else %}
-		<p>Thank you for completing the scholarship application. You will receive information regarding the status of your scholarship by December 1<sup>st</sup>. If you have any questions or wish to change or add information to your application, please do not hesitate to contact our Chargé D’Affaires, Daniel Stysis at charge@mcmun.org.</p>
-		<p><em>It is required that all scholarship recipients stay at the Sheraton during the conference.</em></p>
-	{% endif %}
-</div>
-{% endcomment %}
 {% else %}
 <p>Unfortunately there's nothing for you to see here. Please move along.</p>
 {% endif %}

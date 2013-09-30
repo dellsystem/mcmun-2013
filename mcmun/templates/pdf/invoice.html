@@ -159,9 +159,9 @@
 						<p><strong>Delegation fee</strong></p>
 						<p class="left-space"><em>A one-time fee, regardless of delegation size.</em></p>
 					</td>
-					<td class="amount">$85.00</td>
+					<td class="amount">${{ school.get_delegate_fee }}.00</td>
 					<td class="amount right-border">1</td>
-					<td class="amount">$85.00 {{ school.get_currency }}</td>
+					<td class="amount">${{ school.get_delegate_fee }}.00 {{ school.get_currency }}</td>
 				</tr>
 				<tr class="bottom-border">
 					<td>
@@ -199,39 +199,25 @@
 					<td class="amount right-border">--</td>
 					<td class="amount">{{ school.get_amount_paid }} {{ school.get_currency }}</td>
 				</tr>
-				<tr{% if school.use_tiered %} class="bottom-border"{% endif %}>
+				{% if school.late_payment %}
+				<tr class="bottom-border">
+					<td>
+						<p><strong>Late payment fee</strong></p>
+					</td>
+					<td class="amount">$25</td>
+					<td class="amount right-border">--</td>
+					<td class="amount">$25 {{ school.get_currency }}
+				</tr>
+				{% endif %}
+				<tr>
 					<td colspan="3" class="right-border">
 						<div class="right-align">
-							<p><strong>TOTAL{% if not school.use_tiered %} (due&nbsp;<u>{% if school.use_priority %}July 30th{% else %}October 1st{% endif %}</u>){% endif %}</strong><p>
+							<p><strong>TOTAL (due&nbsp;<u>{% if school.use_priority %}July 30th{% else %}October 1st{% endif %}</u>)</strong><p>
 							<p><em>{% if school.get_currency == 'CAD' %}Canadian delegations must pay in Canadian dollars.{% else %}Delegations located outside of Canada must pay in US dollars.{% endif %}</em></p>
 						</div>
 					</td>
 					<td class="amount">${{ school.get_total_owed }} {{ school.get_currency }}</td>
 				</tr>
-				{% if school.use_tiered %}
-				<tr class="bottom-border">
-					<td colspan="3" class="right-border">
-						<div class="right-align">
-							<p><strong>REQUIRED DEPOSIT (due&nbsp;<u>{% if school.use_priority and not school.is_international %}October 1{% else %}November 18{% endif %})</u></strong><p>
-							{% if school.pays_convenience_fee and school.use_online_payment %}
-							<p>This includes the 3% convenience fee of ${{ school.get_deposit_convenience_fee }} {{ school.get_currency }}.</p>
-							{% endif %}
-						</div>
-					</td>
-					<td class="amount">${{ school.get_deposit }} {{ school.get_currency }}</td>
-				</tr>
-				<tr>
-					<td colspan="3" class="right-border">
-						<div class="right-align">
-							<p><strong>REMAINDER (due&nbsp;<u>December 1</u>)</strong><p>
-							{% if school.pays_convenience_fee and school.use_online_payment %}
-							<p>This includes the 3% convenience fee of ${{ school.get_remainder_convenience_fee }}  {{ school.get_currency }}.</p>
-							{% endif %}
-						</div>
-					</td>
-					<td class="amount">${{ school.get_remainder }} {{ school.get_currency }}</td>
-				</tr>
-				{% endif %}
 			</table>
 
 			<h2>Payment instructions</h2>
@@ -258,7 +244,7 @@
 
 			<h2>Refund policy</h2>
 
-			<p>The $85 club registration fee is a one-time non-refundable fee per delegation. If you decide not to join us at SSUNS 2013:</p>
+			<p>The $90 club registration fee is a one-time non-refundable fee per delegation. If you decide not to join us at SSUNS 2013:</p>
 			<ul>
 				<li>Before September 10th, your refund will be the payment received minus the $85 club registration fee.</li>
 				<li>Before October 1st, your refund will be a 50% refund of your Total Delegate Fee.</li>

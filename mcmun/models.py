@@ -1,3 +1,5 @@
+import os
+
 from decimal import Decimal
 from django.db.models import Q
 from django.db import models
@@ -6,9 +8,14 @@ from django.conf import settings
 from django.dispatch import receiver
 
 from mcmun.utils import generate_random_password
-from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES, COUNTRIES, DELEGATION_FEE, YESNO, HOWYOUHEAR
+from mcmun.constants import * 
 from mcmun.tasks import send_email, generate_invoice
 from committees.models import Committee, ScholarshipIndividual
+
+scholarshipschool_upload_path = 'scholarship/school/'
+
+def get_scholarshipschool_upload_path(instance, filename):
+	return os.path.join(scholarshipschool_upload_path, str(instance.id) + os.path.splitext(filename)[1])
 
 
 # test
@@ -67,7 +74,8 @@ class RegisteredSchool(models.Model):
 	account = models.ForeignKey(User, null=True)
 
 	use_online_payment = models.BooleanField(choices=YESNO)
-	use_priority = models.BooleanField(default=True)
+	use_priority = models.BooleanField(default=False)
+	late_payment = models.BooleanField(default=False)
 	def has_prefs(self):
 		return (self.committee_1 or self.committee_2 or self.committee_3 or
 			self.committee_4)
@@ -100,15 +108,8 @@ class RegisteredSchool(models.Model):
 		return "%.2f" % (self.mcgill_tours * 2)
 
 
-	# These are messy. Deal with it another time.
 	def get_total_convenience_fee(self):
-		return "%.2f" % ((self.num_delegates * self.get_delegate_fee() + DELEGATION_FEE + self.get_tour_fee())  * 0.03)
-
-	def get_deposit_convenience_fee(self):
-		return "%.2f" % ((DELEGATION_FEE + (self.get_delegate_fee() * self.num_delegates) * 0.5) * 0.03)
-
-	def get_remainder_convenience_fee(self):
-		return "%.2f" % ((self.get_delegate_fee() * self.num_delegates * 0.5) * 0.03)
+		return "%.2f" % ((self.num_delegates * self.get_delegate_fee() + self.get_delegate_fee() + self.get_tour_fee())  * 0.03)
 
 	def add_convenience_fee(self, number):
 		"""
@@ -129,22 +130,14 @@ class RegisteredSchool(models.Model):
 		return self.get_delegate_fee() * self.num_delegates
 
 	def get_total_owed(self):
-		total_owed = self.num_delegates * self.get_delegate_fee() + DELEGATION_FEE + self.get_tour_fee() - float(self.amount_paid)
-
-		return "%.2f" % self.add_convenience_fee(total_owed)
+		total_owed = self.num_delegates * self.get_delegate_fee() + self.get_delegate_fee() + self.get_tour_fee()
+		if self.late_payment:
+			return "%.2f" % (self.add_convenience_fee(total_owed) - float(self.amount_paid) + 25)
+		else:
+			return "%.2f" % (self.add_convenience_fee(total_owed) - float(self.amount_paid))
 
 	def get_amount_paid(self):
 		return "$%s" % self.amount_paid
-
-	def get_deposit(self):
-		deposit = DELEGATION_FEE + (self.get_delegate_fee() * self.num_delegates) * 0.5
-
-		return "%.2f" % self.add_convenience_fee(deposit)
-
-	def get_remainder(self):
-		remainder = self.get_delegate_fee() * self.num_delegates * 0.5
-
-		return "%.2f" % self.add_convenience_fee(remainder)
 
 	def amount_owed(self):
 		return "$%s" % self.get_total_owed()
@@ -185,28 +178,84 @@ class RegisteredSchool(models.Model):
 		return self.school_name
 
 
-class ScholarshipApp(models.Model):
-	school = models.OneToOneField(RegisteredSchool)
-	# club_name = models.CharField(max_length=100)
-	# num_days_staying = models.IntegerField()
-	new_school = models.BooleanField()
-	international = models.BooleanField()
-	# previously_attended = models.BooleanField()
-	previous_scholarship_amount = models.IntegerField(null=True, blank=True)
-	previous_scholarship_year = models.IntegerField(null=True, blank=True)
-	impact_on_delegation = models.TextField()
-	principles_of_organisation = models.TextField()
-	importance_of_ssuns = models.TextField()
-	# how_funding_works = models.TextField()
-	# other_funding_sources = models.TextField()
-	# budget = models.TextField()
-	other_information = models.TextField(null=True, blank=True)
-	# co_head_name = models.CharField(max_length=100, null=True, blank=True)
-	# co_head_email = models.EmailField(max_length=255, null=True, blank=True)
-	# co_head_phone = models.CharField(max_length=20, null=True, blank=True)
+class AddDelegates(models.Model):
+	school = models.ForeignKey(RegisteredSchool, null=False)
+	add_num_delegates = models.IntegerField(default=1, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES)], verbose_name="additional number of delegates")
+	add_mcgill_tours = models.IntegerField(default=0, choices=[(n, n) for n in xrange(MIN_NUM_DELEGATES, MAX_NUM_DELEGATES)], verbose_name="mcgill tours")
+	add_use_online_payment = models.BooleanField(choices=YESNO)
+	add_amount_paid = models.DecimalField(default=Decimal(0), max_digits=6, decimal_places=2, verbose_name="amount paid")
+	use_priority = models.BooleanField(default=False)
+	late_payment = models.BooleanField(default=False)
+
+	def get_add_tour_fee(self):
+		return (self.add_mcgill_tours * 2)
+
+	def get_add_tour_fee_str(self):
+		return "%.2f" % (self.get_add_tour_fee())
+
+	def get_delegate_fee(self):
+		delegate_fee = 85 if self.use_priority else 90
+
+		return delegate_fee
+	
+	def get_add_base_fee(self):
+		return (self.add_num_delegates * self.get_delegate_fee() + self.get_add_tour_fee())
+
+	def get_add_total_convenience_fee(self):
+		return "%.2f" % (self.get_add_base_fee()  * 0.03)
+
+	def add_convenience_fee(self, number):
+		"""
+		Incorporates a 3% convenience fee into the number given iff the school
+		has selected online payment and has registered after Sept 1.
+		"""
+		if self.add_use_online_payment:
+			return number * 1.03
+		else:
+			return number
+
+	def get_payment_type(self):
+		if self.use_priority:
+			payment_type = 'priority'
+		else:
+			payment_type = 'regular'
+                return payment_type
+
+	def get_add_total_delegate_fee(self):
+		return self.add_num_delegates * self.get_delegate_fee()
+
+	def get_add_total_owed(self):
+		total_owed = self.get_add_base_fee()
+		if self.late_payment:
+			return "%.2f" % (self.add_convenience_fee(total_owed) - float(self.add_amount_paid) + 25)
+		else:
+			return "%.2f" % (self.add_convenience_fee(total_owed) - float(self.add_amount_paid))
+	
+	def get_add_amount_paid(self):
+		return "$%s" % self.add_amount_paid
+
+	def amount_owed_additional(self):
+		return "$%s" % self.get_add_total_owed()
 
 	def __unicode__(self):
 		return self.school.school_name
+
+
+class ScholarshipSchoolApp(models.Model):
+	school = models.OneToOneField(RegisteredSchool)
+	scholarship_international = models.FileField(upload_to=get_scholarshipschool_upload_path, blank=True, null=True, verbose_name="International school scholarship application")
+	scholarship_new = models.FileField(upload_to=get_scholarshipschool_upload_path, blank=True, null=True, verbose_name="New school scholarship application")
+
+	def __unicode__(self):
+		return self.school.school_name
+
+	def international_application_uploaded(self):
+		return self.scholarship_international != ""
+	international_application_uploaded.boolean = True
+
+	def new_school_application_uploaded(self):
+                return self.scholarship_new != ""
+        new_school_application_uploaded.boolean = True
 
 
 @receiver(models.signals.pre_save, sender=RegisteredSchool, dispatch_uid="approve_schools")
@@ -224,3 +273,55 @@ def approve_schools(sender, instance, **kwargs):
 		instance.account = new_account
 
 		instance.send_invoice_email(new_account.username, password)
+
+
+
+class DelegateSurvey(models.Model):
+
+	school = models.ForeignKey(RegisteredSchool, null=False)
+	first_name = models.CharField(max_length=50)
+	last_name = models.CharField(max_length=50)
+	q1 = models.BooleanField(choices=TRUEFALSE)
+	q2 = models.BooleanField(choices=TRUEFALSE)
+	q3 = models.BooleanField(choices=TRUEFALSE)
+	q4 = models.CharField(max_length=1, choices=Q4)
+	q5 = models.CharField(max_length=1, choices=Q5)	
+	q6 = models.CharField(max_length=1, choices=Q6)
+	q7 = models.BooleanField(choices=TRUEFALSE)
+	q8 = models.CharField(max_length=1, choices=Q8)
+	q9 = models.CharField(max_length=1, choices=Q9)
+	q10 = models.CharField(max_length=1, choices=Q10)
+	q11 = models.CharField(max_length=1, choices=Q11)
+	q12 = models.CharField(max_length=1, choices=Q12)
+	q13 = models.CharField(max_length=1, choices=Q13)
+	q14 = models.BooleanField(choices=TRUEFALSE)
+	q15 = models.BooleanField(choices=TRUEFALSE)
+	q16 = models.CharField(max_length=1, choices=Q16)
+	q17 = models.BooleanField(choices=TRUEFALSE)
+	q18 = models.CharField(max_length=1, choices=Q18)
+	q19 = models.CharField(max_length=1, choices=Q19)
+	q20 = models.CharField(max_length=1, choices=Q20)
+	q21 = models.CharField(max_length=1, choices=Q21)
+	q22 = models.BooleanField(choices=TRUEFALSE)
+	q23 = models.CharField(max_length=1, choices=Q23)
+	q24 = models.CharField(max_length=1, choices=Q24)
+	q25 = models.BooleanField(choices=TRUEFALSE)
+	q26 = models.CharField(max_length=1, choices=Q26)
+	q27 = models.BooleanField(choices=TRUEFALSE)
+	q28 = models.BooleanField(choices=TRUEFALSE)
+	q29 = models.CharField(max_length=1, choices=Q29)
+	q30 = models.CharField(max_length=1, choices=Q30)
+	q31 = models.CharField(max_length=1, choices=Q31)
+	q32 = models.BooleanField(choices=TRUEFALSE)
+	q33 = models.BooleanField(choices=TRUEFALSE)
+	q34 = models.BooleanField(choices=TRUEFALSE)
+	q35 = models.CharField(max_length=1, choices=Q35)
+	q36 = models.CharField(max_length=1, choices=Q36)
+	q37 = models.CharField(max_length=1, choices=Q37)
+	q38 = models.BooleanField(choices=TRUEFALSE)
+	q39 = models.CharField(max_length=1, choices=Q39)
+	q40 = models.CharField(max_length=1, choices=Q40)
+	num_correct = models.IntegerField(default=0)
+ 
+	def __unicode__(self):
+		return self.first_name + " " + self.last_name
