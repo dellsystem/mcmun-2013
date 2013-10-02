@@ -1,5 +1,19 @@
+<script>
+function checkpassword()
+{
+        var password = document.getElementsByName('quizPassword')[0].value;
+        if (password === "unmod1107")
+        {
+                return true;
+        }
+        else
+        {
+                alert("Wrong Password!");
+                return false;
+        }
+}
+</script>
 {% extends "base.html" %}
-
 {% block content %}
 <h1>Survey</h1>
 <form method="post" id="survey">
@@ -123,8 +137,14 @@
 			<div class="hidden">{{ form.num_correct }}</div>	
 		</dl>
 	</fieldset>
+	<fieldset>
+		<dl>
+			<dt>Quiz password (Ask your faculty advisor): </dt>
+			<dd><input type="password" name="quizPassword" /></dd>
+		</dl>
+	</fieldset>
 	<fieldset class="submit">
-		<input type="submit" name="submit" value="Submit" />
+		<input type="submit" name="submit" value="Submit" onclick="return checkpassword()"/>
 	</fieldset>
 </form>
 {% endblock %}
