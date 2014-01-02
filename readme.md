@@ -169,7 +169,7 @@ More documentation on this will be available soon.
 ### Other information
 
 This readme will be updated with more information as I think of it. Contact
-it@mcmun.org if you have any questions.
+it@ssuns.org or it@mcmun.org if you have any questions.
 
 Licensing information
 ---------------------
