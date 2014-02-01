@@ -1,0 +1,11 @@
+Django==1.6.1
+amqp==1.4.2
+anyjson==0.3.3
+argparse==1.2.1
+billiard==3.3.0.14
+celery==3.1.8
+distribute==0.6.24
+django-celery==3.1.1
+kombu==3.0.10
+pytz==2013.9
+wsgiref==0.1.2
