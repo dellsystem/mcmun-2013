@@ -1,4 +1,6 @@
-Django==1.6.1
+Django==1.5.5
+Markdown==2.3.1
+Pillow==2.3.0
 amqp==1.4.2
 anyjson==0.3.3
 argparse==1.2.1
@@ -6,6 +8,13 @@ billiard==3.3.0.14
 celery==3.1.8
 distribute==0.6.24
 django-celery==3.1.1
+django-xhtml2pdf==0.0.3
+html5lib==1.0b3
 kombu==3.0.10
+markup==0.2
+pyPdf==1.13
 pytz==2013.9
+reportlab==2.7
+six==1.5.2
 wsgiref==0.1.2
+xhtml2pdf==0.0.5
